@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>NO NOISE - EDAC Docs</title>
+  <title>BIT FLIP - EDAC Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "NO NOISE";
-    var mkdocs_page_input_path = "lib/noise/systems/NO_NOISE.md";
+    var mkdocs_page_name = "BIT FLIP";
+    var mkdocs_page_input_path = "modules/noise/systems/BIT_FLIP.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -50,7 +50,7 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../../..">EDAC</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Lib</span></p>
+                <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Noise</a>
     <ul class="current">
@@ -60,13 +60,13 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Systems</a>
     <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../BIT_FLIP/">BIT FLIP</a>
-                </li>
-                <li class="toctree-l3 current"><a class="reference internal current" href="./">NO NOISE</a>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">BIT FLIP</a>
     <ul class="current">
-    <li class="toctree-l4"><a class="reference internal" href="#nonoise">NoNoise</a>
+    <li class="toctree-l4"><a class="reference internal" href="#bitflipnoise">BitFlipNoise</a>
     </li>
     </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../NO_NOISE/">NO NOISE</a>
                 </li>
     </ul>
                 </li>
@@ -94,7 +94,7 @@
     
       
         
-          <li>Lib &raquo;</li>
+          <li>Modules &raquo;</li>
         
       
         
@@ -106,7 +106,7 @@
         
       
     
-    <li>NO NOISE</li>
+    <li>BIT FLIP</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -119,34 +119,84 @@
             <div class="section">
               
                 <h1 id="_1"></h1>
-<h2 id="nonoise">NoNoise</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/lib/noise/noise_method/none.py/#L3">source</a></p>
-<pre><code class="language-python">NoNoise(
-   debug: bool
+<h2 id="bitflipnoise">BitFlipNoise</h2>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L7">source</a></p>
+<pre><code class="language-python">BitFlipNoise(
+   debug: bool, kwargs: dict = None
 )
 </code></pre>
 <hr />
-<p>A Noise system without any noise</p>
+<p>Add the Bit Flip Noise System to the data</p>
 <p><strong>Args</strong></p>
 <ul>
 <li><strong>debug</strong> (bool) : the debug flag</li>
+<li><strong>kwargs</strong> (optional) : The key word argument passed from             <a href="../../noise/">Noise Factory</a>. Defaults to None.            should contain key <code>flip_list</code></li>
+<li><strong>flip_list</strong> (list[int]) : A list of integer index that defines the bit index            that should be flipped</li>
 </ul>
+<p><strong>Note</strong></p>
+<p>the <code>**kwargs</code> should be <code>flip_list (list[int])</code>, if no such key in            <code>**kwargs</code> it will auto flips a random bit</p>
+<p><strong>Example</strong></p>
+<pre><code class="language-python">
+&gt;&gt;&gt; from lib.noise.scheme import NoiseType
+&gt;&gt;&gt; noise_system = NoiseFactory(NoiseType.BIT_FLIP, flip_list=[6])
+&gt;&gt;&gt; noise_system.add_noise(b'OUO')
+b'MUO'
+&gt;&gt;&gt; noise_system.add_noise(b'OUO')
+b'MUO'
+&gt;&gt;&gt; noise_system = NoiseFactory(NoiseType.BIT_FLIP)
+&gt;&gt;&gt; noise_system.add_noise(b'OUO')
+b'OuO'
+&gt;&gt;&gt; noise_system.add_noise(b'OUO')
+b'OÕO'
+</code></pre>
 <p><strong>Methods:</strong></p>
+<h3 id="__add_noise">.__add_noise</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L76">source</a></p>
+<pre><code class="language-python">.__add_noise(
+   data: bytes
+)
+</code></pre>
+<hr />
+<p>The method to add noise</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (bytes) : The data to add noise at</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>bytes</strong>  : the data with the noise</li>
+</ul>
+<p><strong>Note</strong></p>
+<p>The algorithm of this method is using a xor mask to flip the data               , since <code>x ^ 0 = x, x ^ 1 = !x</code>
+Given an example</p>
+<pre><code>| 0 | 1 | 2 | 3 | 4 |
+
+| 1 | 0 | 1 | 1 | 0 |
+--------------------- XOR
+| 0 | 0 | 1 | 0 | 1 |
+--------------------- Results
+| 1 | 0 |*0*| 1 |*1*|
+</code></pre>
+<p>You can see that except the <script type="math/tex">2^{nd}</script> and the <script type="math/tex">4^{th}</script> data, the data remains                the same.</p>
 <h3 id="add_noise">.add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/lib/noise/noise_method/none.py/#L13">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L47">source</a></p>
 <pre><code class="language-python">.add_noise(
    data: bytes
 )
 </code></pre>
 <hr />
-<p>The Method of adding noise to the data</p>
+<p>Validate the <code>flip_list</code> and add the noise to the data</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (bytes) : the data that is going to add noise on</li>
+<li><strong>data</strong> (bytes) : The data to be noise added</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>IndexError</strong>  : the <code>flip_list</code> contains integers that exceeds the length of                the original data</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>bytes</strong>  : the data with noise</li>
+<li><strong>bytes</strong>  : the data with the noise</li>
 </ul>
               
             </div>
@@ -155,8 +205,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../NO_NOISE/" class="btn btn-neutral float-right" title="NO NOISE">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../BIT_FLIP/" class="btn btn-neutral" title="BIT FLIP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../../scheme/" class="btn btn-neutral" title="Scheme"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -182,8 +234,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../BIT_FLIP/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../scheme/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../NO_NOISE/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

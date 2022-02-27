@@ -52,19 +52,19 @@
     </ul>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Lib</span></p>
+                <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">Noise</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="lib/noise/noise/">Noise</a>
+                <li class="toctree-l2"><a class="reference internal" href="modules/noise/noise/">Noise</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="lib/noise/scheme/">Scheme</a>
+                <li class="toctree-l2"><a class="reference internal" href="modules/noise/scheme/">Scheme</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Systems</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="lib/noise/systems/BIT_FLIP/">BIT FLIP</a>
+                <li class="toctree-l3"><a class="reference internal" href="modules/noise/systems/BIT_FLIP/">BIT FLIP</a>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="lib/noise/systems/NO_NOISE/">NO NOISE</a>
+                <li class="toctree-l3"><a class="reference internal" href="modules/noise/systems/NO_NOISE/">NO NOISE</a>
                 </li>
     </ul>
                 </li>
@@ -106,18 +106,12 @@
               
                 <h1 id="edac">EDAC</h1>
 <p>A Learning Program for Error Decoding and Correction</p>
-<h1 id="test-platform">Test Platform</h1>
-<h2 id="noise">NOISE</h2>
-<h3 id="basic-usage">Basic Usage</h3>
-<pre><code class="language-python">noise_generator = NoiseFactory(NoiseType, debug)
-noise_msg = noise_generator.add_noise(MSG)
+<h1 id="installations">Installations</h1>
+<pre><code class="language-shell">&gt; git clone https://github.com/N0Ball/EDAC.git
+&gt; python3 -m pip install -r requirements
 </code></pre>
-<ul>
-<li>Sample Usage</li>
-</ul>
-<pre><code class="language-python">noise_generator = NoiseFactory(NoiseType.NO_NOISE, debug=TRUE)
-noise_msg = noise_generator.add_noise(b&quot;OUO&quot;)
-</code></pre>
+<h1 id="docs">Docs</h1>
+<p><a href="https://n0ball.github.io/EDAC">Documentations</a></p>
               
             </div>
           </div>
@@ -125,7 +119,7 @@ noise_msg = noise_generator.add_noise(b&quot;OUO&quot;)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="lib/noise/noise/" class="btn btn-neutral float-right" title="Noise">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="modules/noise/noise/" class="btn btn-neutral float-right" title="Noise">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -153,7 +147,7 @@ noise_msg = noise_generator.add_noise(b&quot;OUO&quot;)
     
     
     
-      <span><a href="lib/noise/noise/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="modules/noise/noise/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
@@ -173,5 +167,5 @@ noise_msg = noise_generator.add_noise(b&quot;OUO&quot;)
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-27 19:21:56.579582+00:00
+Build Date UTC : 2022-02-27 19:31:42.610838+00:00
 -->
