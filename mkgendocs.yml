@@ -1,0 +1,32 @@
+sources_dir: docs
+templates_dir: docs/templates
+repo: https://github.com/N0Ball/EDAC  #link to sources on github
+version: main                             #link to sources on github
+
+pages:
+  - page: "lib/noise/noise.md"
+    source: "lib/noise/noise.py"
+    classes:
+      - NoiseFactory:
+        - add_noise
+        - __get_noise_generator
+
+  - page: "lib/noise/scheme.md"
+    source: "lib/noise/scheme.py"
+    classes:
+      - NoiseType
+      - NoiseMethod:
+        - add_noise
+
+  - page: "lib/noise/systems/NO_NOISE.md"
+    source: "lib/noise/noise_method/none.py"
+    classes:
+      - NoNoise:
+        - add_noise
+
+  - page: "lib/noise/systems/BIT_FLIP.md"
+    source: "lib/noise/noise_method/bitflip.py"
+    classes:
+      - BitFlipNoise:
+        - add_noise
+        - __add_noise
