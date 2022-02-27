@@ -1,20 +1,12 @@
 # EDAC
 A Learning Program for Error Decoding and Correction
 
-# Test Platform
+# Installations
 
-## NOISE
-
-### Basic Usage
-
-```python
-noise_generator = NoiseFactory(NoiseType, debug)
-noise_msg = noise_generator.add_noise(MSG)
+```shell
+> git clone https://github.com/N0Ball/EDAC.git
+> python3 -m pip install -r requirements
 ```
 
-- Sample Usage
-
-```python
-noise_generator = NoiseFactory(NoiseType.NO_NOISE, debug=TRUE)
-noise_msg = noise_generator.add_noise(b"OUO")
-```
+# Docs
+[Documentations](https://n0ball.github.io/EDAC)
