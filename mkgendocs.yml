@@ -1,4 +1,4 @@
-sources_dir: docs
+sources_dir: docs/sources
 templates_dir: docs/templates
 repo: https://github.com/N0Ball/EDAC  #link to sources on github
 version: main                             #link to sources on github

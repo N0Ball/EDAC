@@ -1,12 +1,6 @@
-# EDAC
-A Learning Program for Error Decoding and Correction
+# EDAC Testing and Education Platform
 
-# Installations
-
-```shell
-> git clone https://github.com/N0Ball/EDAC.git
-> python3 -m pip install -r requirements
-```
-
-# Docs
-[Documentations](https://n0ball.github.io/EDAC)
+This is basically a testing and educatiing platform so that you can 
+- Learn Basic Error Detecting And Correcting
+- Use the EDAC code 
+- Test your EDAC
