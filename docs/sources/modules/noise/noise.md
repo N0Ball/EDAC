@@ -38,33 +38,6 @@ SeeAlso:
 **Methods:**
 
 
-### .add_noise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L28)
-```python
-.add_noise(
-   data: bytes
-)
-```
-
----
-Add noise to the data
-
-
-**Args**
-
-* **data** (bytes) : data to add noise on
-
-
-**Raises**
-
-* **ValueError**  : data's type is not `bytes`
-
-
-**Returns**
-
-* **bytes**  : the data with the noise
-
-
 ### .__get_noise_generator
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L52)
 ```python
@@ -90,4 +63,31 @@ Get the noise system of the given noise type
 **Returns**
 
 * **NoiseMethod**  : the noise system
+
+
+### .add_noise
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L28)
+```python
+.add_noise(
+   data: bytes
+)
+```
+
+---
+Add noise to the data
+
+
+**Args**
+
+* **data** (bytes) : data to add noise on
+
+
+**Raises**
+
+* **ValueError**  : data's type is not `bytes`
+
+
+**Returns**
+
+* **bytes**  : the data with the noise
 
