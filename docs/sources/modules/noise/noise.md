@@ -38,33 +38,6 @@ SeeAlso:
 **Methods:**
 
 
-### .__get_noise_generator
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L52)
-```python
-.__get_noise_generator(
-   noise_type: NoiseType
-)
-```
-
----
-Get the noise system of the given noise type
-
-
-**Args**
-
-* **noise_type** ([NoiseType](../scheme#NoiseType)) : the givin noise type seealso: noise.shceme.NoiseType
-
-
-**Raises**
-
-* **ValueError**  : No noise type found
-
-
-**Returns**
-
-* **NoiseMethod**  : the noise system
-
-
 ### .add_noise
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L28)
 ```python
@@ -90,4 +63,31 @@ Add noise to the data
 **Returns**
 
 * **bytes**  : the data with the noise
+
+
+### .__get_noise_generator
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L52)
+```python
+.__get_noise_generator(
+   noise_type: NoiseType
+)
+```
+
+---
+Get the noise system of the given noise type
+
+
+**Args**
+
+* **noise_type** ([NoiseType](../scheme#NoiseType)) : the givin noise type seealso: noise.shceme.NoiseType
+
+
+**Raises**
+
+* **ValueError**  : No noise type found
+
+
+**Returns**
+
+* **NoiseMethod**  : the noise system
 

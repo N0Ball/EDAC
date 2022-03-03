@@ -1,4 +1,0 @@
-#
-
-## Cyclic Redundancy Check (CRC)
-

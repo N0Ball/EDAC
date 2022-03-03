@@ -8,10 +8,10 @@
 ## How
 
 ---
-- Examing the [Least significant bit](/tutorials/definitions/computerScience/#least-significant-bit-lsb) of the whole communication string
+- Examing the [Least significant bit](../../definitions/computerScience/#least-significant-bit-lsb) of the whole communication string
 - Applied in an 8-bit communication system `7 + 1(parity)`
 
-the [sum](/tutorials/definitions/math/#summations) of every bit should be 0
+the [sum](../../definitions/math/#summations) of every bit should be 0
 
 ## Examples
 
@@ -54,7 +54,7 @@ False
 ## Problems
 
 ---
-The bigest problem of parity bit is that you can't identify the error if the [hamming distance](/tutorials/definitions/math/#hamming-distance) \(H_d(m) \gt 1\)
+The bigest problem of parity bit is that you can't identify the error if the [hamming distance](../../definitions/math/#hamming-distance) \(H_d(m) \gt 1\)
 
 Check m = `30 (0b11110)` again but with \(H_d(m) = 2\) with error e `11000000` => m + e = `(0b1111110)`
 
@@ -73,6 +73,6 @@ This is called a `collision`, which means two different system have the same par
 
 ---
 
-- [Numbers](/tutorials/definitions/computerScience/#numbers)
-- [Summations](/tutorials/definitions/math/#summations)
-- [Hamming Distance](/tutorials/definitions/math/#hamming-distance)
+- [Numbers](../../definitions/computerScience/#numbers)
+- [Summations](../../definitions/math/#summations)
+- [Hamming Distance](../../definitions/math/#hamming-distance)
