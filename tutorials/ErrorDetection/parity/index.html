@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Parity - EDAC Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Parity";
+    var mkdocs_page_input_path = "tutorials/ErrorDetection/parity.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> EDAC Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">EDAC Testing and Education Platform</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Sources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../sources/">EDAC</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Modules</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/noise/noise/">Noise</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/noise/scheme/">Scheme</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/noise/systems/BIT_FLIP/">BIT FLIP</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/noise/systems/NO_NOISE/">NO NOISE</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">ErrorDetection</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../crc/">Crc</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Parity</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#parity-bit">Parity bit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how">How</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#error-detection">Error Detection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#problems">Problems</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../definitions/computerScience/">computerScience</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../definitions/math/">Math</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">EDAC Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+        
+          <li>ErrorDetection &raquo;</li>
+        
+      
+    
+    <li>Parity</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1"></h1>
+<h2 id="parity-bit">Parity bit</h2>
+<hr />
+<p><strong>Check Bit</strong>, which is a bit that can detect errors.</p>
+<h2 id="how">How</h2>
+<hr />
+<ul>
+<li>Examing the <a href="/tutorials/definitions/computerScience/#least-significant-bit-lsb">Least significant bit</a> of the whole communication string</li>
+<li>Applied in an 8-bit communication system <code>7 + 1(parity)</code></li>
+</ul>
+<p>the <a href="/tutorials/definitions/math/#summations">sum</a> of every bit should be 0</p>
+<h2 id="examples">Examples</h2>
+<hr />
+<p>take <code>25 (0b11001)</code> as an example</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th><spam style="color: red;">7</spam></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><spam style="color: red;">1</spam></td>
+</tr>
+</tbody>
+</table>
+<p>The parity bit is the 7<sup>th</sup> bit, since the sum of every bit in <code>25 (0b11001)</code> is <code>1</code>; therefore the value of parity bit is <script type="math/tex">0 - 1 = 0 \oplus 1 = 1</script>
+</p>
+<hr />
+<p>take <code>30 (0b11110)</code> as an example</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th><spam style="color: red;">7</spam></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td><spam style="color: red;">0</spam></td>
+</tr>
+</tbody>
+</table>
+<p>The parity bit is the 7<sup>th</sup> bit, since the sum of every bit in <code>30 (0b11110)</code> is <code>0</code>; therefore the value of parity bit is <script type="math/tex">0 - 0 = 0 \oplus 0 = 0</script>
+</p>
+<h2 id="error-detection">Error Detection</h2>
+<hr />
+<p>If <strong><code>single bit flip</code></strong> occurs, the sum of the bits will not be 0. That is, you can simply sum every bits to check whether an error appears.</p>
+<p>a simple python code to check <code>30 (0b11110)</code> is listed below </p>
+<pre><code class="language-python">&gt;&gt;&gt; from functools import reduce
+&gt;&gt;&gt; message = &quot;00111100&quot; # e = 0b0
+&gt;&gt;&gt; reduce(lambda a, b: int(a) ^ int(b), message) == 0
+True
+&gt;&gt;&gt; message = &quot;00110100&quot; # e = 0b1000
+&gt;&gt;&gt; reduce(lambda a, b: int(a) ^ int(b), message) == 0
+False
+</code></pre>
+<h2 id="problems">Problems</h2>
+<hr />
+<p>The bigest problem of parity bit is that you can't identify the error if the <a href="/tutorials/definitions/math/#hamming-distance">hamming distance</a> <script type="math/tex">H_d(m) \gt 1</script>
+</p>
+<p>Check m = <code>30 (0b11110)</code> again but with <script type="math/tex">H_d(m) = 2</script> with error e <code>11000000</code> =&gt; m + e = <code>(0b1111110)</code></p>
+<pre><code class="language-python">&gt;&gt;&gt; from functools import reduce
+&gt;&gt;&gt; message = &quot;11111100&quot; # Message recieved in Binary
+&gt;&gt;&gt; reduce(lambda a, b: int(a) ^ int(b), message) == 0
+True
+</code></pre>
+<ul>
+<li>The result is <code>True</code> which means <code>no errors</code> however, <script type="math/tex">e \ne 0</script>
+</li>
+</ul>
+<p>This is called a <code>collision</code>, which means two different system have the same parity code</p>
+<h2 id="see-also">See also</h2>
+<hr />
+<ul>
+<li><a href="/tutorials/definitions/computerScience/#numbers">Numbers</a></li>
+<li><a href="/tutorials/definitions/math/#summations">Summations</a></li>
+<li><a href="/tutorials/definitions/math/#hamming-distance">Hamming Distance</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../definitions/computerScience/" class="btn btn-neutral float-right" title="computerScience">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../crc/" class="btn btn-neutral" title="Crc"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../crc/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../definitions/computerScience/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
