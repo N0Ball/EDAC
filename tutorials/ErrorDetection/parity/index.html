@@ -79,8 +79,6 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">ErrorDetection</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../crc/">Crc</a>
-                </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Parity</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#parity-bit">Parity bit</a>
@@ -156,10 +154,10 @@
 <h2 id="how">How</h2>
 <hr />
 <ul>
-<li>Examing the <a href="/tutorials/definitions/computerScience/#least-significant-bit-lsb">Least significant bit</a> of the whole communication string</li>
+<li>Examing the <a href="../../definitions/computerScience/#least-significant-bit-lsb">Least significant bit</a> of the whole communication string</li>
 <li>Applied in an 8-bit communication system <code>7 + 1(parity)</code></li>
 </ul>
-<p>the <a href="/tutorials/definitions/math/#summations">sum</a> of every bit should be 0</p>
+<p>the <a href="../../definitions/math/#summations">sum</a> of every bit should be 0</p>
 <h2 id="examples">Examples</h2>
 <hr />
 <p>take <code>25 (0b11001)</code> as an example</p>
@@ -235,7 +233,7 @@ False
 </code></pre>
 <h2 id="problems">Problems</h2>
 <hr />
-<p>The bigest problem of parity bit is that you can't identify the error if the <a href="/tutorials/definitions/math/#hamming-distance">hamming distance</a> <script type="math/tex">H_d(m) \gt 1</script>
+<p>The bigest problem of parity bit is that you can't identify the error if the <a href="../../definitions/math/#hamming-distance">hamming distance</a> <script type="math/tex">H_d(m) \gt 1</script>
 </p>
 <p>Check m = <code>30 (0b11110)</code> again but with <script type="math/tex">H_d(m) = 2</script> with error e <code>11000000</code> =&gt; m + e = <code>(0b1111110)</code></p>
 <pre><code class="language-python">&gt;&gt;&gt; from functools import reduce
@@ -251,9 +249,9 @@ True
 <h2 id="see-also">See also</h2>
 <hr />
 <ul>
-<li><a href="/tutorials/definitions/computerScience/#numbers">Numbers</a></li>
-<li><a href="/tutorials/definitions/math/#summations">Summations</a></li>
-<li><a href="/tutorials/definitions/math/#hamming-distance">Hamming Distance</a></li>
+<li><a href="../../definitions/computerScience/#numbers">Numbers</a></li>
+<li><a href="../../definitions/math/#summations">Summations</a></li>
+<li><a href="../../definitions/math/#hamming-distance">Hamming Distance</a></li>
 </ul>
               
             </div>
@@ -265,7 +263,7 @@ True
         <a href="../../definitions/computerScience/" class="btn btn-neutral float-right" title="computerScience">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../crc/" class="btn btn-neutral" title="Crc"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../sources/modules/noise/systems/NO_NOISE/" class="btn btn-neutral" title="NO NOISE"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -291,7 +289,7 @@ True
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../crc/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../../sources/modules/noise/systems/NO_NOISE/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../../definitions/computerScience/" style="color: #fcfcfc">Next &raquo;</a></span>
