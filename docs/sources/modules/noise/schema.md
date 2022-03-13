@@ -2,7 +2,7 @@
 
 
 ## NoiseType
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L3)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L4)
 ```python 
 NoiseType()
 ```
@@ -22,7 +22,7 @@ The Noise type Enumerate of the Noise system
 
 
 ## NoiseMethod
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L15)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L16)
 ```python 
 NoiseMethod(
    noise_type: NoiseType = NoiseType.NO_NOISE, debug: bool = False
@@ -49,7 +49,7 @@ This is the abstract base class, `add_noise` method should **never be called**
 
 
 ### .add_noise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L32)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L33)
 ```python
 .add_noise(
    data: bytes

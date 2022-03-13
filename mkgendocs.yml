@@ -4,29 +4,49 @@ repo: https://github.com/N0Ball/EDAC  #link to sources on github
 version: main                             #link to sources on github
 
 pages:
-  - page: "modules/noise/noise.md"
-    source: "modules/noise/noise.py"
+
+  # Noise system
+  - page: "modules/noise/factory.md"
+    source: "modules/noise/factory.py"
     classes:
       - NoiseFactory:
         - add_noise
         - __get_noise_generator
 
-  - page: "modules/noise/scheme.md"
-    source: "modules/noise/scheme.py"
+  - page: "modules/noise/schema.md"
+    source: "modules/noise/schema.py"
     classes:
       - NoiseType
       - NoiseMethod:
         - add_noise
 
   - page: "modules/noise/systems/NO_NOISE.md"
-    source: "modules/noise/noise_method/none.py"
+    source: "modules/noise/methods/none.py"
     classes:
       - NoNoise:
         - add_noise
 
   - page: "modules/noise/systems/BIT_FLIP.md"
-    source: "modules/noise/noise_method/bitflip.py"
+    source: "modules/noise/methods/bitflip.py"
     classes:
       - BitFlipNoise:
         - add_noise
         - __add_noise
+
+  # EDAC system
+  - page: "modules/edac/schema.md"
+    source: "modules/edac/schema.py"
+    classes:
+      - EDACType
+      - EDACMethod:
+        - encode
+        - decode
+
+  - page: "modules/edac/factory.md"
+    source: "modules/edac/factory.py"
+    classes:
+      - EDACFactory:
+        - encode
+        - decode
+        - _create_block
+        - __get_edac_generator

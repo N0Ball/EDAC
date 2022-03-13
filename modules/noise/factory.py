@@ -1,22 +1,22 @@
-from .scheme import NoiseType, NoiseMethod
-from .noise_method.none import NoNoise
-from .noise_method.bitflip import BitFlipNoise
+from .schema import NoiseType, NoiseMethod
+from .methods.none import NoNoise
+from .methods.bitflip import BitFlipNoise
 
 class NoiseFactory:
     """Creates a noise system to add noise to.
 
     Args:
-        noise_type ([NoiseType](../scheme#NoiseType)): The noise type of the given type
+        noise_type ([NoiseType](../schema#NoiseType)): The noise type of the given type
         debug (bool, optional): The debug flag. Defaults to False.
         
     Example:
-        >>> from lib.noise.scheme import NoiseType
+        >>> from lib.noise.schema import NoiseType
         >>> noise_system = NoiseFactory(NoiseType.NO_NOISE)
         >>> noise_system.add_noise(b"123")
         b'123'
 
     SeeAlso:
-        [NoiseType](../scheme#NoiseType)
+        [NoiseType](../schema#NoiseType)
     """
 
     def __init__(self, noise_type: NoiseType, debug: bool = False, **kwargs) -> None:
@@ -53,7 +53,7 @@ class NoiseFactory:
         """Get the noise system of the given noise type
 
         Args:
-            noise_type ([NoiseType](../scheme#NoiseType)): the givin noise type seealso: noise.shceme.NoiseType
+            noise_type ([NoiseType](../schema#NoiseType)): the givin noise type seealso: noise.shceme.NoiseType
 
         Raises:
             ValueError: No noise type found

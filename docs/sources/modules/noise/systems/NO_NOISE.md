@@ -2,7 +2,7 @@
 
 
 ## NoNoise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/none.py/#L3)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/none.py/#L3)
 ```python 
 NoNoise(
    debug: bool
@@ -24,7 +24,7 @@ A Noise system without any noise
 
 
 ### .add_noise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/none.py/#L13)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/none.py/#L13)
 ```python
 .add_noise(
    data: bytes

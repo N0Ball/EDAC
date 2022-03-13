@@ -2,7 +2,7 @@
 
 
 ## BitFlipNoise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L7)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L7)
 ```python 
 BitFlipNoise(
    debug: bool, kwargs: dict = None
@@ -32,7 +32,7 @@ the `**kwargs` should be `flip_list (list[int])`, if no such key in            `
 
 ```python
 
->>> from lib.noise.scheme import NoiseType
+>>> from lib.noise.schema import NoiseType
 >>> noise_system = NoiseFactory(NoiseType.BIT_FLIP, flip_list=[6])
 >>> noise_system.add_noise(b'OUO')
 b'MUO'
@@ -49,35 +49,8 @@ b'OÕO'
 **Methods:**
 
 
-### .add_noise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L47)
-```python
-.add_noise(
-   data: bytes
-)
-```
-
----
-Validate the `flip_list` and add the noise to the data
-
-
-**Args**
-
-* **data** (bytes) : The data to be noise added
-
-
-**Raises**
-
-* **IndexError**  : the `flip_list` contains integers that exceeds the length of                the original data
-
-
-**Returns**
-
-* **bytes**  : the data with the noise
-
-
 ### .__add_noise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L76)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L76)
 ```python
 .__add_noise(
    data: bytes
@@ -114,3 +87,30 @@ Given an example
 ```
 
 You can see that except the \(2^{nd}\) and the \(4^{th}\) data, the data remains                the same.
+
+### .add_noise
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L47)
+```python
+.add_noise(
+   data: bytes
+)
+```
+
+---
+Validate the `flip_list` and add the noise to the data
+
+
+**Args**
+
+* **data** (bytes) : The data to be noise added
+
+
+**Raises**
+
+* **IndexError**  : the `flip_list` contains integers that exceeds the length of                the original data
+
+
+**Returns**
+
+* **bytes**  : the data with the noise
+
