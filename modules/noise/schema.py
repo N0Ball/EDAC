@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
+from enum import Enum
 
-class NoiseType:
+class NoiseType(Enum):
 
     """The Noise type Enumerate of the Noise system
     
@@ -9,8 +10,8 @@ class NoiseType:
         BIT_FLIP (A system that flip bits): see also [BIT_FLIP](../systems/BIT_FLIP/)
     """
 
-    NO_NOISE = 0
-    BIT_FLIP = 1
+    NO_NOISE = 'none'
+    BIT_FLIP = 'bit flip'
 
 class NoiseMethod(ABC):
 

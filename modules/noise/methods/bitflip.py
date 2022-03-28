@@ -2,7 +2,7 @@ import random
 import warnings
 from Crypto.Util.number import long_to_bytes, bytes_to_long
 
-from ..scheme import NoiseType, NoiseMethod
+from ..schema import NoiseType, NoiseMethod
 
 class BitFlipNoise(NoiseMethod):
     """Add the Bit Flip Noise System to the data
@@ -22,7 +22,7 @@ class BitFlipNoise(NoiseMethod):
     Example:
 
         >>> from lib.noise.noise import NoiseFactory
-        >>> from lib.noise.scheme import NoiseType
+        >>> from lib.noise.schema import NoiseType
         >>> noise_system = NoiseFactory(NoiseType.BIT_FLIP, flip_list=[6])
         >>> noise_system.add_noise(b'OUO')
         b'MUO'
@@ -114,12 +114,14 @@ class BitFlipNoise(NoiseMethod):
         if self.DEBUG:
             print(f"FLIPING-INDEX: {', '.join(map(str, flip_list))}")
 
-        # Creates the mask
+        # Creates the mask to flip
         # remember, the $0^th$ data is actually the last data 
         # so `(data_len) - flip_index - 1` is use to inverse the index
         mask = 0
         for flip_index in flip_list:
             mask |= 1 << (data_len - flip_index - 1)
+
+        # Flip the bits
         int_data ^= mask
 
         # Convert the integer back to the data

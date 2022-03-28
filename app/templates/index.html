@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDAC Testing</title>
+</head>
+<body>
+    <form onsubmit="getResult(this)">
+
+        <p>Message:</p>
+        <p><input type="text" name="msg" value="Your message"></p>
+    
+        <p>With noise:</p>
+        <p><input type="radio" name="noise" value="1">Yes</p>
+        <p><input type="radio" name="noise" value="0">No</p>
+    
+        <p><input type="submit" value="Submit Data"></p>
+    
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        const resultField = document.getElementById('result');
+        function getResult(target){
+            console.log("OUO");
+            console.log(target);
+        }
+    </script>
+</body>
+</html>
