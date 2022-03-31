@@ -2,7 +2,7 @@
 
 
 ## BitFlipNoise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L7)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L7)
 ```python 
 BitFlipNoise(
    debug: bool, kwargs: dict = None
@@ -32,7 +32,7 @@ the `**kwargs` should be `flip_list (list[int])`, if no such key in            `
 
 ```python
 
->>> from lib.noise.scheme import NoiseType
+>>> from lib.noise.schema import NoiseType
 >>> noise_system = NoiseFactory(NoiseType.BIT_FLIP, flip_list=[6])
 >>> noise_system.add_noise(b'OUO')
 b'MUO'
@@ -50,7 +50,7 @@ b'OÕO'
 
 
 ### .__add_noise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L76)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L76)
 ```python
 .__add_noise(
    data: bytes
@@ -89,7 +89,7 @@ Given an example
 You can see that except the \(2^{nd}\) and the \(4^{th}\) data, the data remains                the same.
 
 ### .add_noise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise_method/bitflip.py/#L47)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L47)>>>>>>> main
 ```python
 .add_noise(
    data: bytes

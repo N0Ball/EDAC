@@ -1,4 +1,4 @@
-from ..scheme import NoiseType, NoiseMethod
+from ..schema import NoiseType, NoiseMethod
 
 class NoNoise(NoiseMethod):
     """A Noise system without any noise

@@ -1,14 +1,39 @@
-from modules.noise.noise import NoiseFactory
-from modules.noise.scheme import NoiseType
+from modules.edac.factory import EDACFactory
+from modules.edac.schema import EDACType
+from modules.noise.factory import NoiseFactory
+from modules.noise.schema import NoiseType
 
-ORIGINAL_MSG = b"N0FLAG{I_4m_7h3_0R191N4L_M5G_4ND_1M_S000O0O00oo0o00O00oo0O00o0_G0OD}"
+ORIGINAL_MSG = b'FLAG{Th15_15_MY_MSG}'
 
-noise_generator = NoiseFactory(NoiseType.BIT_FLIP, debug=True, flip_list=[2, 4])
-noise_msg = noise_generator.add_noise(ORIGINAL_MSG)
+edac_system = EDACFactory(EDACType.PARITY)
+ENC_MSG = edac_system.encode(ORIGINAL_MSG)
 
-print('|'.join(list('01234567')))
-print('---------------')
-print('|'.join(list(bin(ORIGINAL_MSG[0])[2:].rjust(8, '0'))))
-print('|'.join(list(bin(noise_msg[0])[2:].rjust(8, '0'))))
+for i in range(0, len(ENC_MSG)):
 
-print(noise_msg)
+    print('\t|'.join([str(j) for j in range(8*i, 8*i+8)]))
+    print('-'*60)
+    # print('\t|'.join(list(bin(ORIGINAL_MSG[i])[2:].rjust(8, '0'))))
+    print('\t|'.join(list(bin(ENC_MSG[i])[2:].rjust(8, '0'))))
+    print()
+
+print(ENC_MSG)
+
+noise_system = NoiseFactory(NoiseType.BIT_FLIP)
+NOISE_MSG = noise_system.add_noise(ENC_MSG)
+
+for i in range(0, len(NOISE_MSG)):
+
+    print('\t|'.join([str(j) for j in range(8*i, 8*i+8)]))
+    print('-'*60)
+    print('\t|'.join(list(bin(ENC_MSG[i])[2:].rjust(8, '0'))))
+    print('\t|'.join(list(bin(NOISE_MSG[i])[2:].rjust(8, '0'))))
+    print()
+
+pass_check, DEC_MSG, error_bits = edac_system.decode(NOISE_MSG)
+# print(edac_system.decode(NOISE_MSG))
+
+if pass_check:
+    print(DEC_MSG)
+else:
+    print(DEC_MSG)
+    print(error_bits)
