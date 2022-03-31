@@ -40,35 +40,23 @@ it contains and will only be call the method it contains
 **Methods:**
 
 
-### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L74)
+### .get_default_block
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L34)
 ```python
-.decode(
-   data: int, check: int
-)
+.get_default_block()
 ```
 
 ---
-The method that the EDAC system need to decode for checking
-the correctness
-
-
-**Args**
-
-* **data** (int) : The data to be checked
-* **check** (int) : Parity Code to check
+Generate default block of the EDAC system
 
 
 **Returns**
 
-* **tuple**  : format should be `(error, original_data, errorbits)`
-* **error** (bool) : Is the data corrupted
-* **original_data** (bytes) : The fixed original data (`None` if can't be fixed)
-* **errorbits** (list) : The index of errorbits
+* **int**  : default block of the EDAC system
 
 
 ### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L59)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L69)
 ```python
 .encode(
    data: int
@@ -88,4 +76,46 @@ EDAC usage
 **Returns**
 
 * **int**  : the data encoded
+
+
+### .get_parity_size
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L52)
+```python
+.get_parity_size()
+```
+
+---
+Generate the parity size of the EDAC system
+
+
+**Returns**
+
+* **int**  : parity size of the EDAC system
+
+
+### .decode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L84)
+```python
+.decode(
+   data: int, check: int
+)
+```
+
+---
+The method that the EDAC system need to decode for checking
+the correctness
+
+
+**Args**
+
+* **data** (int) : The data to be checked
+* **check** (int) : Parity Code to check
+
+
+**Returns**
+
+* **tuple**  : format should be `(error, data, error bits)`
+* **error** (bool) : Is the data corrupted
+* **data** (bytes) : The fixed data (return `0x00` if can't be fixed)
+* **bits** (list) : The index of errorbits
 

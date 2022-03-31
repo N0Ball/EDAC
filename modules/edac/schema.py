@@ -32,6 +32,11 @@ class EDACMethod(ABC):
         self.PARITY_SIZE = None
 
     def get_default_block(self) -> int:
+        """Generate default block of the EDAC system
+
+        Returns:
+            int: default block of the EDAC system
+        """
 
         if not self.DEFAULT_BLOCK:
 
@@ -45,6 +50,11 @@ class EDACMethod(ABC):
 
 
     def get_parity_size(self) -> int:
+        """Generate the parity size of the EDAC system
+
+        Returns:
+            int: parity size of the EDAC system
+        """
         
         if not self.DEFAULT_BLOCK:
 
@@ -83,9 +93,9 @@ class EDACMethod(ABC):
             check (int): Parity Code to check
 
         Returns:
-            tuple: format should be `(error, original_data, errorbits)`
+            tuple: format should be `(error, data, error bits)`
             error (bool): Is the data corrupted
-            original_data (bytes): The fixed original data (`None` if can't be fixed)
-            errorbits (list): The index of errorbits
+            data (bytes): The fixed data (return `0x00` if can't be fixed)
+            error bits (list): The index of errorbits
         """
         pass

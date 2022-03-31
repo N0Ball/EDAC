@@ -24,30 +24,8 @@ Creates the EDAC System specify by given [EDAC Type](../schema/#edactype)
 **Methods:**
 
 
-### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L60)
-```python
-.decode(
-   data: bytes, n: int = None
-)
-```
-
----
-Decodes the data to verify the integrity
-
-
-**Args**
-
-* **data** (bytes) : The data to be decode
-
-
-**Returns**
-
-* **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
-
-
 ### .__get_edac_generator
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L141)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L146)
 ```python
 .__get_edac_generator(
    edac_type: EDACType
@@ -91,8 +69,30 @@ Encodes the data with edac system
 * **bytes**  : The data encoded
 
 
+### .decode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L60)
+```python
+.decode(
+   data: bytes, n: int = None
+)
+```
+
+---
+Decodes the data to verify the integrity
+
+
+**Args**
+
+* **data** (bytes) : The data to be decode
+
+
+**Returns**
+
+* **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
+
+
 ### ._create_block
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L104)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L109)
 ```python
 ._create_block(
    data: bytes, n: int

@@ -41,6 +41,8 @@ pages:
       - EDACMethod:
         - encode
         - decode
+        - get_default_block
+        - get_parity_size
 
   - page: "modules/edac/factory.md"
     source: "modules/edac/factory.py"
@@ -50,3 +52,10 @@ pages:
         - decode
         - _create_block
         - __get_edac_generator
+
+  - page: "modules/edac/methods/parity.md"
+    source: "modules/edac/methods/parity.py"
+    classes:
+      - Parity:
+        - encode
+        - decode

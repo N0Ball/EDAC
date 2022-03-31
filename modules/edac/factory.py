@@ -78,21 +78,28 @@ class EDACFactory:
         is_pass = True
         error_bits = []
 
+        # Decode every blocks
         for block in blocks:
 
+            # Get the parity bit out
             original_data = block >> self.PARITY_SIZE
             parity = block & int('1' * self.PARITY_SIZE, 2)
 
+            # Decode the message
             error, fixed, error_list = self.EDAC_GEN.decode(original_data, parity)
             
+            # store the results
             is_pass *= error
             error_bits += error_list
 
+            # TODO This is not used anymore
             if not fixed == None:
                 original_bytes += fixed
 
+            # Generate the possible original bytes
             original_bytes <<= self.BLOCK_SIZE - self.PARITY_SIZE
 
+        # Creates the bytes back
         while not len(bin(original_bytes)[2:])%8 == offset and not original_bytes == 0:
             original_bytes >>= 1
 
