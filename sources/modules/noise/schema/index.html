@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>Noise - EDAC Docs</title>
+  <title>Schema - EDAC Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Noise";
-    var mkdocs_page_input_path = "sources/modules/noise/noise.md";
+    var mkdocs_page_name = "Schema";
+    var mkdocs_page_input_path = "sources/modules/noise/schema.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -56,15 +56,31 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Modules</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Noise</a>
-    <ul class="current">
-                <li class="toctree-l3 current"><a class="reference internal current" href="./">Noise</a>
-    <ul class="current">
-    <li class="toctree-l4"><a class="reference internal" href="#noisefactory">NoiseFactory</a>
-    </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Edac</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../edac/factory/">Factory</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../edac/schema/">Schema</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/parity/">Parity</a>
+                </li>
     </ul>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="../scheme/">Scheme</a>
+    </ul>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Noise</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../factory/">Factory</a>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">Schema</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#noisetype">NoiseType</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#noisemethod">NoiseMethod</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
     <ul>
@@ -129,7 +145,7 @@
         
       
     
-    <li>Noise</li>
+    <li>Schema</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -142,69 +158,49 @@
             <div class="section">
               
                 <h1 id="_1"></h1>
-<h2 id="noisefactory">NoiseFactory</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L5">source</a></p>
-<pre><code class="language-python">NoiseFactory(
-   noise_type: NoiseType, debug: bool = False, **kwargs
+<h2 id="noisetype">NoiseType</h2>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L4">source</a></p>
+<pre><code class="language-python">NoiseType()
+</code></pre>
+<hr />
+<p>The Noise type Enumerate of the Noise system</p>
+<p><strong>Attributes</strong></p>
+<ul>
+<li><strong>NO_NOISE</strong> (A system with no Noise) : see also <a href="../systems/NO_NOISE/">NO_NOISE</a></li>
+<li><strong>BIT_FLIP</strong> (A system that flip bits) : see also <a href="../systems/BIT_FLIP/">BIT_FLIP</a></li>
+</ul>
+<hr />
+<h2 id="noisemethod">NoiseMethod</h2>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L16">source</a></p>
+<pre><code class="language-python">NoiseMethod(
+   noise_type: NoiseType = NoiseType.NO_NOISE, debug: bool = False
 )
 </code></pre>
 <hr />
-<p>Creates a noise system to add noise to.</p>
+<p>The Base class fo the Noise Method</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>noise_type</strong> (<a href="../scheme#NoiseType">NoiseType</a>) : The noise type of the given type</li>
-<li><strong>debug</strong> (bool, optional) : The debug flag. Defaults to False.</li>
+<li><strong>TYPE</strong> (NoiseType) : The type of noise system</li>
+<li><strong>DEBUG</strong> (bool) : Debug Flag</li>
 </ul>
-<p><strong>Example</strong></p>
-<pre><code class="language-python">
-&gt;&gt;&gt; noise_system = NoiseFactory(NoiseType.NO_NOISE)
-&gt;&gt;&gt; noise_system.add_noise(b&quot;123&quot;)
-b'123'
-
-</code></pre>
-<hr />
-<p>SeeAlso:
-    <a href="../scheme#NoiseType">NoiseType</a></p>
+<p><strong>Note</strong></p>
+<p>This is the abstract base class, <code>add_noise</code> method should <strong>never be called</strong></p>
 <p><strong>Methods:</strong></p>
 <h3 id="add_noise">.add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L28">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L33">source</a></p>
 <pre><code class="language-python">.add_noise(
    data: bytes
 )
 </code></pre>
 <hr />
-<p>Add noise to the data</p>
+<p>Add the noise to the data from the noise system</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (bytes) : data to add noise on</li>
-</ul>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>  : data's type is not <code>bytes</code></li>
+<li><strong>data</strong> (bytes) : the data that the noise is going to add on</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>bytes</strong>  : the data with the noise</li>
-</ul>
-<h3 id="__get_noise_generator">.__get_noise_generator</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/noise.py/#L52">source</a></p>
-<pre><code class="language-python">.__get_noise_generator(
-   noise_type: NoiseType
-)
-</code></pre>
-<hr />
-<p>Get the noise system of the given noise type</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>noise_type</strong> (<a href="../scheme#NoiseType">NoiseType</a>) : the givin noise type seealso: noise.shceme.NoiseType</li>
-</ul>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>  : No noise type found</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>NoiseMethod</strong>  : the noise system</li>
 </ul>
               
             </div>
@@ -213,10 +209,10 @@ b'123'
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../scheme/" class="btn btn-neutral float-right" title="Scheme">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../systems/BIT_FLIP/" class="btn btn-neutral float-right" title="BIT FLIP">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../../" class="btn btn-neutral" title="EDAC"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../factory/" class="btn btn-neutral" title="Factory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -242,10 +238,10 @@ b'123'
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../../" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../factory/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../scheme/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../systems/BIT_FLIP/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
