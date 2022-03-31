@@ -89,7 +89,7 @@ Given an example
 You can see that except the \(2^{nd}\) and the \(4^{th}\) data, the data remains                the same.
 
 ### .add_noise
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L47)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L47)>>>>>>> main
 ```python
 .add_noise(
    data: bytes
