@@ -46,27 +46,27 @@ Get the edac system specified by [EDACType](../schema/#edactype)
 * EDAC system 
 
 
-### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L26)
+### ._create_block
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L109)
 ```python
-.encode(
-   data: bytes, n: int = None
+._create_block(
+   data: bytes, n: int
 )
 ```
 
 ---
-Encodes the data with edac system
+Parse data into blocks so that
+every block have n bits of data
 
 
-**Args**
+**Raises**
 
-* **data** (bytes) : The data to be encoded
-* **n** (int) : The block size given (`None` as default)
+* **ValueError**  : If the data's type isn't `bytes`
 
 
 **Returns**
 
-* **bytes**  : The data encoded
+* **list**  : the list of blocks needed
 
 
 ### .decode
@@ -91,25 +91,25 @@ Decodes the data to verify the integrity
 * **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
 
 
-### ._create_block
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L109)
+### .encode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L26)
 ```python
-._create_block(
-   data: bytes, n: int
+.encode(
+   data: bytes, n: int = None
 )
 ```
 
 ---
-Parse data into blocks so that
-every block have n bits of data
+Encodes the data with edac system
 
 
-**Raises**
+**Args**
 
-* **ValueError**  : If the data's type isn't `bytes`
+* **data** (bytes) : The data to be encoded
+* **n** (int) : The block size given (`None` as default)
 
 
 **Returns**
 
-* **list**  : the list of blocks needed
+* **bytes**  : The data encoded
 
