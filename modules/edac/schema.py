@@ -9,6 +9,7 @@ class EDACType(Enum):
 
     NO_EDAC = 'none'
     PARITY = 'parity'
+    HAMMING_CODE = 'hamming code'
 
 class EDACMethod(ABC):
 

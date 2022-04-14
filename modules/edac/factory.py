@@ -39,10 +39,10 @@ class EDACFactory:
             n = self.BLOCK_SIZE
 
         # Creates block
-        blocks = self._create_block(data, n - self.PARITY_SIZE)
-        result_bytes = []
+        blocks = self._create_block(data, self.BLOCK_SIZE - self.PARITY_SIZE)
 
         # Generate parity
+        result_bytes = []
         for block in blocks:
             result_bytes.append((block<<self.PARITY_SIZE) + self.EDAC_GEN.encode(block))
 
@@ -72,7 +72,7 @@ class EDACFactory:
             n = self.BLOCK_SIZE
 
         # Creates block
-        blocks = self._create_block(data, n)
+        blocks = self._create_block(data, self.BLOCK_SIZE)
         offset = len(bin(blocks[0])[2:])
         original_bytes = 0
         is_pass = True
@@ -100,7 +100,7 @@ class EDACFactory:
             original_bytes <<= self.BLOCK_SIZE - self.PARITY_SIZE
 
         # Creates the bytes back
-        while not len(bin(original_bytes)[2:])%8 == offset and not original_bytes == 0:
+        while not len(bin(original_bytes)[2:])%self.BLOCK_SIZE == offset and not original_bytes == 0:
             original_bytes >>= 1
 
         return (is_pass, long_to_bytes(original_bytes), error_bits)
@@ -123,15 +123,15 @@ class EDACFactory:
 
         if not isinstance(data, bytes):
             raise ValueError("The type of data should be bytes")
-        
+
         # Change bytes to numerical
         from Crypto.Util.number import bytes_to_long
         _num_data = bytes_to_long(data)
         _blocks = []
 
         # Padding the bits
-        _offset = len(bin(_num_data))%8
-        while not (len(bin(_num_data)) - _offset) %n == 0:
+        _head_offset = 8 - len(bin(_num_data)[2:])%8
+        while not (len(bin(_num_data)[2:]) + _head_offset) %n == 0:
             _num_data <<= 1
 
         # Making Blocks (inversed)
@@ -157,7 +157,8 @@ class EDACFactory:
         """
 
         __edac_generator = {
-            EDACType.PARITY: parity.Parity(self.DEBUG)
+            EDACType.PARITY: parity.Parity(self.DEBUG),
+            EDACType.HAMMING_CODE: hammingcode.HammingCode(self.DEBUG)
         }.get(edac_type, None)
 
         if not __edac_generator:
