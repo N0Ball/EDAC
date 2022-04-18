@@ -59,3 +59,11 @@ pages:
       - Parity:
         - encode
         - decode
+
+  - page: "modules/edac/methods/hammingcode.md"
+    source: "modules/edac/methods/hammingcode.py"
+    classes:
+      - HammingCode:
+        - encode
+        - decode
+        - _create_table

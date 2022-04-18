@@ -3,7 +3,7 @@ from modules.edac.schema import EDACType
 from modules.noise.factory import NoiseFactory
 from modules.noise.schema import NoiseType
 
-ORIGINAL_MSG = b'A'
+ORIGINAL_MSG = b'Ab'
 
 edac_system = EDACFactory(EDACType.HAMMING_CODE)
 ENC_MSG = edac_system.encode(ORIGINAL_MSG)
@@ -18,7 +18,7 @@ for i in range(0, len(ENC_MSG)):
 
 print(ENC_MSG)
 
-noise_system = NoiseFactory(NoiseType.BIT_FLIP, flip_list=[3, 7])
+noise_system = NoiseFactory(NoiseType.BIT_FLIP)
 NOISE_MSG = noise_system.add_noise(ENC_MSG)
 
 for i in range(0, len(NOISE_MSG)):
