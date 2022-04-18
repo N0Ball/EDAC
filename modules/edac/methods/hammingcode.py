@@ -82,27 +82,27 @@ class HammingCode(EDACMethod):
             if bit_data[i]:
                 parity ^= i
 
+        for i in range(self.PARITY_SIZE - 1):
+            
+            if parity == 1 << i:
+                parity = -1
+
         # Try to correct data (may be incorrect due to over two errors)
         if not parity == 0:
             bit_data[parity] ^= 1
 
-        # Transform from hamming table to data incorrect bit will also changed
-        for i in range(self.PARITY_SIZE - 2, -1, -1):
-            bit_data.pop(1 << i)
-
-            if parity > (1 << i):
-                parity -= 1
-
-        # Get rid of parity bit
-        bit_data.pop(0)
-        if not parity == 0:
-            parity -= 1
+        # Extract the parity bit
+        parity_bit = bit_data.pop(0)
 
         # Recover decoded data
         data = sum(map(lambda x: int(x[1]) << x[0], enumerate(bit_data)))
 
+        # TODO Fix this stupid thing
+        # Since we have to transform back, so we have to add the parity bit back
+        bit_data.insert(0, parity_bit)
+
         # Check parity bit
-        check, data, status = self.PARITY_METHOD.decode(data, bit_data[0])
+        check, data, status = self.PARITY_METHOD.decode(data, parity_bit)
         
         # Parity bit check fails
         if not check:
@@ -111,6 +111,21 @@ class HammingCode(EDACMethod):
                 0x0,
                 ["CI"]
             )
+
+        # Transform from hamming table to data
+        for i in range(self.PARITY_SIZE - 2, -1, -1):
+            bit_data.pop(1 << i)
+
+            if parity > (1 << i):
+                parity -= 1
+
+        # Get rid of parity bit and the index offset cause by parity bit
+        bit_data.pop(0)
+        if not parity == 0:
+            parity -= 1
+
+        # Recover decoded data
+        data = sum(map(lambda x: int(x[1]) << x[0], enumerate(bit_data[::-1])))
 
         # Return the hamming code result
         return (
