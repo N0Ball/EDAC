@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>Schema - EDAC Docs</title>
+  <title>Scheme - EDAC Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Schema";
-    var mkdocs_page_input_path = "sources/modules/edac/schema.md";
+    var mkdocs_page_name = "Scheme";
+    var mkdocs_page_input_path = "sources/modules/noise/scheme.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -56,37 +56,39 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Modules</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Edac</a>
-    <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../factory/">Factory</a>
+                <li class="toctree-l2"><a class="reference internal" href="#">Edac</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../edac/factory/">Factory</a>
                 </li>
-                <li class="toctree-l3 current"><a class="reference internal current" href="./">Schema</a>
-    <ul class="current">
-    <li class="toctree-l4"><a class="reference internal" href="#edactype">EDACType</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#edacmethod">EDACMethod</a>
-    </li>
-    </ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../edac/scheme/">Scheme</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
     <ul>
-                <li class="toctree-l4"><a class="reference internal" href="../methods/parity/">Parity</a>
+                <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/hammingcode/">Hammingcode</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/parity/">Parity</a>
                 </li>
     </ul>
                 </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
-    <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../noise/factory/">Factory</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Noise</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../factory/">Factory</a>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../noise/schema/">Schema</a>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">Scheme</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#noisetype">NoiseType</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#noisemethod">NoiseMethod</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
     <ul>
-                <li class="toctree-l4"><a class="reference internal" href="../../noise/systems/BIT_FLIP/">BIT FLIP</a>
+                <li class="toctree-l4"><a class="reference internal" href="../systems/BIT_FLIP/">BIT FLIP</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="../../noise/systems/NO_NOISE/">NO NOISE</a>
+                <li class="toctree-l4"><a class="reference internal" href="../systems/NO_NOISE/">NO NOISE</a>
                 </li>
     </ul>
                 </li>
@@ -99,12 +101,16 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/parity/">Parity</a>
                 </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/EDAC/">EDAC</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/computerScience/">computerScience</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/math/">Math</a>
@@ -141,11 +147,11 @@
         
       
         
-          <li>Edac &raquo;</li>
+          <li>Noise &raquo;</li>
         
       
     
-    <li>Schema</li>
+    <li>Scheme</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -158,86 +164,49 @@
             <div class="section">
               
                 <h1 id="_1"></h1>
-<h2 id="edactype">EDACType</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L5">source</a></p>
-<pre><code class="language-python">EDACType()
+<h2 id="noisetype">NoiseType</h2>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L4">source</a></p>
+<pre><code class="language-python">NoiseType()
 </code></pre>
 <hr />
-<p>Enumerate of the EDAC Type system</p>
+<p>The Noise type Enumerate of the Noise system</p>
+<p><strong>Attributes</strong></p>
+<ul>
+<li><strong>NO_NOISE</strong> (A system with no Noise) : see also <a href="../systems/NO_NOISE/">NO_NOISE</a></li>
+<li><strong>BIT_FLIP</strong> (A system that flip bits) : see also <a href="../systems/BIT_FLIP/">BIT_FLIP</a></li>
+</ul>
 <hr />
-<h2 id="edacmethod">EDACMethod</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L13">source</a></p>
-<pre><code class="language-python">EDACMethod(
-   edac_type: EDACType = EDACType.NO_EDAC, debug: bool = False
+<h2 id="noisemethod">NoiseMethod</h2>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L16">source</a></p>
+<pre><code class="language-python">NoiseMethod(
+   noise_type: NoiseType = NoiseType.NO_NOISE, debug: bool = False
 )
 </code></pre>
 <hr />
-<p>The Base class of the EDAC Method
-which means that all EDAC should contains all the methods
-it contains and will only be call the method it contains</p>
+<p>The Base class fo the Noise Method</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>TYPE</strong> (<a href="./#edactype">EDACType</a>) : The type of the EDAC system</li>
-<li><strong>DEBUG</strong> (bool) : Debug flag</li>
+<li><strong>TYPE</strong> (NoiseType) : The type of noise system</li>
+<li><strong>DEBUG</strong> (bool) : Debug Flag</li>
 </ul>
+<p><strong>Note</strong></p>
+<p>This is the abstract base class, <code>add_noise</code> method should <strong>never be called</strong></p>
 <p><strong>Methods:</strong></p>
-<h3 id="get_default_block">.get_default_block</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L34">source</a></p>
-<pre><code class="language-python">.get_default_block()
-</code></pre>
-<hr />
-<p>Generate default block of the EDAC system</p>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : default block of the EDAC system</li>
-</ul>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L84">source</a></p>
-<pre><code class="language-python">.decode(
-   data: int, check: int
+<h3 id="add_noise">.add_noise</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L33">source</a></p>
+<pre><code class="language-python">.add_noise(
+   data: bytes
 )
 </code></pre>
 <hr />
-<p>The method that the EDAC system need to decode for checking
-the correctness</p>
+<p>Add the noise to the data from the noise system</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (int) : The data to be checked</li>
-<li><strong>check</strong> (int) : Parity Code to check</li>
+<li><strong>data</strong> (bytes) : the data that the noise is going to add on</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>tuple</strong>  : format should be <code>(error, data, error bits)</code></li>
-<li><strong>error</strong> (bool) : Is the data corrupted</li>
-<li><strong>data</strong> (bytes) : The fixed data (return <code>0x00</code> if can't be fixed)</li>
-<li><strong>bits</strong> (list) : The index of errorbits</li>
-</ul>
-<h3 id="get_parity_size">.get_parity_size</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L52">source</a></p>
-<pre><code class="language-python">.get_parity_size()
-</code></pre>
-<hr />
-<p>Generate the parity size of the EDAC system</p>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : parity size of the EDAC system</li>
-</ul>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L69">source</a></p>
-<pre><code class="language-python">.encode(
-   data: int
-)
-</code></pre>
-<hr />
-<p>The method that the EDAC system need to encode for futher
-EDAC usage</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the data to be encoded</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : the data encoded</li>
+<li><strong>bytes</strong>  : the data with the noise</li>
 </ul>
               
             </div>
@@ -246,7 +215,7 @@ EDAC usage</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../methods/parity/" class="btn btn-neutral float-right" title="Parity">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../systems/BIT_FLIP/" class="btn btn-neutral float-right" title="BIT FLIP">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../factory/" class="btn btn-neutral" title="Factory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -278,7 +247,7 @@ EDAC usage</p>
       <span><a href="../factory/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../methods/parity/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../systems/BIT_FLIP/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

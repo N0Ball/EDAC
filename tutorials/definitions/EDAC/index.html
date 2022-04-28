@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>Math - EDAC Docs</title>
+  <title>EDAC - EDAC Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Math";
-    var mkdocs_page_input_path = "tutorials/definitions/math.md";
+    var mkdocs_page_name = "EDAC";
+    var mkdocs_page_input_path = "tutorials/definitions/EDAC.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -103,27 +103,23 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Definitions</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../EDAC/">EDAC</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../computerScience/">computerScience</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Math</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">EDAC</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#intro">Intro</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#summations">Summations</a>
+    <li class="toctree-l3"><a class="reference internal" href="#sec-ded">SEC-DED</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    <li class="toctree-l4"><a class="reference internal" href="#description">Description</a>
     </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#hamming-distance">Hamming Distance</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
     </li>
         </ul>
     </li>
     </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../computerScience/">computerScience</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../math/">Math</a>
                 </li>
     </ul>
                     </li>
@@ -157,7 +153,7 @@
         
       
     
-    <li>Math</li>
+    <li>EDAC</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -172,92 +168,24 @@
                 <h1 id="_1"></h1>
 <h2 id="intro">Intro</h2>
 <hr />
-<pre><code>This is definitions of mathematic related page
+<pre><code>This is definitions of EDAC related page
 </code></pre>
-<h2 id="summations">Summations</h2>
+<h2 id="sec-ded">SEC-DED</h2>
 <hr />
-<p>In Communication systems, the summation of <code>bits</code> or <code>strings</code> is in a <a href="https://zh.wikipedia.org/zh-tw/%E6%9C%89%E9%99%90%E5%9F%9F">Galios Field (GF)</a> <!-- #TODO create definition for GF --></p>
-<h3 id="example">Example</h3>
-<p>take GF(2) for example</p>
-<table>
-<thead>
-<tr>
-<th>A</th>
-<th>B</th>
-<th>Operation</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>+/-</td>
-<td>0</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>+/-</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>+/-</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>+/-</td>
-<td>0</td>
-</tr>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>x</td>
-<td>0</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>x</td>
-<td>0</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>x</td>
-<td>0</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>x</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<p>As you can see, the <code>+/-</code> in GF(2) is also <code>xor</code> operation and <code>x</code> is <code>and</code> operation.
-That is 
-<script type="math/tex; mode=display">
-a \pm b = a \oplus b \\[1em]
-a \times b = a \& b
-</script>
-</p>
-<h2 id="hamming-distance">Hamming Distance</h2>
-<hr />
-<p>Hamming distance is the <strong>number of errors</strong> in a communication system.</p>
-<h3 id="example_1">Example</h3>
-<p>
-<script type="math/tex; mode=display">
-H_d(\text{12345}, \text{22345}) = 1 \\[1em]
-H_d(\text{12345}, \text{12545}) = 1 \\[1em]
-H_d(\text{12345}, \text{22355}) = 2 \\[1em]
-H_d(\text{12345}, \text{54321}) = 4 \\[1em]
-</script>
-</p>
+<p>Singal
+Error
+Correction
+Double
+Error
+Detection</p>
+<h3 id="description">Description</h3>
+<p>EDAC schemes that are capable of detecting up to two simultaneous bit errors and correcting single-bit errors.</p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><a href="../ErrorDetection/hammingCode">Hamming Codes</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman Coding</a></li>
+<li><a href="http://www.ysu.am/files/11-1549527438-.pdf">Hsiao SEC-DED</a></li>
+</ul>
               
             </div>
           </div>
@@ -265,8 +193,10 @@ H_d(\text{12345}, \text{54321}) = 4 \\[1em]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../computerScience/" class="btn btn-neutral float-right" title="computerScience">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../computerScience/" class="btn btn-neutral" title="computerScience"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../../ErrorDetection/parity/" class="btn btn-neutral" title="Parity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -292,8 +222,10 @@ H_d(\text{12345}, \text{54321}) = 4 \\[1em]
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../computerScience/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../ErrorDetection/parity/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../computerScience/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
