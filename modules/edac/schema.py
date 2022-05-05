@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from enum import Enum
-import warnings
 
 class EDACType(Enum):
 
@@ -10,6 +9,7 @@ class EDACType(Enum):
     NO_EDAC = 'none'
     PARITY = 'parity'
     HAMMING_CODE = 'hamming code'
+    CRC = 'CRC'
 
 class EDACMethod(ABC):
 
@@ -39,13 +39,10 @@ class EDACMethod(ABC):
             int: default block of the EDAC system
         """
 
-        if not self.DEFAULT_BLOCK:
-
-            if self.DEBUG:
-                warnings.warn("No Defualt block was given, using 8 bits")
-
-            self.DEFAULT_BLOCk = 8
-
+        if self.DEFAULT_BLOCK is None:
+            
+            print("ERROR: You are trying a method that doesn't have a default block. Every method needs a default block!")
+            exit(1)
 
         return self.DEFAULT_BLOCK
 
@@ -57,12 +54,10 @@ class EDACMethod(ABC):
             int: parity size of the EDAC system
         """
         
-        if not self.DEFAULT_BLOCK:
-
-            if self.DEBUG:
-                warnings.warn("No Defualt block was given, using 1 bit")
-
-            self.PARITY_SIZE = 1
+        if self.PARITY_SIZE is None:
+            
+            print("ERROR: You are trying a method that doesn't have a parity size. Every method needs a parity size!")
+            exit(1)
 
         return self.PARITY_SIZE
 

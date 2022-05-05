@@ -14,15 +14,28 @@ class EDACFactory:
 
     def __init__(self,
         edac_type: EDACType,
-        debug: bool = False
+        debug: bool = False,
+        **kwargs
     ) -> None:
 
         self.TYPE: EDACType = edac_type
         self.DEBUG: bool = debug
+        self.KWARGS: dict = kwargs
         self.EDAC_GEN: EDACMethod = self.__get_edac_generator(self.TYPE)
-        self.BLOCK_SIZE = self.EDAC_GEN.get_default_block()
-        self.PARITY_SIZE = self.EDAC_GEN.get_parity_size()
 
+    # Use field check to load the block size and parity size so that it can be modified after initalization
+    def _field_check(func):
+
+        def wrap(self, *args, **kwargs):
+
+            self.BLOCK_SIZE = self.EDAC_GEN.get_default_block()
+            self.PARITY_SIZE = self.EDAC_GEN.get_parity_size()
+
+            return func(self, *args, **kwargs)
+
+        return wrap
+
+    @_field_check
     def encode(self, data:bytes, n: int=None) -> bytes:
         """Encodes the data with edac system
 
@@ -41,9 +54,11 @@ class EDACFactory:
         # Creates block
         blocks = self._create_block(data, self.BLOCK_SIZE - self.PARITY_SIZE)
 
+
         # Generate parity
         result_bytes = []
         for block in blocks:
+            print(bin(self.EDAC_GEN.encode(block)))
             result_bytes.append((block<<self.PARITY_SIZE) + self.EDAC_GEN.encode(block))
 
         # Generate Result
@@ -52,11 +67,11 @@ class EDACFactory:
             result += result_byte
             result <<= self.BLOCK_SIZE
 
-
         result >>= self.BLOCK_SIZE
 
         return long_to_bytes(result)
 
+    @_field_check
     def decode(self, data:bytes, n: int=None) -> tuple:
         """Decodes the data to verify the integrity
 
@@ -158,7 +173,8 @@ class EDACFactory:
 
         __edac_generator = {
             EDACType.PARITY: parity.Parity(self.DEBUG),
-            EDACType.HAMMING_CODE: hammingcode.HammingCode(self.DEBUG)
+            EDACType.HAMMING_CODE: hammingcode.HammingCode(self.DEBUG),
+            EDACType.CRC: crc.CRC(self.DEBUG, self.KWARGS)
         }.get(edac_type, None)
 
         if not __edac_generator:

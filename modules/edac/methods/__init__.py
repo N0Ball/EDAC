@@ -1,4 +1,5 @@
 __all__ = [
     "parity",
-    "hammingcode"
+    "hammingcode",
+    "crc"
 ]
