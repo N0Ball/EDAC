@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from enum import Enum
-import warnings
 
 class EDACType(Enum):
 
@@ -9,6 +8,8 @@ class EDACType(Enum):
 
     NO_EDAC = 'none'
     PARITY = 'parity'
+    HAMMING_CODE = 'hamming code'
+    CRC = 'CRC'
 
 class EDACMethod(ABC):
 
@@ -32,26 +33,31 @@ class EDACMethod(ABC):
         self.PARITY_SIZE = None
 
     def get_default_block(self) -> int:
+        """Generate default block of the EDAC system
 
-        if not self.DEFAULT_BLOCK:
+        Returns:
+            int: default block of the EDAC system
+        """
 
-            if self.DEBUG:
-                warnings.warn("No Defualt block was given, using 8 bits")
-
-            self.DEFAULT_BLOCk = 8
-
+        if self.DEFAULT_BLOCK is None:
+            
+            print("ERROR: You are trying a method that doesn't have a default block. Every method needs a default block!")
+            exit(1)
 
         return self.DEFAULT_BLOCK
 
 
     def get_parity_size(self) -> int:
+        """Generate the parity size of the EDAC system
+
+        Returns:
+            int: parity size of the EDAC system
+        """
         
-        if not self.DEFAULT_BLOCK:
-
-            if self.DEBUG:
-                warnings.warn("No Defualt block was given, using 1 bit")
-
-            self.PARITY_SIZE = 1
+        if self.PARITY_SIZE is None:
+            
+            print("ERROR: You are trying a method that doesn't have a parity size. Every method needs a parity size!")
+            exit(1)
 
         return self.PARITY_SIZE
 
@@ -83,9 +89,9 @@ class EDACMethod(ABC):
             check (int): Parity Code to check
 
         Returns:
-            tuple: format should be `(error, original_data, errorbits)`
+            tuple: format should be `(error, data, error bits)`
             error (bool): Is the data corrupted
-            original_data (bytes): The fixed original data (`None` if can't be fixed)
-            errorbits (list): The index of errorbits
+            data (bytes): The fixed data (return `0x00` if can't be fixed)
+            error bits (list): The index of errorbits
         """
         pass
