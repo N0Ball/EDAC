@@ -67,3 +67,16 @@ pages:
         - encode
         - decode
         - _create_table
+
+  - page: "modules/edac/methods/crc.md"
+    source: "modules/edac/methods/crc.py"
+    classes:
+      - CRC:
+        - encode
+        - decode
+        - _devide
+
+  - page: "modules/edac/methods/crc_methods/schema.md"
+    source: "modules/edac/methods/crc_methods/schema.py"
+    classes: 
+      - SCHEMA
