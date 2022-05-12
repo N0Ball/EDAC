@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>Scheme - EDAC Docs</title>
+  <title>Schema - EDAC Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Scheme";
-    var mkdocs_page_input_path = "sources/modules/edac/scheme.md";
+    var mkdocs_page_name = "Schema";
+    var mkdocs_page_input_path = "sources/modules/edac/schema.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -60,7 +60,7 @@
     <ul class="current">
                 <li class="toctree-l3"><a class="reference internal" href="../factory/">Factory</a>
                 </li>
-                <li class="toctree-l3 current"><a class="reference internal current" href="./">Scheme</a>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">Schema</a>
     <ul class="current">
     <li class="toctree-l4"><a class="reference internal" href="#edactype">EDACType</a>
     </li>
@@ -70,9 +70,13 @@
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
     <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../methods/crc/">Crc</a>
+                </li>
                 <li class="toctree-l4"><a class="reference internal" href="../methods/hammingcode/">Hammingcode</a>
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../methods/parity/">Parity</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
                 </li>
     </ul>
                 </li>
@@ -82,7 +86,7 @@
     <ul>
                 <li class="toctree-l3"><a class="reference internal" href="../../noise/factory/">Factory</a>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../noise/scheme/">Scheme</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../noise/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
     <ul>
@@ -101,16 +105,12 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/parity/">Parity</a>
                 </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/EDAC/">EDAC</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/computerScience/">computerScience</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/math/">Math</a>
@@ -151,7 +151,7 @@
         
       
     
-    <li>Scheme</li>
+    <li>Schema</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -165,14 +165,14 @@
               
                 <h1 id="_1"></h1>
 <h2 id="edactype">EDACType</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/scheme.py/#L5">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L4">source</a></p>
 <pre><code class="language-python">EDACType()
 </code></pre>
 <hr />
 <p>Enumerate of the EDAC Type system</p>
 <hr />
 <h2 id="edacmethod">EDACMethod</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/scheme.py/#L14">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L14">source</a></p>
 <pre><code class="language-python">EDACMethod(
    edac_type: EDACType = EDACType.NO_EDAC, debug: bool = False
 )
@@ -187,8 +187,25 @@ it contains and will only be call the method it contains</p>
 <li><strong>DEBUG</strong> (bool) : Debug flag</li>
 </ul>
 <p><strong>Methods:</strong></p>
+<h3 id="encode">.encode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L65">source</a></p>
+<pre><code class="language-python">.encode(
+   data: int
+)
+</code></pre>
+<hr />
+<p>The method that the EDAC system need to encode for futher
+EDAC usage</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : the data to be encoded</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : the data encoded</li>
+</ul>
 <h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/scheme.py/#L85">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L80">source</a></p>
 <pre><code class="language-python">.decode(
    data: int, check: int
 )
@@ -209,7 +226,7 @@ the correctness</p>
 <li><strong>bits</strong> (list) : The index of errorbits</li>
 </ul>
 <h3 id="get_default_block">.get_default_block</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/scheme.py/#L35">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L35">source</a></p>
 <pre><code class="language-python">.get_default_block()
 </code></pre>
 <hr />
@@ -218,25 +235,8 @@ the correctness</p>
 <ul>
 <li><strong>int</strong>  : default block of the EDAC system</li>
 </ul>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/scheme.py/#L70">source</a></p>
-<pre><code class="language-python">.encode(
-   data: int
-)
-</code></pre>
-<hr />
-<p>The method that the EDAC system need to encode for futher
-EDAC usage</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the data to be encoded</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : the data encoded</li>
-</ul>
 <h3 id="get_parity_size">.get_parity_size</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/scheme.py/#L53">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50">source</a></p>
 <pre><code class="language-python">.get_parity_size()
 </code></pre>
 <hr />
@@ -252,7 +252,7 @@ EDAC usage</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../methods/hammingcode/" class="btn btn-neutral float-right" title="Hammingcode">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../methods/crc/" class="btn btn-neutral float-right" title="Crc">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../factory/" class="btn btn-neutral" title="Factory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -284,7 +284,7 @@ EDAC usage</p>
       <span><a href="../factory/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../methods/hammingcode/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../methods/crc/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>Scheme - EDAC Docs</title>
+  <title>Schema - EDAC Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Scheme";
-    var mkdocs_page_input_path = "sources/modules/noise/scheme.md";
+    var mkdocs_page_name = "Schema";
+    var mkdocs_page_input_path = "sources/modules/noise/schema.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -60,13 +60,17 @@
     <ul>
                 <li class="toctree-l3"><a class="reference internal" href="../../edac/factory/">Factory</a>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../edac/scheme/">Scheme</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../edac/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
     <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/crc/">Crc</a>
+                </li>
                 <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/hammingcode/">Hammingcode</a>
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/parity/">Parity</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
                 </li>
     </ul>
                 </li>
@@ -76,7 +80,7 @@
     <ul class="current">
                 <li class="toctree-l3"><a class="reference internal" href="../factory/">Factory</a>
                 </li>
-                <li class="toctree-l3 current"><a class="reference internal current" href="./">Scheme</a>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">Schema</a>
     <ul class="current">
     <li class="toctree-l4"><a class="reference internal" href="#noisetype">NoiseType</a>
     </li>
@@ -101,16 +105,12 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/parity/">Parity</a>
                 </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/EDAC/">EDAC</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/computerScience/">computerScience</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/math/">Math</a>
@@ -151,7 +151,7 @@
         
       
     
-    <li>Scheme</li>
+    <li>Schema</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -165,7 +165,7 @@
               
                 <h1 id="_1"></h1>
 <h2 id="noisetype">NoiseType</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L4">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L4">source</a></p>
 <pre><code class="language-python">NoiseType()
 </code></pre>
 <hr />
@@ -177,7 +177,7 @@
 </ul>
 <hr />
 <h2 id="noisemethod">NoiseMethod</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L16">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L16">source</a></p>
 <pre><code class="language-python">NoiseMethod(
    noise_type: NoiseType = NoiseType.NO_NOISE, debug: bool = False
 )
@@ -193,7 +193,7 @@
 <p>This is the abstract base class, <code>add_noise</code> method should <strong>never be called</strong></p>
 <p><strong>Methods:</strong></p>
 <h3 id="add_noise">.add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/scheme.py/#L33">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L33">source</a></p>
 <pre><code class="language-python">.add_noise(
    data: bytes
 )

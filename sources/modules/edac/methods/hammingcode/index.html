@@ -60,13 +60,17 @@
     <ul class="current">
                 <li class="toctree-l3"><a class="reference internal" href="../../factory/">Factory</a>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../scheme/">Scheme</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../schema/">Schema</a>
                 </li>
                 <li class="toctree-l3 current"><a class="reference internal current" href="#">Methods</a>
     <ul class="current">
+                <li class="toctree-l4"><a class="reference internal" href="../crc/">Crc</a>
+                </li>
                 <li class="toctree-l4 current"><a class="reference internal current" href="./">Hammingcode</a>
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../parity/">Parity</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
                 </li>
     </ul>
                 </li>
@@ -76,7 +80,7 @@
     <ul>
                 <li class="toctree-l3"><a class="reference internal" href="../../../noise/factory/">Factory</a>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../../noise/scheme/">Scheme</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../../noise/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
     <ul>
@@ -95,16 +99,12 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/parity/">Parity</a>
                 </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/definitions/EDAC/">EDAC</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/definitions/computerScience/">computerScience</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/definitions/math/">Math</a>
@@ -163,7 +163,7 @@
               
                 <h1 id="_1"></h1>
 <h2 id="hammingcode">HammingCode</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L6">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L4">source</a></p>
 <pre><code class="language-python">HammingCode(
    debug: bool = False
 )
@@ -175,41 +175,8 @@
 <li><strong>debug</strong> (bool, optional) : Debug level. Defaults to False.</li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L55">source</a></p>
-<pre><code class="language-python">.decode(
-   data: int, check: int
-)
-</code></pre>
-<hr />
-<p>Decode the given data</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the given data</li>
-<li><strong>check</strong> (int) : parity bytes</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>tuple</strong>  : the results of the decode <a href="../../scheme#decode">see more</a></li>
-</ul>
-<h3 id="_create_table">._create_table</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L138">source</a></p>
-<pre><code class="language-python">._create_table(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Create the hamming table according to the given block size</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : data</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>list</strong>  : hamming table</li>
-</ul>
 <h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L21">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L19">source</a></p>
 <pre><code class="language-python">.encode(
    data: int
 )
@@ -224,6 +191,39 @@
 <ul>
 <li><strong>int</strong>  : the encoded data in integer</li>
 </ul>
+<h3 id="decode">.decode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53">source</a></p>
+<pre><code class="language-python">.decode(
+   data: int, check: int
+)
+</code></pre>
+<hr />
+<p>Decode the given data</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : the given data</li>
+<li><strong>check</strong> (int) : parity bytes</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
+</ul>
+<h3 id="_create_table">._create_table</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136">source</a></p>
+<pre><code class="language-python">._create_table(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Create the hamming table according to the given block size</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>list</strong>  : hamming table</li>
+</ul>
               
             </div>
           </div>
@@ -234,7 +234,7 @@
         <a href="../parity/" class="btn btn-neutral float-right" title="Parity">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../scheme/" class="btn btn-neutral" title="Scheme"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../crc/" class="btn btn-neutral" title="Crc"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -260,7 +260,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../scheme/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../crc/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../parity/" style="color: #fcfcfc">Next &raquo;</a></span>

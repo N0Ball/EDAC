@@ -60,13 +60,17 @@
     <ul>
                 <li class="toctree-l3"><a class="reference internal" href="../../edac/factory/">Factory</a>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../edac/scheme/">Scheme</a>
+                <li class="toctree-l3"><a class="reference internal" href="../../edac/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
     <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/crc/">Crc</a>
+                </li>
                 <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/hammingcode/">Hammingcode</a>
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/parity/">Parity</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
                 </li>
     </ul>
                 </li>
@@ -80,7 +84,7 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l3"><a class="reference internal" href="../scheme/">Scheme</a>
+                <li class="toctree-l3"><a class="reference internal" href="../schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
     <ul>
@@ -99,16 +103,12 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/parity/">Parity</a>
                 </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/EDAC/">EDAC</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/computerScience/">computerScience</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/math/">Math</a>
@@ -172,7 +172,7 @@
 <p>Creates a noise system to add noise to.</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>noise_type</strong> (<a href="../scheme#NoiseType">NoiseType</a>) : The noise type of the given type</li>
+<li><strong>noise_type</strong> (<a href="../schema#NoiseType">NoiseType</a>) : The noise type of the given type</li>
 <li><strong>debug</strong> (bool, optional) : The debug flag. Defaults to False.</li>
 </ul>
 <p><strong>Example</strong></p>
@@ -184,8 +184,28 @@ b'123'
 </code></pre>
 <hr />
 <p>SeeAlso:
-    <a href="../scheme#NoiseType">NoiseType</a></p>
+    <a href="../schema#NoiseType">NoiseType</a></p>
 <p><strong>Methods:</strong></p>
+<h3 id="__get_noise_generator">.__get_noise_generator</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L52">source</a></p>
+<pre><code class="language-python">.__get_noise_generator(
+   noise_type: NoiseType
+)
+</code></pre>
+<hr />
+<p>Get the noise system of the given noise type</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>noise_type</strong> (<a href="../schema#NoiseType">NoiseType</a>) : the givin noise type seealso: noise.shceme.NoiseType</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>ValueError</strong>  : No noise type found</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>NoiseMethod</strong>  : the noise system</li>
+</ul>
 <h3 id="add_noise">.add_noise</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L28">source</a></p>
 <pre><code class="language-python">.add_noise(
@@ -206,26 +226,6 @@ b'123'
 <ul>
 <li><strong>bytes</strong>  : the data with the noise</li>
 </ul>
-<h3 id="__get_noise_generator">.__get_noise_generator</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L52">source</a></p>
-<pre><code class="language-python">.__get_noise_generator(
-   noise_type: NoiseType
-)
-</code></pre>
-<hr />
-<p>Get the noise system of the given noise type</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>noise_type</strong> (<a href="../scheme#NoiseType">NoiseType</a>) : the givin noise type seealso: noise.shceme.NoiseType</li>
-</ul>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>  : No noise type found</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>NoiseMethod</strong>  : the noise system</li>
-</ul>
               
             </div>
           </div>
@@ -233,10 +233,10 @@ b'123'
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../scheme/" class="btn btn-neutral float-right" title="Scheme">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../schema/" class="btn btn-neutral float-right" title="Schema">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../edac/methods/parity/" class="btn btn-neutral" title="Parity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../edac/methods/crc_methods/schema/" class="btn btn-neutral" title="Schema"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -262,10 +262,10 @@ b'123'
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../edac/methods/parity/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../edac/methods/crc_methods/schema/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../scheme/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../schema/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
