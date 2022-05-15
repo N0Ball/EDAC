@@ -40,6 +40,21 @@ it contains and will only be call the method it contains
 **Methods:**
 
 
+### .get_parity_size
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50)
+```python
+.get_parity_size()
+```
+
+---
+Generate the parity size of the EDAC system
+
+
+**Returns**
+
+* **int**  : parity size of the EDAC system
+
+
 ### .encode
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L65)
 ```python
@@ -88,21 +103,6 @@ the correctness
 * **error** (bool) : Is the data corrupted
 * **data** (bytes) : The fixed data (return `0x00` if can't be fixed)
 * **bits** (list) : The index of errorbits
-
-
-### .get_parity_size
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50)
-```python
-.get_parity_size()
-```
-
----
-Generate the parity size of the EDAC system
-
-
-**Returns**
-
-* **int**  : parity size of the EDAC system
 
 
 ### .get_default_block

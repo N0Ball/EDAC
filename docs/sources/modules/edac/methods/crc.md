@@ -47,6 +47,28 @@ Encode the given data
 * **int**  : the syndrome in interger
 
 
+### ._devide
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L91)
+```python
+._devide(
+   data: int
+)
+```
+
+---
+Devide in GF(\(2^n\)) of given generator
+
+
+**Args**
+
+* **data** (int) : the given data
+
+
+**Returns**
+
+* **int**  : the result
+
+
 ### .decode
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L69)
 ```python
@@ -68,26 +90,4 @@ Decode the given data
 **Returns**
 
 * **tuple**  : the results of the decode [see more](../../schema#decode)
-
-
-### ._devide
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L91)
-```python
-._devide(
-   data: int
-)
-```
-
----
-Devide in GF(\(2^n\)) of given generator
-
-
-**Args**
-
-* **data** (int) : the given data
-
-
-**Returns**
-
-* **int**  : the result
 

@@ -200,7 +200,7 @@ False # Unfixable detected (double error)
 
 ## Problem
 
-As we know, this is a double error detecting system, therefore, if the [hamming distance](../../definitions/math#hamming-distance) \( H(m) \gt 2\).
+As we know, this is a double error detecting system, therefore, if the [hamming distance](../../definitions/math#hamming-distance) \( H_d(m) \gt 2\).
 Though the results might give you correct; however it is incorrect
 
 ```python
