@@ -54,7 +54,7 @@ False
 ## Problems
 
 ---
-The bigest problem of parity bit is that you can't identify the error if the [hamming distance](../../definitions/math/#hamming-distance) \(H_d(m) \gt 1\)
+The bigest problem of parity bit is that you can't identify the error if the [hamming distance](../../definitions/math/#hamming-distance) \(H_d(m)\) is odd.
 
 Check m = `30 (0b11110)` again but with \(H_d(m) = 2\) with error e `11000000` => m + e = `(0b1111110)`
 

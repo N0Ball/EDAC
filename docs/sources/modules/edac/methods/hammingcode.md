@@ -45,6 +45,28 @@ Encode the given data
 * **int**  : the encoded data in integer
 
 
+### ._create_table
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136)
+```python
+._create_table(
+   data: int
+)
+```
+
+---
+Create the hamming table according to the given block size
+
+
+**Args**
+
+* **data** (int) : data
+
+
+**Returns**
+
+* **list**  : hamming table
+
+
 ### .decode
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53)
 ```python
@@ -66,26 +88,4 @@ Decode the given data
 **Returns**
 
 * **tuple**  : the results of the decode [see more](../../schema#decode)
-
-
-### ._create_table
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136)
-```python
-._create_table(
-   data: int
-)
-```
-
----
-Create the hamming table according to the given block size
-
-
-**Args**
-
-* **data** (int) : data
-
-
-**Returns**
-
-* **list**  : hamming table
 

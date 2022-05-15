@@ -90,21 +90,6 @@ the correctness
 * **bits** (list) : The index of errorbits
 
 
-### .get_default_block
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L35)
-```python
-.get_default_block()
-```
-
----
-Generate default block of the EDAC system
-
-
-**Returns**
-
-* **int**  : default block of the EDAC system
-
-
 ### .get_parity_size
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50)
 ```python
@@ -118,4 +103,19 @@ Generate the parity size of the EDAC system
 **Returns**
 
 * **int**  : parity size of the EDAC system
+
+
+### .get_default_block
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L35)
+```python
+.get_default_block()
+```
+
+---
+Generate default block of the EDAC system
+
+
+**Returns**
+
+* **int**  : default block of the EDAC system
 
