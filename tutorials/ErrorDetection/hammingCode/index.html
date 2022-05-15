@@ -343,7 +343,7 @@ True
 False # Unfixable detected (double error)
 </code></pre>
 <h2 id="problem">Problem</h2>
-<p>As we know, this is a double error detecting system, therefore, if the <a href="../../definitions/math#hamming-distance">hamming distance</a> <script type="math/tex"> H(m) \gt 2</script>.
+<p>As we know, this is a double error detecting system, therefore, if the <a href="../../definitions/math#hamming-distance">hamming distance</a> <script type="math/tex"> H_d(m) \gt 2</script>.
 Though the results might give you correct; however it is incorrect</p>
 <pre><code class="language-python">&gt;&gt;&gt; encode = [0, 0, 1, 0, 1, 0, 0, 1] # Original [0, 0, 1, 1, 0, 0, 1, 1]
 &gt;&gt;&gt; encode[reduce(lambda a, b: a^b, [e[0] for e in filter(lambda x: x[1], enumerate(encode))])] ^= 1

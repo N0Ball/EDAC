@@ -191,23 +191,6 @@ it contains and will only be call the method it contains</p>
 <li><strong>DEBUG</strong> (bool) : Debug flag</li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L65">source</a></p>
-<pre><code class="language-python">.encode(
-   data: int
-)
-</code></pre>
-<hr />
-<p>The method that the EDAC system need to encode for futher
-EDAC usage</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the data to be encoded</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : the data encoded</li>
-</ul>
 <h3 id="get_default_block">.get_default_block</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L35">source</a></p>
 <pre><code class="language-python">.get_default_block()
@@ -217,16 +200,6 @@ EDAC usage</p>
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>int</strong>  : default block of the EDAC system</li>
-</ul>
-<h3 id="get_parity_size">.get_parity_size</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50">source</a></p>
-<pre><code class="language-python">.get_parity_size()
-</code></pre>
-<hr />
-<p>Generate the parity size of the EDAC system</p>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : parity size of the EDAC system</li>
 </ul>
 <h3 id="decode">.decode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L80">source</a></p>
@@ -248,6 +221,33 @@ the correctness</p>
 <li><strong>error</strong> (bool) : Is the data corrupted</li>
 <li><strong>data</strong> (bytes) : The fixed data (return <code>0x00</code> if can't be fixed)</li>
 <li><strong>bits</strong> (list) : The index of errorbits</li>
+</ul>
+<h3 id="encode">.encode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L65">source</a></p>
+<pre><code class="language-python">.encode(
+   data: int
+)
+</code></pre>
+<hr />
+<p>The method that the EDAC system need to encode for futher
+EDAC usage</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : the data to be encoded</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : the data encoded</li>
+</ul>
+<h3 id="get_parity_size">.get_parity_size</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50">source</a></p>
+<pre><code class="language-python">.get_parity_size()
+</code></pre>
+<hr />
+<p>Generate the parity size of the EDAC system</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : parity size of the EDAC system</li>
 </ul>
               
             </div>
