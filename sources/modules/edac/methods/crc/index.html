@@ -99,12 +99,16 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/parity/">Parity</a>
                 </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/definitions/EDAC/">EDAC</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/definitions/computerScience/">computerScience</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/definitions/math/">Math</a>
@@ -193,6 +197,22 @@
 <ul>
 <li><strong>int</strong>  : the syndrome in interger</li>
 </ul>
+<h3 id="_devide">._devide</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L91">source</a></p>
+<pre><code class="language-python">._devide(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Devide in GF(<script type="math/tex">2^n</script>) of given generator</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : the given data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : the result</li>
+</ul>
 <h3 id="decode">.decode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L69">source</a></p>
 <pre><code class="language-python">.decode(
@@ -209,22 +229,6 @@
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
-</ul>
-<h3 id="_devide">._devide</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L91">source</a></p>
-<pre><code class="language-python">._devide(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Devide in GF(<script type="math/tex">2^n</script>) of given generator</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the given data</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : the result</li>
 </ul>
               
             </div>

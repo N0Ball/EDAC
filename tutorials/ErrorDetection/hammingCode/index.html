@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>hammingCode - EDAC Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "hammingCode";
+    var mkdocs_page_input_path = "tutorials/ErrorDetection/hammingCode.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> EDAC Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">EDAC Testing and Education Platform</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Sources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../sources/">EDAC</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Modules</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Edac</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/edac/factory/">Factory</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/edac/schema/">Schema</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/edac/methods/crc/">Crc</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/edac/methods/hammingcode/">Hammingcode</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/edac/methods/parity/">Parity</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/noise/factory/">Factory</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/noise/schema/">Schema</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/noise/systems/BIT_FLIP/">BIT FLIP</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/noise/systems/NO_NOISE/">NO NOISE</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorials</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">ErrorDetection</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">hammingCode</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#hamming-code">Hamming Code</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#how">How</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#encode">Encode</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#decode">Decode</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#error-detection">Error Detection</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#more">More</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#python-code">Python Code</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#encoding">Encoding</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#error-detecting">Error detecting</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#error-correcting">Error Correcting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#problem">Problem</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1">[1]</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2">[2]</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3">[3]</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4">[4]</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../parity/">Parity</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../definitions/EDAC/">EDAC</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../definitions/computerScience/">computerScience</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../definitions/math/">Math</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">EDAC Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+        
+          <li>ErrorDetection &raquo;</li>
+        
+      
+    
+    <li>hammingCode</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1"></h1>
+<h2 id="hamming-code">Hamming Code</h2>
+<hr />
+<p>A <a href="../../definitions/EDAC/#sec-ded">SEC-DED</a> method.
+Capable of detect and correct errors.</p>
+<h3 id="how">How</h3>
+<p>The index of the data can be seperate into different <em>groups</em> 
+by the index of it's binary data. <a href="#1">[1]</a> 
+Therefore, the index of a <script type="math/tex">2^{n}</script>-bit data can be presented with n <em>groups</em> (n-bits).</p>
+<p>If we set the significant bit <a href="#2">[2]</a> as the parity bit of each group, 
+we can know which <em>groups</em> contain error.</p>
+<p>If there are only one error bit, 
+the combination of the <em>groups</em> that contains error 
+is the index of the bit that is error.<a href="#4">[4]</a></p>
+<p>The <script type="math/tex">0^{th}</script> bit of the data doesn't belongs to any <em>group</em>.
+This means that we can't use the above method to identify if it is correct or not. 
+However we can set the <script type="math/tex">0^{th}</script> bit as the <a href="../parity/#parity-bit">parity bit</a> 
+to the whole data string as an identify of 2 errors.</p>
+<p>Since <em>groups</em> expect that there are only one errors in the data; 
+however if there exists over one errors, the <em>groups</em> will only <strong>try to fix</strong> one error 
+(which is correcting an correct data -&gt; creates another incorrect data).
+This means that if only two errors exist, the <strong>fix</strong> will make <code>3</code> errors.</p>
+<h3 id="summary">Summary</h3>
+<ul>
+<li>For every <script type="math/tex">2^{n}</script>-bit data, we need (n+1)-bit parity bits (1 the <script type="math/tex">0^{th}</script> bit).</li>
+<li>The combinations of the error <em>groups</em> can identify the error (<strong>SEC</strong>).</li>
+<li>The <script type="math/tex">0^{th}</script> bit is the parity bit for the whole data (<strong>DED</strong>).</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p>take <script type="math/tex">2^3</script> bits data, which is a (8-3-1, 4) -&gt; (4, 4) hamming code for example.</p>
+<h3 id="encode">Encode</h3>
+<p>If the data is <code>1011</code> -&gt; the message will be <code>xxx1x011</code></p>
+<p><strong>GROUPS</strong></p>
+<pre><code class="language-shell">0: x, 1, 0, 1 -&gt; x = 0
+1: x, 1, 1, 1 -&gt; x = 1
+2: x, 0, 1, 1 -&gt; x = 0
+</code></pre>
+<p>Therefore the message becomes <code>x0110011</code> -&gt; x = 0 (<a href="../parity/#parity-bit">parity bit</a>).
+We get the final encoded message <code>00110011</code>.</p>
+<h3 id="decode">Decode</h3>
+<p>Simple git rid of the parity bits: <code>00110011</code> -&gt; <code>xxx1x011</code> -&gt; <code>1011</code></p>
+<h3 id="error-detection">Error Detection</h3>
+<h4 id="example-1">Example 1</h4>
+<p><code>00110011</code> -&gt; <code>001100111</code> (change bit 5 -&gt; the <script type="math/tex">5^{th}</script> bit have error).</p>
+<p><strong>GROUPS</strong></p>
+<pre><code class="language-shell">0: 0, 1, 1, 1 -&gt; 1 -&gt; INCORRECT
+1: 1, 1, 1, 1 -&gt; 0 -&gt; CORRECT
+2: 0, 1, 1, 1 -&gt; 1 -&gt; INCORRECT
+</code></pre>
+<p>We have detected the error! (1, 0, 1) = <code>0b101</code> = 5 <a href="#4">[4]</a>.
+Therefore we can correct it by flipping the <script type="math/tex">5^{th}</script> bit.
+<code>00110111</code> -&gt; <code>00110011</code>, we get the original data.</p>
+<h4 id="example-2">Example 2</h4>
+<p><code>00110011</code> -&gt; <code>00110001</code> (change bit 6)</p>
+<p><strong>GROUPS</strong></p>
+<pre><code class="language-shell">0: 0, 1, 0, 1 -&gt; 0 -&gt; CORRECT
+1: 1, 1, 0, 1 -&gt; 1 -&gt; INCORRECT
+2: 0, 0, 0, 1 -&gt; 1 -&gt; INCORRECT
+</code></pre>
+<p>We have detected the error! (1, 1, 0) = <code>0b110</code> = 6 <a href="#4">[4]</a>.
+Therefore we can correct it by flipping the <script type="math/tex">6^{th}</script> bit.
+<code>00110001</code> -&gt; <code>00110011</code>, we get the original data.</p>
+<h4 id="example-3">Example 3</h4>
+<p><code>00110011</code> -&gt; <code>00110101</code> (change bit 5 and 6)</p>
+<p><strong>GROUPS</strong></p>
+<pre><code class="language-shell">0: 0, 1, 1, 1 -&gt; 1 -&gt; INCORRECT
+1: 1, 1, 0, 1 -&gt; 1 -&gt; INCORRECT
+2: 0, 1, 0, 1 -&gt; 0 -&gt; CORRECT
+</code></pre>
+<p>We <strong>think</strong> that we detected the error! (0, 1, 1) = <code>0b011</code> = 3.
+Therefore we tried to correct it by flipping the <script type="math/tex">3^{rd}</script> bit, which makes three incorrects.
+<code>00110101</code> -&gt; <code>00100101</code>, we can see that the <script type="math/tex">0^{th}</script> bit parity didn't pass.
+We <strong>find</strong> an error that can't be corrected.</p>
+<h3 id="more">More</h3>
+<p>The result of this can be viewed as the <a href="../../definitions/math#summations">sum</a> of the index of the data that have <code>1</code></p>
+<p>Take <a href="#example-1">Example 1</a> as an example.
+<code>00110011</code> -&gt; the 2, 3, 6, 7 bit have <code>1</code>.</p>
+<pre><code class="language-shell">  010
+  011
+  110
+  111
++ ---
+  000 -&gt; This is what we set, every group's sum is 0
+</code></pre>
+<p>Therefore if <code>00110011</code> -&gt; <code>00110111</code> (change bit 5)</p>
+<pre><code class="language-shell">  010
+  011
+  101
+  110
+  111
++ ---
+  101 = 5 -&gt; This is the same as what we do above but turned 90 degrees
+</code></pre>
+<p>That is, we can simple <a href="../definitions/math#summations">sum</a> all the index that have <code>1</code>.
+The result of will be the index that have error.</p>
+<p><strong>Do you see the mathematics inside?</strong></p>
+<ol>
+<li>We make the sum (which is <code>xor</code>) of all the indexs that the data contains <code>1</code> to 0 -&gt; the encoding.</li>
+<li>Since <code>0 ^ x = x</code> -&gt; if there are only one error, we can simply detect the error by sum it again. -&gt; error detecting.</li>
+</ol>
+<h2 id="python-code">Python Code</h2>
+<p>Below are simple python codes for encoding and decoding.</p>
+<h3 id="encoding">Encoding</h3>
+<pre><code class="language-python">&gt;&gt;&gt; from functools import reduce
+&gt;&gt;&gt; message = [list(map(int, &quot;1011&quot;))]
+&gt;&gt;&gt; encodeMatrix = [
+...     [1, 1, 1, 0, 0, 0, 0],
+...     [1, 0, 0, 1, 1, 0, 0],
+...     [0, 1, 0, 1, 0, 1, 0],
+...     [1, 1, 0, 1, 0, 0, 1]
+... ] # the encode procedure can be written as a matrix
+&gt;&gt;&gt; encode = list(*[[sum(a*b for a,b in zip(X_row,Y_col))%2 for Y_col in zip(*encodeMatrix)] for X_row in message]) # encode the data
+&gt;&gt;&gt; encode.insert(reduce(lambda a, b: int(a) ^ int(b), encode), 0) # Create 0th bit parity 
+&gt;&gt;&gt; encode
+[0, 0, 1, 1, 0, 0, 1, 1]
+</code></pre>
+<h3 id="error-detecting">Error detecting</h3>
+<pre><code class="language-python">&gt;&gt;&gt; encode = [0, 0, 1, 1, 0, 0, 1, 1]
+&gt;&gt;&gt; reduce(lambda a, b: a^b, [e[0] for e in filter(lambda x: x[1], enumerate(encode))])
+0 # No errors
+&gt;&gt;&gt; encode = [0, 0, 1, 0, 0, 0, 1, 1]
+&gt;&gt;&gt; reduce(lambda a, b: a^b, [e[0] for e in filter(lambda x: x[1], enumerate(encode))])
+3 # Third bit have error
+</code></pre>
+<h3 id="error-correcting">Error Correcting</h3>
+<p>Correct single error</p>
+<pre><code class="language-python">&gt;&gt;&gt; encode = [0, 0, 1, 0, 0, 0, 1, 1] # Original [0, 0, 1, 1, 0, 0, 1, 1]
+&gt;&gt;&gt; encode[reduce(lambda a, b: a^b, [e[0] for e in filter(lambda x: x[1], enumerate(encode))])] ^= 1
+&gt;&gt;&gt; reduce(lambda a, b: int(a) ^ int(b), encode) == 0
+True
+&gt;&gt;&gt; encode
+[0, 0, 1, 1, 0, 0, 1, 1] # Successfully fix the error
+</code></pre>
+<p>Detects double error</p>
+<pre><code class="language-python">&gt;&gt;&gt; encode = [0, 0, 1, 0, 1, 0, 1, 1] # Original [0, 0, 1, 1, 0, 0, 1, 1]
+&gt;&gt;&gt; encode[reduce(lambda a, b: a^b, [e[0] for e in filter(lambda x: x[1], enumerate(encode))])] ^= 1
+&gt;&gt;&gt; reduce(lambda a, b: int(a) ^ int(b), encode) == 0
+False # Unfixable detected (double error)
+</code></pre>
+<h2 id="problem">Problem</h2>
+<p>As we know, this is a double error detecting system, therefore, if the <a href="../../definitions/math#hamming-distance">hamming distance</a> <script type="math/tex"> H(m) \gt 2</script>.
+Though the results might give you correct; however it is incorrect</p>
+<pre><code class="language-python">&gt;&gt;&gt; encode = [0, 0, 1, 0, 1, 0, 0, 1] # Original [0, 0, 1, 1, 0, 0, 1, 1]
+&gt;&gt;&gt; encode[reduce(lambda a, b: a^b, [e[0] for e in filter(lambda x: x[1], enumerate(encode))])] ^= 1
+&gt;&gt;&gt; reduce(lambda a, b: int(a) ^ int(b), encode) == 0
+True
+&gt;&gt;&gt; encode
+[0, 1, 1, 0, 1, 0, 0, 1] # Original [0, 0, 1, 1, 0, 0, 1, 1] -&gt; Different from original
+</code></pre>
+<p>We can see that although it says that it successfully corrects the message; however it is still different from its original message.</p>
+<h2 id="reference">Reference</h2>
+<h3 id="1">[1]</h3>
+<p>For example:</p>
+<pre><code class="language-shell">0 -&gt; 0b000
+1 -&gt; 0b001
+2 -&gt; 0b010
+3 -&gt; 0b011
+4 -&gt; 0b100
+5 -&gt; 0b101
+6 -&gt; 0b110
+7 -&gt; 0b111
+</code></pre>
+<p>The <script type="math/tex">0^{th}</script> group is <code>0, 2, 4, 7</code>, since the <script type="math/tex">0^{th}</script>
+index of thier binaries are 1 (<code>0b001</code>, <code>0b011</code>, <code>0b101</code>, <code>0b111</code>). 
+The <script type="math/tex">1^{st}</script> group is <code>2, 3, 6, 7</code> (<code>0b010</code>, <code>0b011</code>, <code>0b110</code>, <code>0b111</code>).</p>
+<h3 id="2">[2]</h3>
+<p>The significant bit of a group is the bit that have only one <code>1</code> 
+while presented in binary <a href="#3">[3]</a>. 
+The reason we choose this is beacuse significsant bits are one and only to thier groups 
+since they have only one <code>1</code>. 
+That is, for <em>group 0</em>, <code>1</code> is the significant bit, and <code>1</code> is only in <em>group 0</em>; 
+however <code>3</code> is not is because <em>group 0</em> containes <code>3</code>, 
+but <code>3</code> is in both <em>group 0</em> and <em>gorup 1</em>.</p>
+<h3 id="3">[3]</h3>
+<p>For example:
+significant bit of the <em>group 0</em> is <code>1</code> 
+since <code>1</code> is <code>0b00000001</code>, 
+which only one <code>1</code> exists in the binary.
+The significant bit of <em>group 5</em> is <code>32</code>, since <code>32</code> is <code>0b00100000</code>, 
+also only one <code>1</code> is in it's binary.
+<br>
+We can also say that the significant bit of <em>group n</em> is <code>2n</code>, 
+since that is how binary is.</p>
+<h3 id="4">[4]</h3>
+<p>Take a <script type="math/tex">2^3</script>-bit data as an example:</p>
+<ol>
+<li>There are 3 groups</li>
+<li><code>O</code> is <strong>correct</strong> <code>X</code> is <strong>incorrect</strong></li>
+<li>There are only one error. (Single Error)</li>
+</ol>
+<p><strong>GROUPS</strong></p>
+<pre><code class="language-shell">0: 1, 3, 5, 7
+1: 2, 3, 6, 7
+2: 4, 5, 6, 7
+</code></pre>
+<p><strong>COMBINATIONS</strong></p>
+<pre><code class="language-shell">| 2 | 1 | 0 | error bit |
+|---+---+---+-----------|
+| O | O | O |     X     |
+|---+---+---+-----------|
+| O | O | X |     1     |
+|---+---+---+-----------|
+| O | X | O |     2     |
+|---+---+---+-----------|
+| O | X | X |     3     |
+|---+---+---+-----------|
+| X | O | O |     4     |
+|---+---+---+-----------|
+| X | O | X |     5     |
+|---+---+---+-----------|
+| X | X | O |     6     |
+|---+---+---+-----------|
+| X | X | X |     7     |
+|-----------------------|
+</code></pre>
+<ul>
+<li>If only <em>group 1</em> is incorrect -&gt; Second bit have error (<code>2</code>).<ul>
+<li><em>group 0</em> and <em>group 2</em> is correct.</li>
+<li>since we are finding the incorrect bit<ul>
+<li>the number can't be in <em>group 0</em> and <em>group 2</em> (since both of the groups are correct).</li>
+<li>the number must be in <em>group 1</em> (since the group is incorrect).</li>
+</ul>
+</li>
+<li>you can't find any number except <code>2</code> that contains <em>group 1</em> but <em>group 0</em> and <em>group 2</em>.</li>
+</ul>
+</li>
+<li>If both <em>group 0</em> and <em>group 1</em> is incorrect -&gt; Third bit have error (<code>3</code>).<ul>
+<li>only <em>group 2</em> is correct.</li>
+<li>since we are finding the incorrect bit<ul>
+<li>the number can't be in <em>group 2</em> (since <em>group 2</em> is correct).</li>
+<li>the number must be in <em>group 0</em> and <em>group 1</em> (since both of the groups are incorrect).</li>
+</ul>
+</li>
+<li>you can't find any number except <code>3</code> that contains <em>group 0</em> and <em>group 1</em> but <em>group 2</em>.</li>
+</ul>
+</li>
+<li>If both <em>group 1</em> and <em>group 2</em> is incorrect -&gt; Sixth bit have error (<code>6</code>).<ul>
+<li>only <em>group 0</em> is correct.</li>
+<li>since we are finding the incorrect bit<ul>
+<li>the number can't be in <em>group 0</em> (since <em>group 0</em> is correct).</li>
+<li>the number must be in <em>group 1</em> and <em>group 2</em> (since both of the groups are incorrect).</li>
+</ul>
+</li>
+<li>you can't find any number except <code>6</code> that contains <em>group 1</em> and <em>group 2</em> but <em>group 0</em>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Do you see the relation of error groups and indexs?</strong></p>
+<p>If we see the incorrect groups as <code>1</code>, 
+the correct groups as <code>0</code>, 
+we can view the combination of groups as one binary number, 
+the error is the result of the binary.</p>
+<p>That is 
+(remember, the index should be inverse, since <code>0b001</code> the zeroth index is the right most):</p>
+<ul>
+<li>If only <em>group 1</em> is incorrect.<ul>
+<li>(0, 1, 0) -&gt; <code>0b010</code> -&gt; 2</li>
+<li>second bit have error.</li>
+</ul>
+</li>
+<li>If both <em>group 0</em> and <em>group 1</em> is incorrect.<ul>
+<li>(0, 1, 1) -&gt; <code>0b011</code> -&gt; 3</li>
+<li>third bit have error.</li>
+</ul>
+</li>
+<li>If both <em>group 1</em> and <em>group 2</em> is incorrect.<ul>
+<li>(1, 1, 0) -&gt; <code>0b110</code> -&gt; 6</li>
+<li>sixth bit have error.</li>
+</ul>
+</li>
+</ul>
+<p>We get the same result as above.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../parity/" class="btn btn-neutral float-right" title="Parity">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../../sources/modules/noise/systems/NO_NOISE/" class="btn btn-neutral" title="NO NOISE"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../../sources/modules/noise/systems/NO_NOISE/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../parity/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

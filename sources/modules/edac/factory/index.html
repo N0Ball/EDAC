@@ -103,12 +103,16 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/parity/">Parity</a>
                 </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Definitions</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/EDAC/">EDAC</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/computerScience/">computerScience</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/definitions/math/">Math</a>
@@ -176,23 +180,6 @@
 <li><strong>debug</strong> (bool) : Debug Level</li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="_create_block">._create_block</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L124">source</a></p>
-<pre><code class="language-python">._create_block(
-   data: bytes, n: int
-)
-</code></pre>
-<hr />
-<p>Parse data into blocks so that
-every block have n bits of data</p>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>  : If the data's type isn't <code>bytes</code></li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>list</strong>  : the list of blocks needed</li>
-</ul>
 <h3 id="encode">.encode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L39">source</a></p>
 <pre><code class="language-python">.encode(
@@ -210,22 +197,6 @@ every block have n bits of data</p>
 <ul>
 <li><strong>bytes</strong>  : The data encoded</li>
 </ul>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L75">source</a></p>
-<pre><code class="language-python">.decode(
-   data: bytes, n: int = None
-)
-</code></pre>
-<hr />
-<p>Decodes the data to verify the integrity</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (bytes) : The data to be decode</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>tuple</strong> (bool, bytes, list) : should be formated <code>(error, original data, error bits)</code></li>
-</ul>
 <h3 id="__get_edac_generator">.__get_edac_generator</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L161">source</a></p>
 <pre><code class="language-python">.__get_edac_generator(
@@ -241,6 +212,39 @@ every block have n bits of data</p>
 <p><strong>Returns</strong></p>
 <ul>
 <li>EDAC system </li>
+</ul>
+<h3 id="_create_block">._create_block</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L124">source</a></p>
+<pre><code class="language-python">._create_block(
+   data: bytes, n: int
+)
+</code></pre>
+<hr />
+<p>Parse data into blocks so that
+every block have n bits of data</p>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>ValueError</strong>  : If the data's type isn't <code>bytes</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>list</strong>  : the list of blocks needed</li>
+</ul>
+<h3 id="decode">.decode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L75">source</a></p>
+<pre><code class="language-python">.decode(
+   data: bytes, n: int = None
+)
+</code></pre>
+<hr />
+<p>Decodes the data to verify the integrity</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (bytes) : The data to be decode</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tuple</strong> (bool, bytes, list) : should be formated <code>(error, original data, error bits)</code></li>
 </ul>
               
             </div>
