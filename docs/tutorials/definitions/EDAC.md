@@ -6,6 +6,17 @@
 
     This is definitions of Error Detection And Correction related page.
 
+## Syndrome
+---
+
+A syndrome is the parity bits.
+For example, take [parity](../../ErrorDetection/parity) as example, a `0b101` have parity bit `0b1`; 
+therefore, the syndrome of `0b101` is `1`.
+
+Since, EDAC is often described in an Galios Field; 
+therefore, the syndrome can also be written as a polynomial form.
+That is, if the syndrome is `0b1011` -> it is equivalent to `x^3 + x + 1`.
+
 ## SEC-DED
 ---
 

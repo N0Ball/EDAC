@@ -23,26 +23,27 @@ EDAC System to deal with data that needs hamming code
 **Methods:**
 
 
-### ._create_table
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136)
+### .decode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53)
 ```python
-._create_table(
-   data: int
+.decode(
+   data: int, check: int
 )
 ```
 
 ---
-Create the hamming table according to the given block size
+Decode the given data
 
 
 **Args**
 
-* **data** (int) : data
+* **data** (int) : the given data
+* **check** (int) : parity bytes
 
 
 **Returns**
 
-* **list**  : hamming table
+* **tuple**  : the results of the decode [see more](../../schema#decode)
 
 
 ### .encode
@@ -67,25 +68,24 @@ Encode the given data
 * **int**  : the encoded data in integer
 
 
-### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53)
+### ._create_table
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136)
 ```python
-.decode(
-   data: int, check: int
+._create_table(
+   data: int
 )
 ```
 
 ---
-Decode the given data
+Create the hamming table according to the given block size
 
 
 **Args**
 
-* **data** (int) : the given data
-* **check** (int) : parity bytes
+* **data** (int) : data
 
 
 **Returns**
 
-* **tuple**  : the results of the decode [see more](../../schema#decode)
+* **list**  : hamming table
 
