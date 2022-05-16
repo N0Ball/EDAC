@@ -99,6 +99,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/crc/">Crc</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/parity/">Parity</a>
@@ -181,6 +183,22 @@
 <li><strong>schema</strong> (<a href="../crc_methods/schema#SCHEMA">SCHEMA</a>) : The schema of            CRC you chose to use, defaults to <code>CRC_8_ATM</code></li>
 </ul>
 <p><strong>Methods:</strong></p>
+<h3 id="encode">.encode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L53">source</a></p>
+<pre><code class="language-python">.encode(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Encode the given data</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : the data in integer</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : the syndrome in interger</li>
+</ul>
 <h3 id="_devide">._devide</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L91">source</a></p>
 <pre><code class="language-python">._devide(
@@ -213,22 +231,6 @@
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
-</ul>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L53">source</a></p>
-<pre><code class="language-python">.encode(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Encode the given data</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the data in integer</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : the syndrome in interger</li>
 </ul>
               
             </div>
