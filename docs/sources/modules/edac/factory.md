@@ -24,29 +24,6 @@ Creates the EDAC System specify by given [EDAC Type](../schema/#edactype)
 **Methods:**
 
 
-### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L39)
-```python
-.encode(
-   data: bytes, n: int = None
-)
-```
-
----
-Encodes the data with edac system
-
-
-**Args**
-
-* **data** (bytes) : The data to be encoded
-* **n** (int) : The block size given (`None` as default)
-
-
-**Returns**
-
-* **bytes**  : The data encoded
-
-
 ### .decode
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L75)
 ```python
@@ -112,4 +89,27 @@ Get the edac system specified by [EDACType](../schema/#edactype)
 **Returns**
 
 * EDAC system 
+
+
+### .encode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L39)
+```python
+.encode(
+   data: bytes, n: int = None
+)
+```
+
+---
+Encodes the data with edac system
+
+
+**Args**
+
+* **data** (bytes) : The data to be encoded
+* **n** (int) : The block size given (`None` as default)
+
+
+**Returns**
+
+* **bytes**  : The data encoded
 

@@ -25,28 +25,6 @@ EDAC System to deal with data that needs CRC
 **Methods:**
 
 
-### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L53)
-```python
-.encode(
-   data: int
-)
-```
-
----
-Encode the given data
-
-
-**Args**
-
-* **data** (int) : the data in integer
-
-
-**Returns**
-
-* **int**  : the syndrome in interger
-
-
 ### .decode
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L69)
 ```python
@@ -68,6 +46,28 @@ Decode the given data
 **Returns**
 
 * **tuple**  : the results of the decode [see more](../../schema#decode)
+
+
+### .encode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L53)
+```python
+.encode(
+   data: int
+)
+```
+
+---
+Encode the given data
+
+
+**Args**
+
+* **data** (int) : the data in integer
+
+
+**Returns**
+
+* **int**  : the syndrome in interger
 
 
 ### ._devide

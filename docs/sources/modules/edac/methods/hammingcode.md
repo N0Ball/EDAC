@@ -23,28 +23,6 @@ EDAC System to deal with data that needs hamming code
 **Methods:**
 
 
-### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L19)
-```python
-.encode(
-   data: int
-)
-```
-
----
-Encode the given data
-
-
-**Args**
-
-* **data** (int) : the data in integer
-
-
-**Returns**
-
-* **int**  : the encoded data in integer
-
-
 ### .decode
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53)
 ```python
@@ -66,6 +44,28 @@ Decode the given data
 **Returns**
 
 * **tuple**  : the results of the decode [see more](../../schema#decode)
+
+
+### .encode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L19)
+```python
+.encode(
+   data: int
+)
+```
+
+---
+Encode the given data
+
+
+**Args**
+
+* **data** (int) : the data in integer
+
+
+**Returns**
+
+* **int**  : the encoded data in integer
 
 
 ### ._create_table
