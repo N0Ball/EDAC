@@ -1,0 +1,15 @@
+---
+tests:
+  get_data:
+    - case: number
+      data: 
+        - 1001010
+      expected: 
+        - 1001010
+        - int
+    - case: string
+      data: 
+        - "0010001"
+      expected: 
+        - "0010001"
+        - string

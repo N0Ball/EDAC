@@ -1,4 +1,3 @@
-from tkinter import E
 from ..schema import EDACMethod, EDACType
 from .parity import Parity
 

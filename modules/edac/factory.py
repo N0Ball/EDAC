@@ -101,8 +101,8 @@ class EDACFactory:
             is_pass *= error
             error_bits += error_list
 
-            # TODO This is not used anymore
-            if not fixed == None:
+            # If can't fix, than return original data
+            if not fixed is None:
                 original_bytes += fixed
             else:
                 original_bytes += original_data

@@ -19,14 +19,14 @@ def detail(msgs: list):
         print()
 
 
-edac_system = EDACFactory(EDACType.HAMMING_CODE, True)
+edac_system = EDACFactory(EDACType.PARITY, True)
 ENC_MSG = edac_system.encode(ORIGINAL_MSG)
 
 # detail([ENC_MSG])
 
 print(ENC_MSG)
 
-noise_system = NoiseFactory(NoiseType.BIT_FLIP, flip_list=[15])
+noise_system = NoiseFactory(NoiseType.BIT_FLIP, flip_list=[2])
 NOISE_MSG = noise_system.add_noise(ENC_MSG)
 
 # detail([ENC_MSG, NOISE_MSG])

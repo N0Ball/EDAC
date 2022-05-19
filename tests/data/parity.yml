@@ -1,0 +1,26 @@
+---
+tests:
+  encode:
+    - case: 7-digit answer 1
+      data: 0b1001010
+      expected: 1
+    - case: 7-digit answer 0
+      data: 0b0010001
+      expected: 0
+  decode:
+    - case: correct
+      data: 
+        - 0b1001010
+        - 1
+      expected: 
+        - True
+        - 0b1001010
+        - ['']
+    - case: wrong
+      data: 
+        - 0b1001010
+        - 0
+      expected: 
+        - False
+        - null
+        - ['CI']
