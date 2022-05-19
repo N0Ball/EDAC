@@ -58,7 +58,6 @@ class EDACFactory:
         # Generate parity
         result_bytes = []
         for block in blocks:
-            print(bin(self.EDAC_GEN.encode(block)))
             result_bytes.append((block<<self.PARITY_SIZE) + self.EDAC_GEN.encode(block))
 
         # Generate Result

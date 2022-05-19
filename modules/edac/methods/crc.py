@@ -25,7 +25,7 @@ class CRC(EDACMethod):
                 self.GENERATOR = GENERATOR(SCHEMA.CRC_8_ATM)
 
                 if self.DEBUG:
-                    print(f"No Generator had set, use default generator instead")
+                    print(f"WARNING: No Generator had set, use default generator instead")
 
             return func(self, *args, **kwargs)
 

@@ -127,7 +127,7 @@ class HammingCode(EDACMethod):
 
         # Return the hamming code result
         return (
-            parity == 0,
+            True,
             data,
             [parity] if not parity == 0 else [""]
         )
