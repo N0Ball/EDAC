@@ -4,7 +4,7 @@ from modules.noise.factory import NoiseFactory
 from modules.noise.schema import NoiseType
 from modules.edac.methods.crc_methods.schema import SCHEMA
 
-ORIGINAL_MSG = b'FLAG'
+ORIGINAL_MSG = b'F'
 
 def detail(msgs: list):
 
@@ -19,17 +19,17 @@ def detail(msgs: list):
         print()
 
 
-edac_system = EDACFactory(EDACType.CRC, True)
+edac_system = EDACFactory(EDACType.HAMMING_CODE, True)
 ENC_MSG = edac_system.encode(ORIGINAL_MSG)
 
-detail([ENC_MSG])
+# detail([ENC_MSG])
 
 print(ENC_MSG)
 
-noise_system = NoiseFactory(NoiseType.NO_NOISE)
+noise_system = NoiseFactory(NoiseType.BIT_FLIP, flip_list=[15])
 NOISE_MSG = noise_system.add_noise(ENC_MSG)
 
-detail([ENC_MSG, NOISE_MSG])
+# detail([ENC_MSG, NOISE_MSG])
 
 pass_check, DEC_MSG, error_bits = edac_system.decode(NOISE_MSG)
 

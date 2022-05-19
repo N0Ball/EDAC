@@ -1,3 +1,4 @@
+from tkinter import E
 from ..schema import EDACMethod, EDACType
 from .parity import Parity
 
@@ -44,7 +45,7 @@ class HammingCode(EDACMethod):
             parity <<= 1
 
         # Add parity bit
-        encoded_data = sum(map(lambda x: int(x[1]) << x[0], enumerate(bit_data)))
+        encoded_data = int(''.join(map(str, bit_data)), 2)
         parity += self.PARITY_METHOD.encode(encoded_data)
 
         # Return the result
@@ -80,50 +81,43 @@ class HammingCode(EDACMethod):
             if bit_data[i]:
                 parity ^= i
 
-        for i in range(self.PARITY_SIZE - 1):
-            
-            if parity == 1 << i:
-                parity = -1
+        # Check if the error belongs to parity bit
+        if parity in [(1 << e) for e in range(self.PARITY_SIZE)]:
+            bit_data[0] ^= 1
+            parity = -1
 
         # Try to correct data (may be incorrect due to over two errors)
-        if not parity == 0:
+        if not (parity == 0 or parity == -1):
             bit_data[parity] ^= 1
 
-        # Extract the parity bit
-        parity_bit = bit_data.pop(0)
-
         # Recover decoded data
-        data = sum(map(lambda x: int(x[1]) << x[0], enumerate(bit_data)))
-
-        # TODO Fix this stupid thing
-        # Since we have to transform back, so we have to add the parity bit back
-        bit_data.insert(0, parity_bit)
+        data = int(''.join(map(str, bit_data[1:])), 2)
 
         # Check parity bit
-        check, data, status = self.PARITY_METHOD.decode(data, parity_bit)
+        check, data, status = self.PARITY_METHOD.decode(data, bit_data[0])
         
         # Parity bit check fails
         if not check:
             return (
                 False,
-                0x0,
-                ["CI"]
+                None,
+                status
             )
 
-        # Transform from hamming table to data
-        for i in range(self.PARITY_SIZE - 2, -1, -1):
-            bit_data.pop(1 << i)
+        # Get rid of parity bit and the index offset cause by parity bit
+        for i in [1 << (self.PARITY_SIZE - 2 - e) for e in range(self.PARITY_SIZE - 1)]:
 
-            if parity > (1 << i):
+            bit_data.pop(i)
+
+            if parity > i:
                 parity -= 1
 
-        # Get rid of parity bit and the index offset cause by parity bit
         bit_data.pop(0)
-        if not parity == 0:
+        if parity > 0:
             parity -= 1
 
         # Recover decoded data
-        data = sum(map(lambda x: int(x[1]) << x[0], enumerate(bit_data[::-1])))
+        data = int(''.join(map(str, bit_data)), 2)
 
         # Return the hamming code result
         return (

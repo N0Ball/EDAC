@@ -83,7 +83,7 @@ class CRC(EDACMethod):
 
         return (
             result,
-            data if result else 0x0,
+            data if result else None,
             [""] if result else ["CI"]
         )
 

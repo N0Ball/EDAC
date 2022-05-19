@@ -65,6 +65,6 @@ class Parity(EDACMethod):
 
         return (
             check == parity,
-            0x0 if not check == parity else data,
+            None if not check == parity else data,
             ["CI"] if not check == parity else [""]
         )

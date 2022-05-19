@@ -54,19 +54,12 @@ class EDACFactory:
         # Creates block
         blocks = self._create_block(data, self.BLOCK_SIZE - self.PARITY_SIZE)
 
-
-        # Generate parity
-        result_bytes = []
-        for block in blocks:
-            result_bytes.append((block<<self.PARITY_SIZE) + self.EDAC_GEN.encode(block))
-
-        # Generate Result
+        # Generate result
         result = 0
-        for result_byte in result_bytes:
-            result += result_byte
+        for block in blocks:
+            
             result <<= self.BLOCK_SIZE
-
-        result >>= self.BLOCK_SIZE
+            result += (block<<self.PARITY_SIZE) + self.EDAC_GEN.encode(block)
 
         return long_to_bytes(result)
 
@@ -87,13 +80,15 @@ class EDACFactory:
 
         # Creates block
         blocks = self._create_block(data, self.BLOCK_SIZE)
-        offset = len(bin(blocks[0])[2:])
         original_bytes = 0
         is_pass = True
         error_bits = []
 
         # Decode every blocks
         for block in blocks:
+
+            # Generate space for incomming bytes
+            original_bytes <<= self.BLOCK_SIZE - self.PARITY_SIZE
 
             # Get the parity bit out
             original_data = block >> self.PARITY_SIZE
@@ -109,13 +104,15 @@ class EDACFactory:
             # TODO This is not used anymore
             if not fixed == None:
                 original_bytes += fixed
+            else:
+                original_bytes += original_data
 
-            # Generate the possible original bytes
-            original_bytes <<= self.BLOCK_SIZE - self.PARITY_SIZE
+        # Get rid of the paddings
+        decode_size = len(long_to_bytes(original_bytes))
+        data_size = self.BLOCK_SIZE - self.PARITY_SIZE
 
-        # Creates the bytes back
-        while not len(bin(original_bytes)[2:])%self.BLOCK_SIZE == offset and not original_bytes == 0:
-            original_bytes >>= 1
+        if decode_size > 1 and not (decode_size*8) % data_size == 0:
+            original_bytes >>= data_size - ((decode_size - 1)*8)%data_size
 
         return (is_pass, long_to_bytes(original_bytes), error_bits)
 
@@ -138,24 +135,22 @@ class EDACFactory:
         if not isinstance(data, bytes):
             raise ValueError("The type of data should be bytes")
 
-        # Change bytes to numerical
-        from Crypto.Util.number import bytes_to_long
-        _num_data = bytes_to_long(data)
-        _blocks = []
+        # Byte to binary string
+        bin_string = ''.join(map(lambda x: bin(x)[2:].rjust(8, '0'), data))
+        
 
-        # Padding the bits
-        _head_offset = 8 - len(bin(_num_data)[2:])%8
-        while not (len(bin(_num_data)[2:]) + _head_offset) %n == 0:
-            _num_data <<= 1
+        # Create blocks
+        blocks = []
 
-        # Making Blocks (inversed)
-        while _num_data > 0:
+        while not bin_string == '0'*n:
 
-            _blocks.append(_num_data & int('1'*n, 2))
-            _num_data >>= n
+            element = int(bin_string[:n], 2)
+            bin_string = bin_string[n:].ljust(n, '0') # Append 0 if needed
 
-        # Inverse back
-        return _blocks[::-1]
+            blocks.append(element)
+
+        return blocks
+
 
     def __get_edac_generator(self,
         edac_type: EDACType # Type of EDAC system
