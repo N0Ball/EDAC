@@ -5,7 +5,7 @@
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L7)
 ```python 
 EDACFactory(
-   edac_type: EDACType, debug: bool = False
+   edac_type: EDACType, debug: bool = False, **kwargs
 )
 ```
 
@@ -24,52 +24,8 @@ Creates the EDAC System specify by given [EDAC Type](../schema/#edactype)
 **Methods:**
 
 
-### .__get_edac_generator
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L146)
-```python
-.__get_edac_generator(
-   edac_type: EDACType
-)
-```
-
----
-Get the edac system specified by [EDACType](../schema/#edactype)
-
-
-**Raises**
-
-* **ValueError**  : If no EDAC Type was found
-
-
-**Returns**
-
-* EDAC system 
-
-
-### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L60)
-```python
-.decode(
-   data: bytes, n: int = None
-)
-```
-
----
-Decodes the data to verify the integrity
-
-
-**Args**
-
-* **data** (bytes) : The data to be decode
-
-
-**Returns**
-
-* **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
-
-
 ### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L26)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L39)
 ```python
 .encode(
    data: bytes, n: int = None
@@ -91,8 +47,30 @@ Encodes the data with edac system
 * **bytes**  : The data encoded
 
 
+### .decode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L75)
+```python
+.decode(
+   data: bytes, n: int = None
+)
+```
+
+---
+Decodes the data to verify the integrity
+
+
+**Args**
+
+* **data** (bytes) : The data to be decode
+
+
+**Returns**
+
+* **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
+
+
 ### ._create_block
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L109)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L124)
 ```python
 ._create_block(
    data: bytes, n: int
@@ -112,4 +90,26 @@ every block have n bits of data
 **Returns**
 
 * **list**  : the list of blocks needed
+
+
+### .__get_edac_generator
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L161)
+```python
+.__get_edac_generator(
+   edac_type: EDACType
+)
+```
+
+---
+Get the edac system specified by [EDACType](../schema/#edactype)
+
+
+**Raises**
+
+* **ValueError**  : If no EDAC Type was found
+
+
+**Returns**
+
+* EDAC system 
 

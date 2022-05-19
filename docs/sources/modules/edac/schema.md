@@ -2,7 +2,7 @@
 
 
 ## EDACType
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L5)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L4)
 ```python 
 EDACType()
 ```
@@ -40,8 +40,31 @@ it contains and will only be call the method it contains
 **Methods:**
 
 
+### .encode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L65)
+```python
+.encode(
+   data: int
+)
+```
+
+---
+The method that the EDAC system need to encode for futher
+EDAC usage
+
+
+**Args**
+
+* **data** (int) : the data to be encoded
+
+
+**Returns**
+
+* **int**  : the data encoded
+
+
 ### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L85)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L80)
 ```python
 .decode(
    data: int, check: int
@@ -67,29 +90,6 @@ the correctness
 * **bits** (list) : The index of errorbits
 
 
-### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L70)
-```python
-.encode(
-   data: int
-)
-```
-
----
-The method that the EDAC system need to encode for futher
-EDAC usage
-
-
-**Args**
-
-* **data** (int) : the data to be encoded
-
-
-**Returns**
-
-* **int**  : the data encoded
-
-
 ### .get_default_block
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L35)
 ```python
@@ -106,7 +106,7 @@ Generate default block of the EDAC system
 
 
 ### .get_parity_size
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L53)
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50)
 ```python
 .get_parity_size()
 ```

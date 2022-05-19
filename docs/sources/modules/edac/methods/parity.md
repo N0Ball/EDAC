@@ -24,6 +24,28 @@ EDAC System to deal with data that needs parity code added
 **Methods:**
 
 
+### .encode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L18)
+```python
+.encode(
+   data: int
+)
+```
+
+---
+encode the given integer (was bytes)
+
+
+**Args**
+
+* **data** (int) : given integer
+
+
+**Returns**
+
+* **int**  : integer that is encoded
+
+
 ### .decode
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L37)
 ```python
@@ -54,25 +76,3 @@ parity code
 * **data** (int) : the corrected data (`0` for `CI`)
 * **bits** (list) : the index of the error bits
 `CI` for `Cannot Identify`
-
-### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L18)
-```python
-.encode(
-   data: int
-)
-```
-
----
-encode the given integer (was bytes)
-
-
-**Args**
-
-* **data** (int) : given integer
-
-
-**Returns**
-
-* **int**  : integer that is encoded
-
