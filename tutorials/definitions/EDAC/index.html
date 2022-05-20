@@ -99,8 +99,6 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../ErrorDetection/crc/">Crc</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../ErrorDetection/hammingCode/">hammingCode</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../ErrorDetection/parity/">Parity</a>
@@ -112,8 +110,6 @@
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">EDAC</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#intro">Intro</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#syndrome">Syndrome</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#sec-ded">SEC-DED</a>
         <ul>
@@ -178,14 +174,6 @@
 <hr />
 <pre><code>This is definitions of Error Detection And Correction related page.
 </code></pre>
-<h2 id="syndrome">Syndrome</h2>
-<hr />
-<p>A syndrome is the parity bits.
-For example, take <a href="../../ErrorDetection/parity">parity</a> as example, a <code>0b101</code> have parity bit <code>0b1</code>; 
-therefore, the syndrome of <code>0b101</code> is <code>1</code>.</p>
-<p>Since, EDAC is often described in an Galios Field; 
-therefore, the syndrome can also be written as a polynomial form.
-That is, if the syndrome is <code>0b1011</code> -&gt; it is equivalent to <code>x^3 + x + 1</code>.</p>
 <h2 id="sec-ded">SEC-DED</h2>
 <hr />
 <p>Single Error Correction Double Error Detection (SEC-DED)</p>

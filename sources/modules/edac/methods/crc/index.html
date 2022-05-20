@@ -99,8 +99,6 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/crc/">Crc</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/parity/">Parity</a>
@@ -183,6 +181,23 @@
 <li><strong>schema</strong> (<a href="../crc_methods/schema#SCHEMA">SCHEMA</a>) : The schema of            CRC you chose to use, defaults to <code>CRC_8_ATM</code></li>
 </ul>
 <p><strong>Methods:</strong></p>
+<h3 id="decode">.decode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L69">source</a></p>
+<pre><code class="language-python">.decode(
+   data: int, check: int
+)
+</code></pre>
+<hr />
+<p>Decode the given data</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : the target data to decode</li>
+<li><strong>check</strong> (int) : syndrome</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
+</ul>
 <h3 id="encode">.encode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L53">source</a></p>
 <pre><code class="language-python">.encode(
@@ -214,23 +229,6 @@
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>int</strong>  : the result</li>
-</ul>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L69">source</a></p>
-<pre><code class="language-python">.decode(
-   data: int, check: int
-)
-</code></pre>
-<hr />
-<p>Decode the given data</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the target data to decode</li>
-<li><strong>check</strong> (int) : syndrome</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
 </ul>
               
             </div>
