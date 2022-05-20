@@ -24,4 +24,6 @@ class TestBitFlipNoise(TestBase):
         diff = [i for i in range(len(data)) if data[i] != result[i]]
         
         self.assertEqual(len(diff), expected, self.assert_message)
-        
+
+if __name__ == '__main__':
+    unittest.main()
