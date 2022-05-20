@@ -1,0 +1,12 @@
+---
+tests:
+  default_encode:
+    - case: normal single word
+      data: "46" # F
+      expected: 0b100011001011
+    - case: long block sizes
+      data: "4e3042613121" # N0Ba1!
+      expected: 0b1001110001010001000001000000011100110000101100001100010010011000001000000011100
+    - case: empty
+      data: '00'
+      expected: 0b0
