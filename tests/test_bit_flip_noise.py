@@ -10,7 +10,7 @@ from modules.noise.methods.bitflip import BitFlipNoise
 class TestBitFlipNoise(TestBase):
 
     # TODO give a default debug value to this
-    BIT_FLIP = BitFlipNoise(True, flip_list=[])
+    BIT_FLIP = BitFlipNoise(False, flip_list=[])
     ITERATE_TIME = 1000
 
     @TestBase.parameterized
