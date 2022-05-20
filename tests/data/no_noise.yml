@@ -1,0 +1,12 @@
+---
+tests:
+  default:
+    - case: single bit
+      data: 0x1
+      expected: 0b1
+    - case: one byte
+      data: 0x32
+      expected: 0x32
+    - case: long bytes
+      data: 0xdeadbeefdeadc0de
+      expected: 0xdeadbeefdeadc0de
