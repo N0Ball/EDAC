@@ -99,6 +99,8 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ErrorDetection/crc/">Crc</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../ErrorDetection/hammingCode/">hammingCode</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../ErrorDetection/parity/">Parity</a>
@@ -126,6 +128,16 @@
     <li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#galois-field">Galois Field</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#gfn">GF(n)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#gfnm">GF(n^m)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#generator-of-a-galois-field">Generator of a Galois Field</a>
     </li>
     </ul>
                 </li>
@@ -262,6 +274,53 @@ H_d(\text{12345}, \text{22355}) = 2 \\[1em]
 H_d(\text{12345}, \text{54321}) = 4 \\[1em]
 </script>
 </p>
+<h2 id="galois-field">Galois Field</h2>
+<hr />
+<p><strong>NOTE:</strong> This is only a brief introduction to galios field, some of the concepts might be wrong, 
+but is more easy for the learnings.</p>
+<p>Field is a group of numbers that are well defined their operations.
+Galois Field is a group of finite elements, which is also often called finite field, and often use <script type="math/tex">GF</script> to present it.
+We often put <script type="math/tex">\Bbb Z</script> in Galois Field, since <script type="math/tex">\Bbb R</script> have infinite numbers.</p>
+<h3 id="gfn">
+<script type="math/tex">GF(n)</script>
+</h3>
+<p>This is exactly the same of 
+<script type="math/tex; mode=display">
+f(x) \equiv x\ mod(n)
+</script>
+Take <script type="math/tex">GF(2)</script>for example:</p>
+<pre><code class="language-shell">3 -&gt; f(3) = 3%2 = 1
+</code></pre>
+<p>Therefore <code>3</code> in <script type="math/tex">GF(2)</script> is <code>1</code>.
+We can see that the basic operators ( which is <code>+-</code> ) remains the same.</p>
+<p><strong>Note:</strong> the <code>*/</code> operator are quite different, 
+while <script type="math/tex">3 \times 2 \equiv 1\ mod(6)</script> however <script type="math/tex">1 / 2 = 0.5</script> does not equal to anything.</p>
+<h3 id="gfnm">
+<script type="math/tex">GF(n^m)</script>
+</h3>
+<p>It is nearly the same as <script type="math/tex">GF(n)</script>, but in a polynomial term.
+That is, <script type="math/tex">GF(2^m)</script> can be written as 
+<script type="math/tex; mode=display">
+f(X) \equiv X\ mod(\Sigma^{m}_{i = 0} a_ix^i)
+</script>
+where <script type="math/tex">a_i</script> is the coefficient in <script type="math/tex">GF(n)</script> with <script type="math/tex">a_m \ne 0</script> and X is the given polynomial, which also needs to be in <script type="math/tex">GF(n)</script>.
+<script type="math/tex">\Sigma^{m}_{i = 0} a_ix^i</script> can be chosen, and we called this chosen polynomial <strong>generator</strong>.</p>
+<p>Take GF(2^3) for example, we chose generator is <script type="math/tex">x^3 + x^1 + 1</script>:</p>
+<p>
+<script type="math/tex; mode=display">
+x^4 + x^3 + x^1 \rightarrow f(X) = x^2 + x + 1
+</script>
+</p>
+<p><a href="http://www.ee.unb.ca/cgi-bin/tervo/calc2.pl?num=1+1+0+1+0&amp;den=1+0+1+1&amp;f=d&amp;p=2&amp;d=1&amp;y=1">Reference</a>, 
+remember that the <code>+-</code> is <code>xor</code> for every <code>x</code> since there is no need for the carries.</p>
+<p>Therefore <script type="math/tex">x^4 + x^3 + x^1</script> in <script type="math/tex">GF(2^3)</script> is <script type="math/tex">x^2 + x + 1</script>.</p>
+<h2 id="generator-of-a-galois-field">Generator of a Galois Field</h2>
+<p>A <a href="#galois-field">Galois Field</a> is equiavlent to a function below
+<script type="math/tex; mode=display">
+f(X) \equiv X\ mod(\Sigma^{m}_{i = 0} a_ix^i)
+</script>
+where X is a polynomial and <script type="math/tex">\Sigma^{m}_{i = 0} a_ix^i</script> is chosen.
+Therefore we call this chosen polynomial (<script type="math/tex">\Sigma^{m}_{i = 0} a_ix^i</script>) generator.</p>
               
             </div>
           </div>

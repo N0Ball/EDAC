@@ -103,6 +103,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/crc/">Crc</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/ErrorDetection/parity/">Parity</a>
@@ -190,26 +192,6 @@ b'123'
 <p>SeeAlso:
     <a href="../schema#NoiseType">NoiseType</a></p>
 <p><strong>Methods:</strong></p>
-<h3 id="__get_noise_generator">.__get_noise_generator</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L52">source</a></p>
-<pre><code class="language-python">.__get_noise_generator(
-   noise_type: NoiseType
-)
-</code></pre>
-<hr />
-<p>Get the noise system of the given noise type</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>noise_type</strong> (<a href="../schema#NoiseType">NoiseType</a>) : the givin noise type seealso: noise.shceme.NoiseType</li>
-</ul>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>  : No noise type found</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>NoiseMethod</strong>  : the noise system</li>
-</ul>
 <h3 id="add_noise">.add_noise</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L28">source</a></p>
 <pre><code class="language-python">.add_noise(
@@ -229,6 +211,26 @@ b'123'
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>bytes</strong>  : the data with the noise</li>
+</ul>
+<h3 id="__get_noise_generator">.__get_noise_generator</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L52">source</a></p>
+<pre><code class="language-python">.__get_noise_generator(
+   noise_type: NoiseType
+)
+</code></pre>
+<hr />
+<p>Get the noise system of the given noise type</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>noise_type</strong> (<a href="../schema#NoiseType">NoiseType</a>) : the givin noise type seealso: noise.shceme.NoiseType</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>ValueError</strong>  : No noise type found</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>NoiseMethod</strong>  : the noise system</li>
 </ul>
               
             </div>

@@ -99,6 +99,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="#">ErrorDetection</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/crc/">Crc</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/hammingCode/">hammingCode</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../../tutorials/ErrorDetection/parity/">Parity</a>
@@ -179,6 +181,22 @@
 <li><strong>debug</strong> (bool, optional) : Debug level. Defaults to False.</li>
 </ul>
 <p><strong>Methods:</strong></p>
+<h3 id="_create_table">._create_table</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136">source</a></p>
+<pre><code class="language-python">._create_table(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Create the hamming table according to the given block size</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>list</strong>  : hamming table</li>
+</ul>
 <h3 id="decode">.decode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53">source</a></p>
 <pre><code class="language-python">.decode(
@@ -211,22 +229,6 @@
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>int</strong>  : the encoded data in integer</li>
-</ul>
-<h3 id="_create_table">._create_table</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136">source</a></p>
-<pre><code class="language-python">._create_table(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Create the hamming table according to the given block size</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : data</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>list</strong>  : hamming table</li>
 </ul>
               
             </div>
