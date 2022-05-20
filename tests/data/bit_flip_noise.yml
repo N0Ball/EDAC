@@ -1,0 +1,9 @@
+---
+tests:
+  random:
+    - case: random noise
+      data: 0b101101
+      expected: 1
+    - case: long input
+      data: 0xdeadbeefdeadc0de
+      expected: 1
