@@ -33,7 +33,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'G-MVF9G07SQD', 'auto');
+      ga('create', 'UA-208228992-2', 'auto');
       ga('send', 'pageview');
   </script>
   
@@ -202,26 +202,6 @@ b'123'
 <p>SeeAlso:
     <a href="../schema#NoiseType">NoiseType</a></p>
 <p><strong>Methods:</strong></p>
-<h3 id="__get_noise_generator">.__get_noise_generator</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L52">source</a></p>
-<pre><code class="language-python">.__get_noise_generator(
-   noise_type: NoiseType
-)
-</code></pre>
-<hr />
-<p>Get the noise system of the given noise type</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>noise_type</strong> (<a href="../schema#NoiseType">NoiseType</a>) : the givin noise type seealso: noise.shceme.NoiseType</li>
-</ul>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>ValueError</strong>  : No noise type found</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>NoiseMethod</strong>  : the noise system</li>
-</ul>
 <h3 id="add_noise">.add_noise</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L28">source</a></p>
 <pre><code class="language-python">.add_noise(
@@ -241,6 +221,26 @@ b'123'
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>bytes</strong>  : the data with the noise</li>
+</ul>
+<h3 id="__get_noise_generator">.__get_noise_generator</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/factory.py/#L52">source</a></p>
+<pre><code class="language-python">.__get_noise_generator(
+   noise_type: NoiseType
+)
+</code></pre>
+<hr />
+<p>Get the noise system of the given noise type</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>noise_type</strong> (<a href="../schema#NoiseType">NoiseType</a>) : the givin noise type seealso: noise.shceme.NoiseType</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>ValueError</strong>  : No noise type found</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>NoiseMethod</strong>  : the noise system</li>
 </ul>
               
             </div>

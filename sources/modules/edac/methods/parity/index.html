@@ -33,7 +33,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'G-MVF9G07SQD', 'auto');
+      ga('create', 'UA-208228992-2', 'auto');
       ga('send', 'pageview');
   </script>
   
@@ -192,22 +192,6 @@ EDAC System to deal with data that needs parity code added</p>
 <li><strong>debug</strong> (bool, optional) : Debug Level. Defaults to False.</li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L18">source</a></p>
-<pre><code class="language-python">.encode(
-   data: int
-)
-</code></pre>
-<hr />
-<p>encode the given integer (was bytes)</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : given integer</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : integer that is encoded</li>
-</ul>
 <h3 id="decode">.decode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L37">source</a></p>
 <pre><code class="language-python">.decode(
@@ -233,6 +217,22 @@ parity code</p>
 <li><strong>data</strong> (int) : the corrected data (<code>0</code> for <code>CI</code>)</li>
 <li><strong>bits</strong> (list) : the index of the error bits
 <code>CI</code> for <code>Cannot Identify</code></li>
+</ul>
+<h3 id="encode">.encode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L18">source</a></p>
+<pre><code class="language-python">.encode(
+   data: int
+)
+</code></pre>
+<hr />
+<p>encode the given integer (was bytes)</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : given integer</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : integer that is encoded</li>
 </ul>
               
             </div>

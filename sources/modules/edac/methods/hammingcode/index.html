@@ -33,7 +33,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'G-MVF9G07SQD', 'auto');
+      ga('create', 'UA-208228992-2', 'auto');
       ga('send', 'pageview');
   </script>
   
@@ -191,21 +191,22 @@
 <li><strong>debug</strong> (bool, optional) : Debug level. Defaults to False.</li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L19">source</a></p>
-<pre><code class="language-python">.encode(
-   data: int
+<h3 id="decode">.decode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53">source</a></p>
+<pre><code class="language-python">.decode(
+   data: int, check: int
 )
 </code></pre>
 <hr />
-<p>Encode the given data</p>
+<p>Decode the given data</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (int) : the data in integer</li>
+<li><strong>data</strong> (int) : the given data</li>
+<li><strong>check</strong> (int) : parity bytes</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>int</strong>  : the encoded data in integer</li>
+<li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
 </ul>
 <h3 id="_create_table">._create_table</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136">source</a></p>
@@ -223,22 +224,21 @@
 <ul>
 <li><strong>list</strong>  : hamming table</li>
 </ul>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53">source</a></p>
-<pre><code class="language-python">.decode(
-   data: int, check: int
+<h3 id="encode">.encode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L19">source</a></p>
+<pre><code class="language-python">.encode(
+   data: int
 )
 </code></pre>
 <hr />
-<p>Decode the given data</p>
+<p>Encode the given data</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (int) : the given data</li>
-<li><strong>check</strong> (int) : parity bytes</li>
+<li><strong>data</strong> (int) : the data in integer</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
+<li><strong>int</strong>  : the encoded data in integer</li>
 </ul>
               
             </div>
