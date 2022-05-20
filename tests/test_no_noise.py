@@ -12,3 +12,7 @@ class TestNoNoise(TestBase):
     def test_default(self, data, expected):
 
         self.assertEqual(data, expected, self.assert_message)
+
+if __name__ == '__main__':
+
+    unittest.main()
