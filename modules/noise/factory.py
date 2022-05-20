@@ -19,7 +19,7 @@ class NoiseFactory:
         [NoiseType](../schema#NoiseType)
     """
 
-    def __init__(self, noise_type: NoiseType, debug: bool = False, **kwargs) -> None:
+    def __init__(self, noise_type: NoiseType, debug: bool = False, *args, **kwargs) -> None:
         self.TYPE: NoiseType = noise_type
         self.KWARGS: dict = kwargs
         self.DEBUG: bool = debug
@@ -64,7 +64,7 @@ class NoiseFactory:
 
         __noise_generator = {
             NoiseType.NO_NOISE: NoNoise(self.DEBUG),
-            NoiseType.BIT_FLIP: BitFlipNoise(self.DEBUG, self.KWARGS)
+            NoiseType.BIT_FLIP: BitFlipNoise(self.DEBUG, **self.KWARGS)
         }.get(noise_type, None)
 
         if not __noise_generator:
