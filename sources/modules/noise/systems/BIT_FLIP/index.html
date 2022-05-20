@@ -27,6 +27,16 @@
   <script src="../../../../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'G-MVF9G07SQD', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -199,6 +209,26 @@ b'OuO'
 b'OÕO'
 </code></pre>
 <p><strong>Methods:</strong></p>
+<h3 id="add_noise">.add_noise</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L47">source</a></p>
+<pre><code class="language-python">.add_noise(
+   data: bytes
+)
+</code></pre>
+<hr />
+<p>Validate the <code>flip_list</code> and add the noise to the data</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (bytes) : The data to be noise added</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>IndexError</strong>  : the <code>flip_list</code> contains integers that exceeds the length of                the original data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>bytes</strong>  : the data with the noise</li>
+</ul>
 <h3 id="__add_noise">.__add_noise</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L76">source</a></p>
 <pre><code class="language-python">.__add_noise(
@@ -227,26 +257,6 @@ Given an example</p>
 | 1 | 0 |*0*| 1 |*1*|
 </code></pre>
 <p>You can see that except the <script type="math/tex">2^{nd}</script> and the <script type="math/tex">4^{th}</script> data, the data remains                the same.</p>
-<h3 id="add_noise">.add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L47">source</a></p>
-<pre><code class="language-python">.add_noise(
-   data: bytes
-)
-</code></pre>
-<hr />
-<p>Validate the <code>flip_list</code> and add the noise to the data</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (bytes) : The data to be noise added</li>
-</ul>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>IndexError</strong>  : the <code>flip_list</code> contains integers that exceeds the length of                the original data</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>bytes</strong>  : the data with the noise</li>
-</ul>
               
             </div>
           </div>
