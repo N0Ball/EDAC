@@ -35,7 +35,7 @@ class BitFlipNoise(NoiseMethod):
         b'O\xd5O'
     """
 
-    def __init__(self, debug: bool, kwargs: dict = None) -> None:
+    def __init__(self, debug: bool, **kwargs) -> None:
         super().__init__(NoiseType.BIT_FLIP, debug)
 
         # Set the bits to flip (by index)
