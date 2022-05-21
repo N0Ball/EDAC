@@ -10,3 +10,28 @@ tests:
     - case: empty
       data: '00'
       expected: 0b0
+  default_decode:
+    - case: normal single word
+      data: 0b100011001011
+      expected: 
+        - True
+        - F
+        - [""]
+    - case: single word single error
+      data: 0b101011001011
+      expected:
+        - True
+        - F
+        - [6]
+    - case: single word double error
+      data: 0b100010101011
+      expected:
+        - False
+        - E
+        - ["CI"]
+    - case: long block sizes
+      data: 0b1001110001010001000001000000011100110000101100001100010010011000001000000011100
+      expected: 
+        - True
+        - N0Ba1!
+        - ['', '', '', '', '']
