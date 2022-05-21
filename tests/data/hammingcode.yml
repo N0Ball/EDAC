@@ -11,27 +11,51 @@ tests:
       data: '00'
       expected: 0b0
   default_decode:
-    - case: normal single word
+    - case: single word
       data: 0b100011001011
       expected: 
         - True
         - F
         - [""]
-    - case: single word single error
+    - case: single word - single error
       data: 0b101011001011
       expected:
-        - True
+        - False
         - F
         - [6]
-    - case: single word double error
+    - case: single word - double error
       data: 0b100010101011
       expected:
         - False
         - E
         - ["CI"]
-    - case: long block sizes
+    - case: single word - parity error
+      data: 0b100011000011
+      expected:
+        - False
+        - F
+        - [-1]
+    - case: multiple blocks
       data: 0b1001110001010001000001000000011100110000101100001100010010011000001000000011100
       expected: 
         - True
         - N0Ba1!
         - ['', '', '', '', '']
+    - case: multiple blocks - single block single error
+      data: 0b1001110001010001010001000000011100110000101100001100010010011000001000000011100
+      expected:
+        - False
+        - N0Ba1!
+        - ['', 2, '', '', '']
+    - case: multiple blocks - multiple block single error
+      data: 0b1001110001010001010001000000011110110000101100001100010010011000001000000011100
+      expected:
+        - False
+        - N0Ba1!
+        - ['', 2, 1, '', '']
+    - case: multiple block - single block multiple error
+      data: 0b1001110001010001010001000100011110110000101100001100010010011000001000000011100
+      expected:
+        - False
+        - N4Fa1!
+        - ['', 'CI', 1, '', '']
