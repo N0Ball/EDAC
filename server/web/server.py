@@ -1,11 +1,9 @@
 from flask import Flask
 
-from .view.parity import Parity
-from .view.hammingcode import HammingCode
+from .routes.parity import Parity
+from .routes.hammingcode import HammingCode
 
 app = Flask(__name__)
-
-app.run()
 
 @app.route("/")
 def home():
@@ -13,3 +11,6 @@ def home():
 
 app.register_blueprint(Parity().get_route(), url_prefix='/parity')
 app.register_blueprint(HammingCode().get_route(), url_prefix='/hammingCode')
+
+if __name__ == '__main__':
+    app.run()
