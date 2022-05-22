@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from ..lib.edactest import EDACTest
+from ..module.edactest import EDACTest
 
 from modules.noise.schema import NoiseType
 
