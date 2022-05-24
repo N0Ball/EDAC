@@ -40,6 +40,44 @@ it contains and will only be call the method it contains
 **Methods:**
 
 
+### .get_parity_size
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50)
+```python
+.get_parity_size()
+```
+
+---
+Generate the parity size of the EDAC system
+
+
+**Returns**
+
+* **int**  : parity size of the EDAC system
+
+
+### .encode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L65)
+```python
+.encode(
+   data: int
+)
+```
+
+---
+The method that the EDAC system need to encode for futher
+EDAC usage
+
+
+**Args**
+
+* **data** (int) : the data to be encoded
+
+
+**Returns**
+
+* **int**  : the data encoded
+
+
 ### .decode
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L80)
 ```python
@@ -80,42 +118,4 @@ Generate default block of the EDAC system
 **Returns**
 
 * **int**  : default block of the EDAC system
-
-
-### .get_parity_size
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50)
-```python
-.get_parity_size()
-```
-
----
-Generate the parity size of the EDAC system
-
-
-**Returns**
-
-* **int**  : parity size of the EDAC system
-
-
-### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L65)
-```python
-.encode(
-   data: int
-)
-```
-
----
-The method that the EDAC system need to encode for futher
-EDAC usage
-
-
-**Args**
-
-* **data** (int) : the data to be encoded
-
-
-**Returns**
-
-* **int**  : the data encoded
 

@@ -24,50 +24,6 @@ Creates the EDAC System specify by given [EDAC Type](../schema/#edactype)
 **Methods:**
 
 
-### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L75)
-```python
-.decode(
-   data: bytes, n: int = None
-)
-```
-
----
-Decodes the data to verify the integrity
-
-
-**Args**
-
-* **data** (bytes) : The data to be decode
-
-
-**Returns**
-
-* **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
-
-
-### .__get_edac_generator
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L161)
-```python
-.__get_edac_generator(
-   edac_type: EDACType
-)
-```
-
----
-Get the edac system specified by [EDACType](../schema/#edactype)
-
-
-**Raises**
-
-* **ValueError**  : If no EDAC Type was found
-
-
-**Returns**
-
-* EDAC system 
-
-
 ### ._create_block
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L124)
 ```python
@@ -112,4 +68,48 @@ Encodes the data with edac system
 **Returns**
 
 * **bytes**  : The data encoded
+
+
+### .__get_edac_generator
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L161)
+```python
+.__get_edac_generator(
+   edac_type: EDACType
+)
+```
+
+---
+Get the edac system specified by [EDACType](../schema/#edactype)
+
+
+**Raises**
+
+* **ValueError**  : If no EDAC Type was found
+
+
+**Returns**
+
+* EDAC system 
+
+
+### .decode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L75)
+```python
+.decode(
+   data: bytes, n: int = None
+)
+```
+
+---
+Decodes the data to verify the integrity
+
+
+**Args**
+
+* **data** (bytes) : The data to be decode
+
+
+**Returns**
+
+* **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
 
