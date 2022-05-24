@@ -123,6 +123,8 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#intro">Intro</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#edac">EDAC</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#syndrome">Syndrome</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#sec-ded">SEC-DED</a>
@@ -188,9 +190,19 @@
 <hr />
 <pre><code>This is definitions of Error Detection And Correction related page.
 </code></pre>
+<h2 id="edac">EDAC</h2>
+<p>Error <br>
+Detection <br>
+And <br>
+Correction</p>
+<hr />
+<p>EDAC is something that you can imply to your message, 
+which often append bits (which are called parity bits) to the end of the message.
+We called these bits <a href="#syndrome">syndrome</a>. By examing syndromes, 
+it is able to either <strong>detect</strong> or <strong>correct</strong> errors arised during the transmission of the message.</p>
 <h2 id="syndrome">Syndrome</h2>
 <hr />
-<p>A syndrome is the parity bits.
+<p>A syndrome is the a group of parity bits.
 For example, take <a href="../../ErrorDetection/parity">parity</a> as example, a <code>0b101</code> have parity bit <code>0b1</code>; 
 therefore, the syndrome of <code>0b101</code> is <code>1</code>.</p>
 <p>Since, EDAC is often described in an Galios Field; 

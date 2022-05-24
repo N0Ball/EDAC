@@ -64,6 +64,10 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">EDAC</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#learn">Learn</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#test">Test</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Modules</a>
@@ -169,11 +173,43 @@
               
                 <h1 id="edac">EDAC</h1>
 <p>A Learning Program for Error Decoding and Correction</p>
+<p>you can either </p>
+<h2 id="learn">Learn</h2>
+<p>How to <strong>decode</strong>, <strong>encode</strong> or <strong>correct</strong> your EDAC message.</p>
+<h2 id="test">Test</h2>
+<p>Your EDAC implementation</p>
+<h1 id="intro">Intro</h1>
+<h2 id="what-is-edac">What is EDAC</h2>
+<p><strong>In a nutshell:</strong> </p>
+<p>A method that you can </p>
+<ul>
+<li>Detect Error</li>
+<li>Correct Error</li>
+</ul>
+<p>to your data</p>
+<p><a href="../tutorials/definitions/EDAC#edac">A little more details</a></p>
+<h2 id="what-edac-systems-do-we-have">What EDAC Systems do we have</h2>
+<ul>
+<li><a href="modules/edac/methods/crc/">CRC</a></li>
+<li><a href="modules/edac/methods/hammingcode/">Hamming Code</a></li>
+<li><a href="modules/edac/methods/parity/">Parity Bit</a></li>
+</ul>
+<h2 id="if-you-want-to-learn-edacs">If you want to learn EDACs</h2>
+<ul>
+<li><a href="../tutorials/ErrorDetection/crc/">CRC</a></li>
+<li><a href="../tutorials/ErrorDetection/hammingCode/">Hamming Code</a></li>
+<li><a href="../tutorials/ErrorDetection/parity/">Parity Bit</a></li>
+</ul>
 <h1 id="installations">Installations</h1>
+<h2 id="before-you-run">Before you run</h2>
 <pre><code class="language-sh">git clone https://github.com/N0Ball/EDAC.git
 python3 -m pip install -r requirements
 </code></pre>
-<h1 id="docs">Docs</h1>
+<h2 id="web-api">Web API</h2>
+<pre><code class="language-sh">export FLASK_APP=server/web/server:app
+flask run
+</code></pre>
+<h2 id="docs">Docs</h2>
 <p><a href="https://n0ball.github.io/EDAC">Documentations</a></p>
 <pre><code class="language-sh">make view-docs # Open a server to view documentation
 make build-docs # Auto create docs from code
