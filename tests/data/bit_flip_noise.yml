@@ -1,9 +1,54 @@
 ---
 tests:
   random:
-    - case: random noise
+    - case: simple input
       data: 0b101101
       expected: 1
     - case: long input
       data: 0xdeadbeefdeadc0de
       expected: 1
+  flip_list:
+    - case: simple input, single bit flip
+      data: 
+        input: 0b101101
+        flip_list: [
+          3
+        ]
+      expected: 
+        diff: 1
+        flipped: [
+        3
+      ]
+    - case: simple input, double bit flip
+      data:
+        input: 0b101101
+        flip_list: [
+          2, 5
+        ]
+      expected:
+        diff: 2
+        flipped: [
+          2, 5
+        ]
+    - case: long input, single bit flip
+      data:
+        input: 0xdeadbeefdeadc0de
+        flip_list: [
+          49
+        ]
+      expected:
+        diff: 1
+        flipped: [
+          49
+        ]
+    - case: long input, double bit flip
+      data:
+        input: 0xdeadbeefdeadc0de
+        flip_list: [
+          3, 25
+        ]
+      expected:
+        diff: 2
+        flipped: [
+          3, 25
+        ]
