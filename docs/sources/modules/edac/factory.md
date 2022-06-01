@@ -24,28 +24,6 @@ Creates the EDAC System specify by given [EDAC Type](../schema/#edactype)
 **Methods:**
 
 
-### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L75)
-```python
-.decode(
-   data: bytes, n: int = None
-)
-```
-
----
-Decodes the data to verify the integrity
-
-
-**Args**
-
-* **data** (bytes) : The data to be decode
-
-
-**Returns**
-
-* **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
-
-
 ### ._create_block
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L124)
 ```python
@@ -67,6 +45,29 @@ every block have n bits of data
 **Returns**
 
 * **list**  : the list of blocks needed
+
+
+### .encode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L39)
+```python
+.encode(
+   data: bytes, n: int = None
+)
+```
+
+---
+Encodes the data with edac system
+
+
+**Args**
+
+* **data** (bytes) : The data to be encoded
+* **n** (int) : The block size given (`None` as default)
+
+
+**Returns**
+
+* **bytes**  : The data encoded
 
 
 ### .__get_edac_generator
@@ -91,25 +92,24 @@ Get the edac system specified by [EDACType](../schema/#edactype)
 * EDAC system 
 
 
-### .encode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L39)
+### .decode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/factory.py/#L75)
 ```python
-.encode(
+.decode(
    data: bytes, n: int = None
 )
 ```
 
 ---
-Encodes the data with edac system
+Decodes the data to verify the integrity
 
 
 **Args**
 
-* **data** (bytes) : The data to be encoded
-* **n** (int) : The block size given (`None` as default)
+* **data** (bytes) : The data to be decode
 
 
 **Returns**
 
-* **bytes**  : The data encoded
+* **tuple** (bool, bytes, list) : should be formated `(error, original data, error bits)`
 

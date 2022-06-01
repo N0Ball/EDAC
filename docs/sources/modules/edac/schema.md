@@ -40,33 +40,6 @@ it contains and will only be call the method it contains
 **Methods:**
 
 
-### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L80)
-```python
-.decode(
-   data: int, check: int
-)
-```
-
----
-The method that the EDAC system need to decode for checking
-the correctness
-
-
-**Args**
-
-* **data** (int) : The data to be checked
-* **check** (int) : Parity Code to check
-
-
-**Returns**
-
-* **tuple**  : format should be `(error, data, error bits)`
-* **error** (bool) : Is the data corrupted
-* **data** (bytes) : The fixed data (return `0x00` if can't be fixed)
-* **bits** (list) : The index of errorbits
-
-
 ### .get_parity_size
 [source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50)
 ```python
@@ -103,6 +76,33 @@ EDAC usage
 **Returns**
 
 * **int**  : the data encoded
+
+
+### .decode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L80)
+```python
+.decode(
+   data: int, check: int
+)
+```
+
+---
+The method that the EDAC system need to decode for checking
+the correctness
+
+
+**Args**
+
+* **data** (int) : The data to be checked
+* **check** (int) : Parity Code to check
+
+
+**Returns**
+
+* **tuple**  : format should be `(error, data, error bits)`
+* **error** (bool) : Is the data corrupted
+* **data** (bytes) : The fixed data (return `0x00` if can't be fixed)
+* **bits** (list) : The index of errorbits
 
 
 ### .get_default_block

@@ -231,7 +231,7 @@ For example:
 7 -> 0b111
 ```
 
-The \(0^{th}\) group is `0, 2, 4, 7`, since the \(0^{th}\)
+The \(0^{th}\) group is `1, 3, 5, 7`, since the \(0^{th}\)
 index of thier binaries are 1 (`0b001`, `0b011`, `0b101`, `0b111`). 
 The \(1^{st}\) group is `2, 3, 6, 7` (`0b010`, `0b011`, `0b110`, `0b111`).
 

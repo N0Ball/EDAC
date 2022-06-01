@@ -6,10 +6,24 @@
 
     This is definitions of Error Detection And Correction related page.
 
+## EDAC
+
+Error <br>
+Detection <br>
+And <br>
+Correction
+
+----
+
+EDAC is something that you can imply to your message, 
+which often append bits (which are called parity bits) to the end of the message.
+We called these bits [syndrome](#syndrome). By examing syndromes, 
+it is able to either **detect** or **correct** errors arised during the transmission of the message.
+
 ## Syndrome
 ---
 
-A syndrome is the parity bits.
+A syndrome is the a group of parity bits.
 For example, take [parity](../../ErrorDetection/parity) as example, a `0b101` have parity bit `0b1`; 
 therefore, the syndrome of `0b101` is `1`.
 

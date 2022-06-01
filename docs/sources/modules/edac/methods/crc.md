@@ -25,27 +25,26 @@ EDAC System to deal with data that needs CRC
 **Methods:**
 
 
-### .decode
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L69)
+### ._devide
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L91)
 ```python
-.decode(
-   data: int, check: int
+._devide(
+   data: int
 )
 ```
 
 ---
-Decode the given data
+Devide in GF(\(2^n\)) of given generator
 
 
 **Args**
 
-* **data** (int) : the target data to decode
-* **check** (int) : syndrome
+* **data** (int) : the given data
 
 
 **Returns**
 
-* **tuple**  : the results of the decode [see more](../../schema#decode)
+* **int**  : the result
 
 
 ### .encode
@@ -70,24 +69,25 @@ Encode the given data
 * **int**  : the syndrome in interger
 
 
-### ._devide
-[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L91)
+### .decode
+[source](https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L69)
 ```python
-._devide(
-   data: int
+.decode(
+   data: int, check: int
 )
 ```
 
 ---
-Devide in GF(\(2^n\)) of given generator
+Decode the given data
 
 
 **Args**
 
-* **data** (int) : the given data
+* **data** (int) : the target data to decode
+* **check** (int) : syndrome
 
 
 **Returns**
 
-* **int**  : the result
+* **tuple**  : the results of the decode [see more](../../schema#decode)
 
