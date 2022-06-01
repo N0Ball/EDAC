@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from modules import Debug
 from enum import Enum
 
 class NoiseType(Enum):
@@ -13,7 +13,7 @@ class NoiseType(Enum):
     NO_NOISE = 'none'
     BIT_FLIP = 'bit flip'
 
-class NoiseMethod(ABC):
+class NoiseMethod():
 
     """The Base class fo the Noise Method
 
@@ -25,11 +25,10 @@ class NoiseMethod(ABC):
         This is the abstract base class, `add_noise` method should **never be called**
     """
 
-    def __init__(self, noise_type: NoiseType = NoiseType.NO_NOISE, debug: bool = False) -> None:
+    def __init__(self, noise_type: NoiseType = NoiseType.NO_NOISE, debug: Debug = Debug.DEPLOY) -> None:
         self.TYPE = noise_type
         self.DEBUG = debug
 
-    @abstractmethod
     def add_noise(self, data: bytes) -> bytes:
         """Add the noise to the data from the noise system
 
@@ -39,4 +38,10 @@ class NoiseMethod(ABC):
         Returns:
             bytes: the data with the noise
         """
-        pass
+
+        if not self.DEBUG > Debug.DEBUG:
+
+            print(f"LOG:\tadd noise with input {data}")
+
+        if not type(data) == bytes:
+            raise ValueError("The input of noise should be type <bytes>")

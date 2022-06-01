@@ -10,3 +10,7 @@ tests:
     - case: long bytes
       data: 0xdeadbeefdeadc0de
       expected: 0xdeadbeefdeadc0de
+  invalid:
+    - case: wrong input type
+      data: 0x3
+      expected: The input of noise should be type <bytes>
