@@ -52,3 +52,29 @@ tests:
         flipped: [
           3, 25
         ]
+  invalid:
+    - case: wrong input type
+      data: 0x3
+      expected: The input of noise should be type <bytes>
+  index_exceed:
+    - case: single index exceed maximum
+      data: 
+        input: 0x3
+        flip_list: [
+          10
+        ]
+      expected: "Can't flip bit 10 in [10]: it's longer then the message"
+    - case: double index exceed maximum
+      data:
+        input: 0x3
+        flip_list: [
+          10, 15
+        ]
+      expected: "Can't flip bit 10 in [10, 15]: it's longer then the message"
+    - case: single index normal, single index exceed maximum
+      data:
+        input: 0x3
+        flip_list: [
+          3, 25
+        ]
+      expected: "Can't flip bit 25 in [3, 25]: it's longer then the message"

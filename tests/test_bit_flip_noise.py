@@ -42,6 +42,22 @@ class TestBitFlip(TestBase):
         self.assertEqual(diff_num, expected.get('diff'), self.assert_message)
         self.assertEqual(diff_index, expected.get('flipped'), self.assert_message)
 
+    @TestBase.parameterized
+    def test_invalid(self, data, expected):
+
+        with self.assertRaises(ValueError) as context:
+            self.BIT_FLIP.add_noise(data)
+
+        self.assertEqual(str(context.exception), expected, self.assert_message)
+
+    @TestBase.parameterized
+    def test_index_exceed(self, data, expected):
+
+        with self.assertRaises(IndexError) as context:
+            self.BIT_FLIP = BitFlip(data.get('flip_list'))
+            self.BIT_FLIP.add_noise(long_to_bytes(data.get('input')))
+
+        self.assertEqual(str(context.exception), expected, self.assert_message)
 
 
 if __name__ == '__main__':
