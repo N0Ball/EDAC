@@ -40,7 +40,11 @@ class TestBase(unittest.TestCase):
             for case in self.TEST_DATA.get(test_type,''):
 
                 name, data, expected = case
-                self.assert_message = f'\n CASE: <{name.upper()}> in {self.__module__}.{self._testMethodName}'
+                self.assert_message = f"""\n
+CASE: <{name.upper()}> in {self.__module__}.{self._testMethodName}
+INPUT: {data}
+EXPECTED: {expected}
+                    """
 
                 func(self, data, expected)
 
