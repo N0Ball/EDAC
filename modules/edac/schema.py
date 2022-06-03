@@ -125,6 +125,9 @@ class EDACMethod():
             tuple (bool, bytes, list): should be formated `(error, original data, error bits)`
         """
 
+        if not self.DEBUG > Debug.DEBUG:
+            print("LOG:\tTrying to Decode")
+
         # Use the default block size of the edac method
         if n == None:
             n = self.BLOCK_SIZE
