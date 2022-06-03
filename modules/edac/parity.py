@@ -9,7 +9,7 @@ class Parity(EDACMethod):
         debug (bool, optional): Debug Level. Defaults to False.
     """
 
-    def __init__(self, block_size: int = 8, debug: bool= False) -> None:
+    def __init__(self, block_size: int = 8, debug: Debug = Debug.DEPLOY) -> None:
         super().__init__(EDACType.PARITY, debug)
         self.DEFAULT_BLOCK = block_size
         self.PARITY_SIZE = 1

@@ -224,13 +224,17 @@ class EDACMethod():
         # Byte to binary string
         bin_string = ''.join(map(lambda x: bin(x)[2:].rjust(8, '0'), data))
 
+        # Append 0 to fix block size
+        if not len(bin_string)%n == 0:
+            bin_string += '0' * (n - len(bin_string)%n)
+
         # Create blocks
         blocks = []
 
-        while not bin_string == '0'*n:
+        while len(bin_string) > 0:
 
             element = int(bin_string[:n], 2)
-            bin_string = bin_string[n:].ljust(n, '0') # Append 0 if needed
+            bin_string = bin_string[n:]
 
             blocks.append(element)
 
