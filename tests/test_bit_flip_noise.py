@@ -1,6 +1,5 @@
 from math import ceil
 import unittest
-from Crypto.Util.number import long_to_bytes, bytes_to_long
 
 from tests.testbase import TestBase
 
@@ -15,11 +14,8 @@ class TestBitFlip(TestBase):
     def test_random(self, data, expected):
 
         for _ in range(self.ITERATE_TIME):
-            data = long_to_bytes(data)
+
             result = self.BIT_FLIP.add_noise(data)
-            
-            data = bytes_to_long(data)
-            result = bytes_to_long(result)
 
             diff = sum(map(int, bin(data ^ result)[2:].rjust(8, '0')))
             
@@ -32,9 +28,9 @@ class TestBitFlip(TestBase):
         flip_list = data.get('flip_list')
 
         self.BIT_FLIP = BitFlip(flip_list)
-        result = bytes_to_long(self.BIT_FLIP.add_noise(long_to_bytes(target)))
+        result = self.BIT_FLIP.add_noise(target)
 
-        LEN = ceil(len(bin(target)[2:])/8)*8
+        LEN = len(bin(target)[2:])
 
         diff_index = [x[0] for x in filter(lambda x: x[1] == 1, enumerate((map(int, bin(target^result)[2:].rjust(LEN, '0')))))]
         diff_num = len(diff_index)
@@ -46,7 +42,7 @@ class TestBitFlip(TestBase):
     def test_invalid(self, data, expected):
 
         with self.assertRaises(ValueError) as context:
-            self.BIT_FLIP.add_noise(data)
+            self.BIT_FLIP.add_noise(str(data))
 
         self.assertEqual(str(context.exception), expected, self.assert_message)
 
@@ -55,7 +51,7 @@ class TestBitFlip(TestBase):
 
         with self.assertRaises(IndexError) as context:
             self.BIT_FLIP = BitFlip(data.get('flip_list'))
-            self.BIT_FLIP.add_noise(long_to_bytes(data.get('input')))
+            self.BIT_FLIP.add_noise(data.get('input'))
 
         self.assertEqual(str(context.exception), expected, self.assert_message)
 

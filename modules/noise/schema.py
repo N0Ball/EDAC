@@ -29,7 +29,7 @@ class NoiseMethod():
         self.TYPE = noise_type
         self.DEBUG = debug
 
-    def add_noise(self, data: bytes) -> bytes:
+    def add_noise(self, data: int) -> int:
         """Add the noise to the data from the noise system
 
         Args:
@@ -43,5 +43,5 @@ class NoiseMethod():
 
             print(f"LOG:\tadd noise with input {data}")
 
-        if not type(data) == bytes:
-            raise ValueError("The input of noise should be type <bytes>")
+        if not type(data) == int:
+            raise ValueError("The input of noise should be type <int>")

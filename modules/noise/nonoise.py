@@ -11,7 +11,7 @@ class NoNoise(NoiseMethod):
     def __init__(self, debug: Debug = Debug.DEPLOY) -> None:
         super().__init__(NoiseType.NO_NOISE, debug)
 
-    def add_noise(self, data: bytes) -> bytes:
+    def add_noise(self, data: int) -> int:
         """The Method of adding noise to the data
 
         Args:

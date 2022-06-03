@@ -1,5 +1,4 @@
 import random
-from Crypto.Util.number import long_to_bytes, bytes_to_long
 
 from modules import Debug
 from .schema import NoiseType, NoiseMethod
@@ -8,7 +7,6 @@ class BitFlip(NoiseMethod):
     """Add the Bit Flip Noise System to the data
 
     Args:
-        # TODO fix documentation
         debug (Debug): the debug flag
         flip_list (list[int]): A list of integer index that defines the bit index\
             that should be flipped
@@ -34,18 +32,18 @@ class BitFlip(NoiseMethod):
 
         self.FLIP_LIST = flip_list
 
-    def add_noise(self, data: bytes) -> bytes:
+    def add_noise(self, data: int) -> int:
         """Validate the `flip_list` and add the noise to the data
 
         Args:
-            data (bytes): The data to be noise added
+            data (int): The data to be noise added
 
         Raises:
             IndexError: the `flip_list` contains integers that exceeds the length of\
                 the original data
 
         Returns:
-            bytes: the data with the noise
+            int: the data with the noise
         """
 
         super().add_noise(data)
@@ -60,7 +58,7 @@ class BitFlip(NoiseMethod):
                 print("WARN:\tbit flip had not chosen a flip index, using random index!")
         
         # Checking if the index exceeds the maximum
-        MAX = len(data)*8
+        MAX = len(bin(data)[2:])
         if self.FLIP_LIST:
             # Check if any flip index is exceed the original data length
             for flip_index in self.FLIP_LIST:
@@ -75,14 +73,14 @@ class BitFlip(NoiseMethod):
 
         return result
 
-    def __add_noise(self, data: bytes) -> bytes:
+    def __add_noise(self, data: int) -> int:
         """The method to add noise
 
         Args:
-            data (bytes): The data to add noise at
+            data (int): The data to add noise at
 
         Returns:
-            bytes: the data with the noise
+            int: the data with the noise
 
         Note:
             The algorithm of this method is using a xor mask to flip the data\
@@ -104,10 +102,7 @@ class BitFlip(NoiseMethod):
 
         """
 
-        data_len = len(data) * 8
-
-        # Convert the data to integer
-        int_data = bytes_to_long(data)
+        data_len = len(bin(data)[2:])
 
         # Get a flip_list if flip_list is empty
         flip_list = self.FLIP_LIST if self.FLIP_LIST else [random.randint(0, data_len - 1)]
@@ -124,9 +119,6 @@ class BitFlip(NoiseMethod):
             mask |= 1 << (data_len - flip_index - 1)
 
         # Flip the bits
-        int_data ^= mask
-
-        # Convert the integer back to the data
-        data = long_to_bytes(int_data)
+        data ^= mask
 
         return data

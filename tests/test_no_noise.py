@@ -12,9 +12,7 @@ class TestNoNoise(TestBase):
     @TestBase.parameterized
     def test_default(self, data, expected):
 
-        from Crypto.Util.number import long_to_bytes, bytes_to_long
-
-        result = bytes_to_long(self.NO_NOISE.add_noise(long_to_bytes(data)))
+        result = self.NO_NOISE.add_noise(data)
 
         self.assertEqual(result, expected, self.assert_message)
 
@@ -22,7 +20,7 @@ class TestNoNoise(TestBase):
     def test_invalid(self, data, expected):
 
         with self.assertRaises(ValueError) as context:
-            self.NO_NOISE.add_noise(data)
+            self.NO_NOISE.add_noise(str(data))
 
         self.assertEqual(str(context.exception), expected, self.assert_message)
 

@@ -13,4 +13,4 @@ tests:
   invalid:
     - case: wrong input type
       data: 0x3
-      expected: The input of noise should be type <bytes>
+      expected: The input of noise should be type <int>
