@@ -28,6 +28,7 @@ class Parity(EDACMethod):
             print(f"LOG:\tEncoding with EDAC Method: <Parity> with {bin(data)}")
 
         parity = 0
+        original = (data<<1)
         while data > 0:
             parity ^= data&1
             data >>= 1
@@ -35,11 +36,12 @@ class Parity(EDACMethod):
         if not self.DEBUG > Debug.DEBUG:
             print(f"LOG:\tResult of EDAC method: <Parity> is {parity}")
 
-        return parity
+        result = original + parity
+
+        return result
 
     def _decode(self, 
         data: int, # Decode data
-        check: int # Syndrome to be check
     ) -> tuple:
         """Check the if the data is same as the given 
         parity code
@@ -67,10 +69,16 @@ class Parity(EDACMethod):
             tmp_data >>= 1
 
         if not self.DEBUG > Debug.DEBUG:
-            print(f"LOG\tDecoded result for EDAC method <Parity> is {check == parity}")
+
+            if parity == 0:
+                print(f"LOG\tError Detected!")
+
+            print(f"LOG\tDecoded result for EDAC method <Parity> is {data}")
+
+        data, _ = self._parse_parity(data)
 
         return (
-            check == parity,
-            None if not check == parity else data,
-            ["CI"] if not check == parity else [""]
+            parity == 0,
+            data,
+            ["CI"] if not parity == 0 else [""]
         )

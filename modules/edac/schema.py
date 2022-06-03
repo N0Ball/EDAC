@@ -76,9 +76,9 @@ class EDACMethod():
 
     @_field_check
     def encode(self, 
-        data:bytes, # Data to be encode
+        data:int, # Data to be encode
         n: int=None # block size
-    ) -> bytes:
+    ) -> int:
         """The method that the EDAC system need to encode for futher
         EDAC usage
 
@@ -90,8 +90,8 @@ class EDACMethod():
             bytes: The data encoded
         """
 
-        if not type(data) == bytes :
-            raise ValueError("The input of the EDAC method of encoding should be <bytes>")
+        if not type(data) == int :
+            raise ValueError("The input of the EDAC method of encoding should be <int>")
 
         if not self.DEBUG > Debug.DEBUG:
             print("LOG:\tTring to Encode")
@@ -103,18 +103,21 @@ class EDACMethod():
         # Creates block
         blocks = self._create_block(data, n - self.PARITY_SIZE)
 
+        if not self.DEBUG > Debug.DEBUG:
+            print(f"LOG:\tThe data had parsed to blocks: [{','.join(map(bin(blocks)))}]")
+
         # Generate result
         result = 0
         for block in blocks:
             
             result <<= n
-            result += (block<<self.PARITY_SIZE) + self._encode(block)
+            result += self._encode(block)
 
         # Return the result
-        return long_to_bytes(result)
+        return result
 
     @_field_check
-    def decode(self, data:bytes, n: int=None) -> tuple:
+    def decode(self, data:int, n: int=None) -> tuple:
         """The method that the EDAC system need to decode for checking
         the correctness
 
@@ -134,7 +137,7 @@ class EDACMethod():
 
         # Creates block
         blocks = self._create_block(data, n)
-        original_bytes = 0
+        decoded = 0
         is_pass = True
         error_bits = []
 
@@ -142,14 +145,10 @@ class EDACMethod():
         for block in blocks:
 
             # Generate space for incomming bytes
-            original_bytes <<= n - self.PARITY_SIZE
-
-            # Get the parity bit out
-            original_data = block >> self.PARITY_SIZE
-            parity = block & int('1' * self.PARITY_SIZE, 2)
+            decoded <<= n - self.PARITY_SIZE
 
             # Decode the message
-            error, fixed, error_list = self._decode(original_data, parity)
+            error, fixed, error_list = self._decode(block)
             
             # store the results
             is_pass *= error
@@ -157,54 +156,14 @@ class EDACMethod():
 
             # If can't fix, than return original data
             if not fixed is None:
-                original_bytes += fixed
+                decoded += fixed
             else:
-                original_bytes += original_data
+                decoded += block
 
-        # Get rid of the paddings
-        decode_size = len(long_to_bytes(original_bytes))
-        data_size = n - self.PARITY_SIZE
+        return (is_pass, decoded, error_bits)
 
-        if decode_size > 1 and not (decode_size*8) % data_size == 0:
-            original_bytes >>= data_size - ((decode_size - 1)*8)%data_size
-
-        return (is_pass, long_to_bytes(original_bytes), error_bits)
-    # def encode(self, 
-    #     data: int, # Data to be encode
-    # ) -> int:
-    #     """The method that the EDAC system need to encode for futher
-    #     EDAC usage
-
-    #     Args:
-    #         data (int): the data to be encoded
-
-    #     Returns:
-    #         int: the data encoded
-    #     """
-    #     pass
-
-    # def decode(self,
-    #     data: int, # Data to be decode
-    #     check: int # Parity code
-    # ) -> tuple:
-    #     """The method that the EDAC system need to decode for checking
-    #     the correctness
-
-    #     Args:
-    #         data (int): The data to be checked
-    #         check (int): Parity Code to check
-
-    #     Returns:
-    #         tuple: format should be `(error, data, error bits)`
-    #         error (bool): Is the data corrupted
-    #         data (bytes): The fixed data (return `0x00` if can't be fixed)
-    #         error bits (list): The index of errorbits
-    #     """
-    #     pass
-
-        
     def _create_block(self,
-        data: bytes,
+        data: int,
         n: int
     ) -> list:
 
@@ -218,18 +177,14 @@ class EDACMethod():
             list: the list of blocks needed
         """
 
-        if not isinstance(data, bytes):
-            raise ValueError("The type of data should be bytes")
+        if not isinstance(data, int):
+            raise ValueError("The type of data should be type <int>")
 
-        # Byte to binary string
-        bin_string = ''.join(map(lambda x: bin(x)[2:].rjust(8, '0'), data))
+        bin_string = bin(data)[2:]
+        LEN = len(bin_string)
 
-        if len(bin_string) < n:
-                bin_string = bin_string.rjust(n, '0')
-
-        # Append 0 to fix block size
-        if not len(bin_string)%n == 0:
-            bin_string += '0' * (n - len(bin_string)%n)
+        if not LEN%n == 0:
+            bin_string = '0'*(n - LEN%n) + bin_string
 
         # Create blocks
         blocks = []
@@ -242,3 +197,13 @@ class EDACMethod():
             blocks.append(element)
 
         return blocks
+
+    def _parse_parity(
+        self, 
+        data:int
+    ) -> tuple:
+
+        parity = data&int('1'*self.PARITY_SIZE)
+        data >>= self.PARITY_SIZE
+
+        return (data, parity)
