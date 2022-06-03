@@ -1,26 +1,69 @@
 ---
 tests:
-  encode:
-    - case: 7-digit answer 1
+  default_encode:
+    - case: 8-digit answer 1
       data: 0b1001010
-      expected: 1
-    - case: 7-digit answer 0
+      expected: 0b100101100000000
+    - case: 8-digit answer 0
       data: 0b0010001
-      expected: 0
-  decode:
+      expected: 0b1000110000001
+    - case: long input
+      data: 0xdeadbeef
+      expected: 0b1101111001010110011011111101110111110000
+  custom_encode:
+    - case: (9, 1) 8-bit answer 1
+      data: 
+        input: 0b1001010
+        size: 9
+      expected: 0b10010101
+    - case: (9, 1) 8-bit answer 0
+      data: 
+        input: 0b10001
+        size: 9
+      expected: 0b100010
+    - case: (9, 1) 16-bit message
+      data:
+        input: 0xc0de
+        size: 9
+      expected: 0b110000000110111100
+    - case: (17, 1) 16-bit
+      data:
+        input: 0xdeadbeef
+        size: 17
+      expected: 0b1101111010101101110111110111011111
+  default_decode:
     - case: correct
-      data: 
-        - 0b1001010
-        - 1
+      data: 0b100101100000000
       expected: 
-        - True
-        - 0b1001010
-        - ['']
-    - case: wrong
-      data: 
-        - 0b1001010
-        - 0
+        pass: True
+        decoded: 0b1001010
+        error_bits: ['', '']
+    - case: incorrect
+      data: 0b100101100010000
       expected: 
-        - False
-        - null
-        - ['CI']
+        pass: False
+        decoded: 0b1001010
+        error_bits: ['', 'CI']
+    - case: long correct
+      data: 1049959840064440597863936
+      expected:
+        pass: True
+        decoded: 0xdeadbeefdeadc0de
+        error_bits: ['', '', '', '', '', '', '', '', '', '']
+  custom_decode:
+    - case: (9, 1) 8-bit correct
+      data: 
+        input: 0b10010101
+        size: 9
+      expected: 
+        pass: True
+        decoded: 0b1001010
+        error_bits: ['']
+    - case: (9, 1) 8-bit incorrect
+      data:
+        input: 0b11010101
+        size: 9
+      expected:
+        pass: False
+        decoded: 0b1101010
+        error_bits: ['CI']
