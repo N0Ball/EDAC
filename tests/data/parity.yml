@@ -3,13 +3,16 @@ tests:
   default_encode:
     - case: 8-digit answer 1
       data: 0b1001010
-      expected: 0b100101100000000
+      expected: 0b10010101
     - case: 8-digit answer 0
       data: 0b0010001
-      expected: 0b1000110000001
+      expected: 0b100010
+    - case: 8-digit 2 blocks
+      data: 0b11001010
+      expected: 0b1110010101
     - case: long input
       data: 0xdeadbeef
-      expected: 0b1101111001010110011011111101110111110000
+      expected: 0b1101111101011011011001111101011011110
   custom_encode:
     - case: (9, 1) 8-bit answer 1
       data: 
@@ -26,30 +29,48 @@ tests:
         input: 0xc0de
         size: 9
       expected: 0b110000000110111100
-    - case: (17, 1) 16-bit
+    - case: (17, 1) 16-bit long input
       data:
         input: 0xdeadbeef
         size: 17
       expected: 0b1101111010101101110111110111011111
   default_decode:
     - case: correct
-      data: 0b100101100000000
+      data: 0b10010101
       expected: 
         pass: True
         decoded: 0b1001010
-        error_bits: ['', '']
+        error_bits: ['']
     - case: incorrect
-      data: 0b100101100010000
+      data: 0b11010101
       expected: 
         pass: False
-        decoded: 0b1001010
-        error_bits: ['', 'CI']
-    - case: long correct
-      data: 1049959840064440597863936
+        decoded: 0b1101010
+        error_bits: ['CI']
+    - case: multi-block correct
+      data: 0b1110010101
       expected:
         pass: True
-        decoded: 0xdeadbeefdeadc0de
-        error_bits: ['', '', '', '', '', '', '', '', '', '']
+        decoded: 0b11001010
+        error_bits: ['', '']
+    - case: multi-block, single correct
+      data: 0b1110010111
+      expected:
+        pass: False
+        decoded: 0b11001011
+        error_bits: ['', 'CI']
+    - case: multi-block, multi-incorrect
+      data: 0b0110010111
+      expected:
+        pass: False
+        decoded: 0b1001011
+        error_bits: ['CI', 'CI']
+    - case: long input decode
+      data: 0b1101111101011011011001111101011011110
+      expected:
+        pass: True
+        decoded: 0xdeadbeef
+        error_bits: ['', '', '', '', '']
   custom_decode:
     - case: (9, 1) 8-bit correct
       data: 
@@ -67,3 +88,35 @@ tests:
         pass: False
         decoded: 0b1101010
         error_bits: ['CI']
+    - case: (9, 1) 16-bit, correct
+      data: 
+        input: 0b110000000110111100
+        size: 9
+      expected:
+        pass: True
+        decoded: 0xc0de
+        error_bits: ['', '']
+    - case: (9, 1) 16-bit, single correct
+      data:
+        input: 0b110010000110111100
+        size: 9
+      expected:
+        pass: False
+        decoded: 0xc8de
+        error_bits: ['CI', ''] 
+    - case: (9, 1) 16-bit, double incorrect
+      data:
+        input: 0b110010000110111110
+        size: 9
+      expected:
+        pass: False
+        decoded: 0xc8df
+        error_bits: ['CI', 'CI']
+    - case: (17, 1) 16-bit long input decode
+      data:
+        input: 0b1101111010101101110111110111011111
+        size: 17
+      expected:
+        pass: True
+        decoded: 0xdeadbeef
+        error_bits: ['', '']
