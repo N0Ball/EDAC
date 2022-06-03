@@ -107,7 +107,7 @@ class EDACMethod():
         result = 0
         for block in blocks:
             
-            result <<= self.BLOCK_SIZE
+            result <<= n
             result += (block<<self.PARITY_SIZE) + self._encode(block)
 
         # Return the result
@@ -133,7 +133,7 @@ class EDACMethod():
             n = self.BLOCK_SIZE
 
         # Creates block
-        blocks = self._create_block(data, self.BLOCK_SIZE)
+        blocks = self._create_block(data, n)
         original_bytes = 0
         is_pass = True
         error_bits = []
@@ -142,7 +142,7 @@ class EDACMethod():
         for block in blocks:
 
             # Generate space for incomming bytes
-            original_bytes <<= self.BLOCK_SIZE - self.PARITY_SIZE
+            original_bytes <<= n - self.PARITY_SIZE
 
             # Get the parity bit out
             original_data = block >> self.PARITY_SIZE
@@ -163,7 +163,7 @@ class EDACMethod():
 
         # Get rid of the paddings
         decode_size = len(long_to_bytes(original_bytes))
-        data_size = self.BLOCK_SIZE - self.PARITY_SIZE
+        data_size = n - self.PARITY_SIZE
 
         if decode_size > 1 and not (decode_size*8) % data_size == 0:
             original_bytes >>= data_size - ((decode_size - 1)*8)%data_size
@@ -223,6 +223,9 @@ class EDACMethod():
 
         # Byte to binary string
         bin_string = ''.join(map(lambda x: bin(x)[2:].rjust(8, '0'), data))
+
+        if len(bin_string) < n:
+                bin_string = bin_string.rjust(n, '0')
 
         # Append 0 to fix block size
         if not len(bin_string)%n == 0:
