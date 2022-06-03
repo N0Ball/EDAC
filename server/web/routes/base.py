@@ -21,6 +21,7 @@ class BaseView:
         @self.ROUTE.route("/<message>/no_noise")
         def no_noise(message: str):
 
+            print(self._run_test(message, NoNoise()))
             return self._run_test(message, NoNoise())
 
         @self.ROUTE.route("<message>/bit_flip/<flip_list>")
@@ -49,5 +50,5 @@ class BaseView:
 
         except Exception as e:
             return {
-                'error': e
+                'error': str(e)
             }
