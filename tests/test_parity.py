@@ -18,7 +18,8 @@ class TestDecodeParity(TestBase):
     @TestBase.parameterized
     def test_custom_encode(self, data, expected):
 
-        result = self.PARITY.encode(data.get('input'), n=data.get('size'))
+        self.PARITY = Parity(data.get('size'))
+        result = self.PARITY.encode(data.get('input'))
 
         self.assertEqual(result, expected, self.assert_message)
 
@@ -39,10 +40,8 @@ class TestDecodeParity(TestBase):
     @TestBase.parameterized
     def test_custom_decode(self, data, expected):
 
-        is_pass, decoded, error_bits = self.PARITY.decode(
-            data.get('input'),
-            n=data.get('size')
-        )
+        self.PARITY = Parity(data.get('size'))
+        is_pass, decoded, error_bits = self.PARITY.decode(data.get('input'))
 
         self.assertEqual(
             is_pass, expected.get('pass'), self.assert_message
