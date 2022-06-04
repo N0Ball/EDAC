@@ -1,0 +1,166 @@
+---
+tests:
+  default_encode:
+    - case: 16-bit input
+      data: N0
+      expected: 0b10011100011000000011101
+    - case: 32-bit input
+      data: B4L!
+      expected: 0b100001000110100010011000010000110111101
+    - case: 64-bit input
+      data: _N0B4L!_
+      expected: 0b1011111010011100011000001000010101101000011010001001100001000010101111110101100
+  default_decode:
+    - case: 16-bit input - correct
+      data: 0b10011100011000000011101
+      expected:
+        is_pass: True
+        decoded: N0
+        error_bits: ['']
+    - case: 16-bit input - incorrect
+      data: 0b10011100011001100011101
+      expected:
+        is_pass: False
+        decoded: N3
+        error_bits: ['CI']
+    - case: 32-bit input - correct
+      data: 0b100001000110100010011000010000110111101
+      expected:
+        is_pass: True
+        decoded: B4L!
+        error_bits: ['']
+    - case: 64-bit input - correct
+      data: 0b1011111010011100011000001000010101101000011010001001100001000010101111110101100
+      expected:
+        is_pass: True
+        decoded: _N0B4L!_
+        error_bits: ['', '']
+    - case: 64-bit input - single block incorrect
+      data: 0b1011111010011100011000001000010101101000011010001101100001000010101111110101100
+      expected:
+        is_pass: False
+        decoded: _N0B4l!_
+        error_bits: ['', 'CI']
+    - case: 64-bit input - incorrect per block
+      data: 0b1011111010011100011001001000010101101000011010001101100001000010101111110101100
+      expected:
+        is_pass: False
+        decoded: _N2B4l!_
+        error_bits: ['CI', 'CI']
+  custom_encode:
+    - case: (24, 16) 16-bit input
+      data:
+        input: N0
+        size: 24
+      expected: 0b10011100011000000011101
+    - case: (24, 16) 32-bit input
+      data:
+        input: B4L!
+        size: 24
+      expected: 0b10000100011010011111101010011000010000101000000
+    - case: (72, 64) 64-bit input
+      data:
+        input: _N0B4L!_
+        size: 72
+      expected: 0b10111110100111000110000010000100011010001001100001000010101111101101100
+  custom_decode:
+    - case: (24, 16) 16-bit input - correct
+      data:
+        input: 0b10011100011000000011101
+        size: 24
+      expected:
+        is_pass: True
+        decoded: N0
+        error_bits: ['']
+    - case: (24, 16) 16-bit input - incorrect
+      data:
+        input: 0b10011100011001100011101
+        size: 24
+      expected:
+        is_pass: False
+        decoded: N3
+        error_bits: ['CI']
+    - case: (24, 16) 32-bit input - correct
+      data:
+        input: 0b10000100011010011111101010011000010000101000000
+        size: 24
+      expected: 
+        is_pass: True
+        decoded: B4L!
+        error_bits: ['', '']
+    - case: (24, 16) 32-bit input - single block incorrect
+      data:
+        input: 0b10000100011011111111101010011000010000101000000
+        size: 24
+      expected: 
+        is_pass: False
+        decoded: B7L!
+        error_bits: ['CI', '']
+    - case: (24, 16) 32-bit input - incorrect per block
+      data:
+        input: 0b10000100011011111111101010011000010000101001010
+        size: 24
+      expected: 
+        is_pass: False
+        decoded: B7L!
+        error_bits: ['CI', 'CI']
+    - case: (72, 64) 64-bit input - correct
+      data:
+        input: 0b10111110100111000110000010000100011010001001100001000010101111101101100
+        size: 72
+      expected:
+        is_pass: True
+        decoded: _N0B4L!_
+        error_bits: ['']
+  custom_schema_encode:
+    - case: (32, 16) CRC16 16-bit input
+      data: 
+        input: N0
+        size: 32
+      expected: 0b1001110001100000001100010010000
+    - case: (32, 16) CRC16 32-bit input
+      data: 
+        input: B4L!
+        size: 32
+      expected: 0b100001000110100000111010111100101001100001000010111110011100010
+  custom_schema_decode:
+    - case: (32, 16) CRC16 16-bit input - correct
+      data:
+        input: 0b1001110001100000001100010010000
+        size: 32
+      expected:
+        is_pass: True
+        decoded: N0
+        error_bits: ['']
+    - case: (32, 16) CRC16 16-bit input - incorrect
+      data:
+        input: 0b1001110001100100001100010010000
+        size: 32
+      expected:
+        is_pass: False
+        decoded: N2
+        error_bits: ['CI']
+    - case: (32, 16) CRC16 32-bit input - correct
+      data: 
+        input: 0b100001000110100000111010111100101001100001000010111110011100010
+        size: 32
+      expected: 
+        is_pass: True
+        decoded: B4L!
+        error_bits: ['', '']
+    - case: (32, 16) CRC16 32-bit input - single block incorrect
+      data: 
+        input: 0b100001000110101000111010111100101001100001000010111110011100010
+        size: 32
+      expected: 
+        is_pass: False
+        decoded: B5L!
+        error_bits: ['CI', '']
+    - case: (32, 16) CRC16 32-bit input - incorrect per block
+      data: 
+        input: 0b100001000110101000111010111100101001100001000010111101011100010
+        size: 32
+      expected: 
+        is_pass: False
+        decoded: B5L!
+        error_bits: ['CI', 'CI']
