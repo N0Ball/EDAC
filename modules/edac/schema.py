@@ -99,9 +99,6 @@ class EDACMethod():
         # Creates block
         blocks = self._create_block(data, self.BLOCK_SIZE - self.PARITY_SIZE)
 
-        if not self.DEBUG > Debug.DEBUG:
-            print(f"LOG:\tThe data {bin(data)} had parsed to blocks: [{','.join(map(bin, blocks))}]")
-
         # Generate result
         result = 0
         for block in blocks:
@@ -187,6 +184,10 @@ class EDACMethod():
             bin_string = bin_string[n:]
 
             blocks.append(element)
+
+        # Debug Message
+        if not self.DEBUG > Debug.DEBUG:
+            print(f"LOG:\tThe data {bin(data)} had parsed to blocks: [{','.join(map(bin, blocks))}]")
 
         return blocks
 
