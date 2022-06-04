@@ -6,7 +6,7 @@ class Parity(EDACMethod):
     EDAC System to deal with data that needs parity code added
 
     Args:
-        debug (bool, optional): Debug Level. Defaults to False.
+        debug (Debug, optional): Debug Level. Defaults to DEPLOY.
     """
 
     def __init__(self, block_size: int = 8, debug: Debug = Debug.DEPLOY) -> None:
