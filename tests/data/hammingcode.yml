@@ -120,3 +120,13 @@ tests:
         is_pass: True
         decoded: N0B4L!_H4V3_70_M4K3_4_L0N9_MS9
         error_bits: ['']
+  invalid_input:
+    - case: block size not 2^n
+      data: 30
+      expected: "ERROR: block size must be a power of 2 (2^n), 8 >= n >= 3"
+    - case: block size too small
+      data: 4
+      expected: "ERROR: block size must be a power of 2 (2^n), 8 >= n >= 3"
+    - case: block size too big
+      data: 512
+      expected: "ERROR: default block size is too large for hamming code"

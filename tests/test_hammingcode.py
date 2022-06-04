@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 import unittest
 from Crypto.Util.number import long_to_bytes
 
@@ -85,7 +86,14 @@ class TestHammingCode(TestBase):
         self.assertEqual(error_bits, expected.get('error_bits'), self.assert_message)
 
 
+    @TestBase.parameterized
+    def test_invalid_input(self, data, expected):
 
+        with self.assertRaises(ValueError) as context:
+            self.HAMMING_CODE = HammingCode(data)
+            self.HAMMING_CODE.encode(1)
+
+        self.assertEqual(str(context.exception), expected, self.assert_message)
 
 
 if __name__ == '__main__':

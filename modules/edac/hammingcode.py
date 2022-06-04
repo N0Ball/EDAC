@@ -134,7 +134,7 @@ class HammingCode(EDACMethod):
     def get_parity_size(self) -> int:
 
         if self.DEFAULT_BLOCK > 256:
-            assert ValueError("ERROR: default blocksize is too large for hamming code")
+            raise ValueError("ERROR: default blocksize is too large for hamming code")
 
         self.PARITY_SIZE = None
 
@@ -144,6 +144,6 @@ class HammingCode(EDACMethod):
                 self.PARITY_SIZE = i+1
 
         if self.PARITY_SIZE is None:
-            assert ValueError("ERROR: block size must be a power of 2 (2^n), 8 >= n >= 3")
+            raise ValueError("ERROR: block size must be a power of 2 (2^n), 8 >= n >= 3")
 
         return self.PARITY_SIZE
