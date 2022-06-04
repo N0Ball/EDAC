@@ -32,6 +32,7 @@ class EDACMethod():
         self.DEBUG: Debug = debug
         self.DEFAULT_BLOCK = None
         self.PARITY_SIZE = None
+        self.BLOCK_SIZE = None
 
     # Use field check to load the block size and parity size so that it can be modified after initalization
     def _field_check(func):
@@ -77,7 +78,6 @@ class EDACMethod():
     @_field_check
     def encode(self, 
         data:int, # Data to be encode
-        n: int=None # block size
     ) -> int:
         """The method that the EDAC system need to encode for futher
         EDAC usage
@@ -94,30 +94,26 @@ class EDACMethod():
             raise ValueError("The input of the EDAC method of encoding should be <int>")
 
         if not self.DEBUG > Debug.DEBUG:
-            print("LOG:\tTring to Encode")
-
-        # Use the default block size of the edac method
-        if n == None:
-            n = self.BLOCK_SIZE
+            print(f"LOG:\tTring to Encode using block size {self.BLOCK_SIZE}, parity size {self.PARITY_SIZE}")
 
         # Creates block
-        blocks = self._create_block(data, n - self.PARITY_SIZE)
+        blocks = self._create_block(data, self.BLOCK_SIZE - self.PARITY_SIZE)
 
         if not self.DEBUG > Debug.DEBUG:
-            print(f"LOG:\tThe data had parsed to blocks: [{','.join(map(bin(blocks)))}]")
+            print(f"LOG:\tThe data {bin(data)} had parsed to blocks: [{','.join(map(bin, blocks))}]")
 
         # Generate result
         result = 0
         for block in blocks:
             
-            result <<= n
+            result <<= self.BLOCK_SIZE
             result += self._encode(block)
 
         # Return the result
         return result
 
     @_field_check
-    def decode(self, data:int, n: int=None) -> tuple:
+    def decode(self, data:int) -> tuple:
         """The method that the EDAC system need to decode for checking
         the correctness
 
@@ -131,12 +127,8 @@ class EDACMethod():
         if not self.DEBUG > Debug.DEBUG:
             print("LOG:\tTrying to Decode")
 
-        # Use the default block size of the edac method
-        if n == None:
-            n = self.BLOCK_SIZE
-
         # Creates block
-        blocks = self._create_block(data, n)
+        blocks = self._create_block(data, self.BLOCK_SIZE)
         decoded = 0
         is_pass = True
         error_bits = []
@@ -145,7 +137,7 @@ class EDACMethod():
         for block in blocks:
 
             # Generate space for incomming bytes
-            decoded <<= n - self.PARITY_SIZE
+            decoded <<= self.BLOCK_SIZE - self.PARITY_SIZE
 
             # Decode the message
             error, fixed, error_list = self._decode(block)
