@@ -106,6 +106,10 @@ class EDACMethod():
             result <<= self.BLOCK_SIZE
             result += self._encode(block)
 
+        # Debug message
+        if not self.DEBUG > Debug.DEBUG:
+            print(f"The encoded result is {bin(result)}")
+
         # Return the result
         return result
 
@@ -148,6 +152,10 @@ class EDACMethod():
                 decoded += fixed
             else:
                 decoded += block
+
+        # Debug message
+        if not self.DEBUG > Debug.DEBUG:
+            print(f"The encoded result is {bin(decoded)}")
 
         return (is_pass, decoded, error_bits)
 
