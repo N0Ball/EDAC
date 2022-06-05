@@ -1,10 +1,10 @@
 from .base import BaseView
 
-from modules.edac.schema import EDACType
+from modules.edac import HammingCode as HC
 
 class HammingCode(BaseView):
 
     def __init__(self):
 
         super().__init__('HammingCode', __name__)
-        self.EDAC_TYPE = EDACType.HAMMING_CODE
+        self.EDAC_METHOD = HC()

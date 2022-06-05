@@ -9,7 +9,7 @@ class BaseView:
 
     def __init__(self, route_name:str, name) -> None:
         self.ROUTE = Blueprint(route_name, name)
-        self.EDAC_TYPE = None
+        self.EDAC_METHOD = None
 
     def get_route(self):
 
@@ -21,7 +21,6 @@ class BaseView:
         @self.ROUTE.route("/<message>/no_noise")
         def no_noise(message: str):
 
-            print(self._run_test(message, NoNoise()))
             return self._run_test(message, NoNoise())
 
         @self.ROUTE.route("<message>/bit_flip/<flip_list>")
@@ -37,15 +36,13 @@ class BaseView:
                     'error': str(e)
                 }
 
-            
-
         return self.ROUTE
 
     def _run_test(self, message: str, noise_type: NoiseMethod):
 
         try:
 
-            test = EDACTest(message, self.EDAC_TYPE, noise_type)
+            test = EDACTest(message, self.EDAC_METHOD, noise_type)
             return test.run()
 
         except Exception as e:
