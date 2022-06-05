@@ -6,13 +6,6 @@ version: main                             #link to sources on github
 pages:
 
   # Noise system
-  - page: "modules/noise/factory.md"
-    source: "modules/noise/factory.py"
-    classes:
-      - NoiseFactory:
-        - add_noise
-        - __get_noise_generator
-
   - page: "modules/noise/schema.md"
     source: "modules/noise/schema.py"
     classes:
@@ -21,15 +14,15 @@ pages:
         - add_noise
 
   - page: "modules/noise/systems/NO_NOISE.md"
-    source: "modules/noise/methods/none.py"
+    source: "modules/noise/nonoise.py"
     classes:
       - NoNoise:
         - add_noise
 
   - page: "modules/noise/systems/BIT_FLIP.md"
-    source: "modules/noise/methods/bitflip.py"
+    source: "modules/noise/bitflip.py"
     classes:
-      - BitFlipNoise:
+      - BitFlip:
         - add_noise
         - __add_noise
 
@@ -43,40 +36,33 @@ pages:
         - decode
         - get_default_block
         - get_parity_size
-
-  - page: "modules/edac/factory.md"
-    source: "modules/edac/factory.py"
-    classes:
-      - EDACFactory:
-        - encode
-        - decode
         - _create_block
-        - __get_edac_generator
+        - _parse_parity
 
   - page: "modules/edac/methods/parity.md"
-    source: "modules/edac/methods/parity.py"
+    source: "modules/edac/parity.py"
     classes:
       - Parity:
-        - encode
-        - decode
+        - _encode
+        - _decode
 
   - page: "modules/edac/methods/hammingcode.md"
-    source: "modules/edac/methods/hammingcode.py"
+    source: "modules/edac/hammingcode.py"
     classes:
       - HammingCode:
-        - encode
-        - decode
+        - _encode
+        - _decode
         - _create_table
 
   - page: "modules/edac/methods/crc.md"
-    source: "modules/edac/methods/crc.py"
+    source: "modules/edac/crc.py"
     classes:
       - CRC:
-        - encode
-        - decode
+        - _encode
+        - _decode
         - _devide
 
-  - page: "modules/edac/methods/crc_methods/schema.md"
-    source: "modules/edac/methods/crc_methods/schema.py"
+  - page: "modules/edac/schemas/crc.md"
+    source: "modules/edac/methodschema/crc.py"
     classes: 
       - SCHEMA

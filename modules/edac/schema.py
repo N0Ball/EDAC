@@ -203,6 +203,14 @@ class EDACMethod():
         self, 
         data:int
     ) -> tuple:
+        """Parse the parity and original data from the message
+
+        Args:
+            data (int): encoded data
+
+        Returns:
+            tuple(int, int): the data and the parity
+        """
 
         parity = data&int('1'*self.PARITY_SIZE)
         data >>= self.PARITY_SIZE
