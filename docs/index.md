@@ -17,7 +17,7 @@ A method that you can
 
 to your data
 
-[A little more details](../tutorials/definitions/EDAC#edac)
+[A little more details](./tutorials/definitions/EDAC#edac)
 
 ## EDAC workflow
 
@@ -29,15 +29,15 @@ to your data
 
 ## What EDAC Systems do we have
 
-- [CRC](sources/modules/edac/methods/crc/)
-- [Hamming Code](sources/modules/edac/methods/hammingcode/)
-- [Parity Bit](sources/modules/edac/methods/parity/)
+- [CRC](./sources/modules/edac/methods/crc/)
+- [Hamming Code](./sources/modules/edac/methods/hammingcode/)
+- [Parity Bit](./sources/modules/edac/methods/parity/)
 
 ## If you want to learn EDACs
 
-- [CRC](../tutorials/ErrorDetection/crc/)
-- [Hamming Code](../tutorials/ErrorDetection/hammingCode/)
-- [Parity Bit](../tutorials/ErrorDetection/parity/)
+- [CRC](./tutorials/ErrorDetection/crc/)
+- [Hamming Code](./tutorials/ErrorDetection/hammingCode/)
+- [Parity Bit](./tutorials/ErrorDetection/parity/)
 
 # What can you do
 
