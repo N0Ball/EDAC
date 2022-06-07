@@ -206,26 +206,6 @@ b'OuO'
 b'OÕO'
 </code></pre>
 <p><strong>Methods:</strong></p>
-<h3 id="add_noise">.add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/bitflip.py/#L35">source</a></p>
-<pre><code class="language-python">.add_noise(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Validate the <code>flip_list</code> and add the noise to the data</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : The data to be noise added</li>
-</ul>
-<p><strong>Raises</strong></p>
-<ul>
-<li><strong>IndexError</strong>  : the <code>flip_list</code> contains integers that exceeds the length of                the original data</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : the data with the noise</li>
-</ul>
 <h3 id="__add_noise">.__add_noise</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/bitflip.py/#L76">source</a></p>
 <pre><code class="language-python">.__add_noise(
@@ -254,6 +234,26 @@ Given an example</p>
 | 1 | 0 |*0*| 1 |*1*|
 </code></pre>
 <p>You can see that except the <script type="math/tex">2^{nd}</script> and the <script type="math/tex">4^{th}</script> data, the data remains                the same.</p>
+<h3 id="add_noise">.add_noise</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/bitflip.py/#L35">source</a></p>
+<pre><code class="language-python">.add_noise(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Validate the <code>flip_list</code> and add the noise to the data</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : The data to be noise added</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>IndexError</strong>  : the <code>flip_list</code> contains integers that exceeds the length of                the original data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : the data with the noise</li>
+</ul>
               
             </div>
           </div>

@@ -231,6 +231,22 @@ EDAC usage</p>
 <ul>
 <li><strong>bytes</strong>  : The data encoded</li>
 </ul>
+<h3 id="_parse_parity">._parse_parity</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L202">source</a></p>
+<pre><code class="language-python">._parse_parity(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Parse the parity and original data from the message</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : encoded data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tuple</strong> (int, int) : the data and the parity</li>
+</ul>
 <h3 id="_create_block">._create_block</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L162">source</a></p>
 <pre><code class="language-python">._create_block(
@@ -264,22 +280,6 @@ the correctness</p>
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>tuple</strong> (bool, bytes, list) : should be formated <code>(error, original data, error bits)</code></li>
-</ul>
-<h3 id="_parse_parity">._parse_parity</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L202">source</a></p>
-<pre><code class="language-python">._parse_parity(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Parse the parity and original data from the message</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : encoded data</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>tuple</strong> (int, int) : the data and the parity</li>
 </ul>
 <h3 id="get_parity_size">.get_parity_size</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L64">source</a></p>
