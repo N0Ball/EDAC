@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">A Test and Validation Platform for EDAC</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Sources</span></p>
@@ -68,8 +68,6 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Edac</a>
     <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../../factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../schema/">Schema</a>
                 </li>
                 <li class="toctree-l3 current"><a class="reference internal current" href="#">Methods</a>
@@ -80,7 +78,11 @@
                 </li>
                 <li class="toctree-l4 current"><a class="reference internal current" href="./">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -88,8 +90,6 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../../noise/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../../noise/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
@@ -179,9 +179,9 @@
               
                 <h1 id="_1"></h1>
 <h2 id="parity">Parity</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L5">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/parity.py/#L4">source</a></p>
 <pre><code class="language-python">Parity(
-   debug: bool = False
+   block_size: int = 8, debug: Debug = Debug.DEPLOY
 )
 </code></pre>
 <hr />
@@ -189,38 +189,12 @@
 EDAC System to deal with data that needs parity code added</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>debug</strong> (bool, optional) : Debug Level. Defaults to False.</li>
+<li><strong>debug</strong> (Debug, optional) : Debug Level. Defaults to DEPLOY.</li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L37">source</a></p>
-<pre><code class="language-python">.decode(
-   data: int, check: int
-)
-</code></pre>
-<hr />
-<p>Check the if the data is same as the given 
-parity code</p>
-<p><strong>See Also</strong></p>
-<ul>
-<li><a href="../../schema#decode">EDACMethod</a></li>
-</ul>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : given data</li>
-<li><strong>check</strong> (int) : parity bit</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>tuple</strong>  : (<strong>error</strong>, <strong>data</strong>, <strong>error bits</strong>)</li>
-<li><strong>error</strong> (bool) : If any error happens in the data</li>
-<li><strong>data</strong> (int) : the corrected data (<code>0</code> for <code>CI</code>)</li>
-<li><strong>bits</strong> (list) : the index of the error bits
-<code>CI</code> for <code>Cannot Identify</code></li>
-</ul>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/parity.py/#L18">source</a></p>
-<pre><code class="language-python">.encode(
+<h3 id="_encode">._encode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/parity.py/#L17">source</a></p>
+<pre><code class="language-python">._encode(
    data: int
 )
 </code></pre>
@@ -234,6 +208,28 @@ parity code</p>
 <ul>
 <li><strong>int</strong>  : integer that is encoded</li>
 </ul>
+<h3 id="_decode">._decode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/parity.py/#L43">source</a></p>
+<pre><code class="language-python">._decode(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Check the if the data is same as the given 
+parity code</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : given data</li>
+<li><strong>check</strong> (int) : parity bit</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tuple</strong>  : (<strong>error</strong>, <strong>data</strong>, <strong>error bits</strong>)</li>
+<li><strong>error</strong> (bool) : If any error happens in the data</li>
+<li><strong>data</strong> (int) : the corrected data (<code>0</code> for <code>CI</code>)</li>
+<li><strong>bits</strong> (list) : the index of the error bits
+<code>CI</code> for <code>Cannot Identify</code></li>
+</ul>
               
             </div>
           </div>
@@ -241,7 +237,7 @@ parity code</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../crc_methods/schema/" class="btn btn-neutral float-right" title="Schema">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../schemas/crc/" class="btn btn-neutral float-right" title="Crc">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../hammingcode/" class="btn btn-neutral" title="Hammingcode"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -273,7 +269,7 @@ parity code</p>
       <span><a href="../hammingcode/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../crc_methods/schema/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../schemas/crc/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

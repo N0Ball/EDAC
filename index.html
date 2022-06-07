@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "EDAC Testing and Education Platform";
+    var mkdocs_page_name = "A Test and Validation Platform for EDAC";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = null;
   </script>
@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href=".">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">A Test and Validation Platform for EDAC</a>
     <ul class="current">
     </ul>
                     </li>
@@ -70,8 +70,6 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="#">Edac</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="sources/modules/edac/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="sources/modules/edac/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
@@ -82,7 +80,11 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="sources/modules/edac/methods/parity/">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="sources/modules/edac/schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -90,8 +92,6 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="sources/modules/noise/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="sources/modules/noise/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
@@ -151,7 +151,7 @@
     
       
     
-    <li>EDAC Testing and Education Platform</li>
+    <li>A Test and Validation Platform for EDAC</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -163,11 +163,61 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="edac-testing-and-education-platform">EDAC Testing and Education Platform</h1>
-<p>This is basically a testing and educatiing platform so that you can 
-- Learn Basic Error Detecting And Correcting
-- Use the EDAC code 
-- Test your EDAC</p>
+                <h1 id="a-test-and-validation-platform-for-edac">A Test and Validation Platform for EDAC</h1>
+<p><img alt="" src="imgs/EDAC_icon.png" /></p>
+<p>A Learning Program for Error Decoding and Correction</p>
+<h1 id="intro">Intro</h1>
+<h2 id="what-is-edac">What is EDAC</h2>
+<p><strong>In a nutshell:</strong> </p>
+<p>A method that you can </p>
+<ul>
+<li>Detect Error</li>
+<li>Correct Error</li>
+</ul>
+<p>to your data</p>
+<p><a href="../tutorials/definitions/EDAC#edac">A little more details</a></p>
+<h2 id="edac-workflow">EDAC workflow</h2>
+<p><img alt="" src="imgs/EDAC_workflow.png" /></p>
+<ol>
+<li><strong>Encode</strong> -&gt; encode your data with parities</li>
+<li><strong>Noise</strong> -&gt; noises to your data occurs</li>
+<li><strong>Decode</strong> -&gt; decode your data to identify errors and even correct them</li>
+</ol>
+<h2 id="what-edac-systems-do-we-have">What EDAC Systems do we have</h2>
+<ul>
+<li><a href="sources/modules/edac/methods/crc/">CRC</a></li>
+<li><a href="sources/modules/edac/methods/hammingcode/">Hamming Code</a></li>
+<li><a href="sources/modules/edac/methods/parity/">Parity Bit</a></li>
+</ul>
+<h2 id="if-you-want-to-learn-edacs">If you want to learn EDACs</h2>
+<ul>
+<li><a href="../tutorials/ErrorDetection/crc/">CRC</a></li>
+<li><a href="../tutorials/ErrorDetection/hammingCode/">Hamming Code</a></li>
+<li><a href="../tutorials/ErrorDetection/parity/">Parity Bit</a></li>
+</ul>
+<h1 id="what-can-you-do">What can you do</h1>
+<p><img alt="" src="imgs/EDAC_platform_workflow.png" /></p>
+<h2 id="learn">Learn</h2>
+<p>How to <strong>decode</strong>, <strong>encode</strong> or <strong>correct</strong> your EDAC message.</p>
+<h2 id="test">Test</h2>
+<p>Your EDAC functions</p>
+<h2 id="validate">Validate</h2>
+<p>Your EDAC implementations</p>
+<h1 id="installations">Installations</h1>
+<h2 id="before-you-run">Before you run</h2>
+<pre><code class="language-sh">git clone https://github.com/N0Ball/EDAC.git
+python3 -m pip install -r requirements
+</code></pre>
+<h2 id="web-api">Web API</h2>
+<pre><code class="language-sh">export FLASK_APP=server/web/server:app
+flask run
+</code></pre>
+<h2 id="docs">Docs</h2>
+<p><a href="https://n0ball.github.io/EDAC">Documentations</a></p>
+<pre><code class="language-sh">make view-docs # Open a server to view documentation
+make build-docs # Auto create docs from code
+make deploy-docs # Create doc on github page
+</code></pre>
               
             </div>
           </div>
@@ -223,5 +273,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-05-24 16:36:40.839966+00:00
+Build Date UTC : 2022-06-07 17:09:49.809681+00:00
 -->

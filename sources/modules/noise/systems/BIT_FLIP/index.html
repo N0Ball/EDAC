@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">A Test and Validation Platform for EDAC</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Sources</span></p>
@@ -68,8 +68,6 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="#">Edac</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../../edac/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../../edac/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
@@ -80,7 +78,11 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../../../edac/methods/parity/">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../edac/schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -88,8 +90,6 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Noise</a>
     <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../../factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../schema/">Schema</a>
                 </li>
                 <li class="toctree-l3 current"><a class="reference internal current" href="#">Systems</a>
@@ -178,22 +178,19 @@
             <div class="section">
               
                 <h1 id="_1"></h1>
-<h2 id="bitflipnoise">BitFlipNoise</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L7">source</a></p>
-<pre><code class="language-python">BitFlipNoise(
-   debug: bool, kwargs: dict = None
+<h2 id="bitflip">BitFlip</h2>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/bitflip.py/#L6">source</a></p>
+<pre><code class="language-python">BitFlip(
+   flip_list: list = None, debug: Debug = Debug.DEPLOY
 )
 </code></pre>
 <hr />
 <p>Add the Bit Flip Noise System to the data</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>debug</strong> (bool) : the debug flag</li>
-<li><strong>kwargs</strong> (optional) : The key word argument passed from             <a href="../../noise/">Noise Factory</a>. Defaults to None.            should contain key <code>flip_list</code></li>
+<li><strong>debug</strong> (Debug) : the debug flag</li>
 <li><strong>flip_list</strong> (list[int]) : A list of integer index that defines the bit index            that should be flipped</li>
 </ul>
-<p><strong>Note</strong></p>
-<p>the <code>**kwargs</code> should be <code>flip_list (list[int])</code>, if no such key in            <code>**kwargs</code> it will auto flips a random bit</p>
 <p><strong>Example</strong></p>
 <pre><code class="language-python">
 &gt;&gt;&gt; from lib.noise.schema import NoiseType
@@ -210,16 +207,16 @@ b'OÕO'
 </code></pre>
 <p><strong>Methods:</strong></p>
 <h3 id="add_noise">.add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L47">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/bitflip.py/#L35">source</a></p>
 <pre><code class="language-python">.add_noise(
-   data: bytes
+   data: int
 )
 </code></pre>
 <hr />
 <p>Validate the <code>flip_list</code> and add the noise to the data</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (bytes) : The data to be noise added</li>
+<li><strong>data</strong> (int) : The data to be noise added</li>
 </ul>
 <p><strong>Raises</strong></p>
 <ul>
@@ -227,23 +224,23 @@ b'OÕO'
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>bytes</strong>  : the data with the noise</li>
+<li><strong>int</strong>  : the data with the noise</li>
 </ul>
 <h3 id="__add_noise">.__add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/bitflip.py/#L76">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/bitflip.py/#L76">source</a></p>
 <pre><code class="language-python">.__add_noise(
-   data: bytes
+   data: int
 )
 </code></pre>
 <hr />
 <p>The method to add noise</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (bytes) : The data to add noise at</li>
+<li><strong>data</strong> (int) : The data to add noise at</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>bytes</strong>  : the data with the noise</li>
+<li><strong>int</strong>  : the data with the noise</li>
 </ul>
 <p><strong>Note</strong></p>
 <p>The algorithm of this method is using a xor mask to flip the data               , since <code>x ^ 0 = x, x ^ 1 = !x</code>

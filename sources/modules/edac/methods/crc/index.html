@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">A Test and Validation Platform for EDAC</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Sources</span></p>
@@ -68,8 +68,6 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Edac</a>
     <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../../factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../schema/">Schema</a>
                 </li>
                 <li class="toctree-l3 current"><a class="reference internal current" href="#">Methods</a>
@@ -80,7 +78,11 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../parity/">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -88,8 +90,6 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../../noise/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../../noise/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
@@ -179,24 +179,40 @@
               
                 <h1 id="_1"></h1>
 <h2 id="crc">CRC</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L4">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/crc.py/#L6">source</a></p>
 <pre><code class="language-python">CRC(
-   debug: bool = False, *args, **kwargs
+   block_size: int = 40, type: SCHEMA = None, debug: Debug = Debug.DEPLOY
 )
 </code></pre>
 <hr />
 <p>EDAC System to deal with data that needs CRC</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>debug</strong> (bool, optional) : Debug level. Defualts to False.</li>
+<li><strong>debug</strong> (Debug, optional) : Debug level. Defualts to Deploy.</li>
 <li><strong>kwargs</strong> (optional) : The keyword argument passed from             <a href="../../factory#EDACFactory">EDAC Factory</a>. Defualts to None.            <strong>should contian key <code>schema</code></strong></li>
 <li><strong>schema</strong> (<a href="../crc_methods/schema#SCHEMA">SCHEMA</a>) : The schema of            CRC you chose to use, defaults to <code>CRC_8_ATM</code></li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L69">source</a></p>
-<pre><code class="language-python">.decode(
-   data: int, check: int
+<h3 id="_encode">._encode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/crc.py/#L64">source</a></p>
+<pre><code class="language-python">._encode(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Encode the given data</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : the data in integer</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : the syndrome in interger</li>
+</ul>
+<h3 id="_decode">._decode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/crc.py/#L82">source</a></p>
+<pre><code class="language-python">._decode(
+   data: int
 )
 </code></pre>
 <hr />
@@ -204,14 +220,13 @@
 <p><strong>Args</strong></p>
 <ul>
 <li><strong>data</strong> (int) : the target data to decode</li>
-<li><strong>check</strong> (int) : syndrome</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
 </ul>
 <h3 id="_devide">._devide</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L91">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/crc.py/#L102">source</a></p>
 <pre><code class="language-python">._devide(
    data: int
 )
@@ -225,22 +240,6 @@
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>int</strong>  : the result</li>
-</ul>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/crc.py/#L53">source</a></p>
-<pre><code class="language-python">.encode(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Encode the given data</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the data in integer</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : the syndrome in interger</li>
 </ul>
               
             </div>

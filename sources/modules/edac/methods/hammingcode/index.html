@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">A Test and Validation Platform for EDAC</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Sources</span></p>
@@ -68,8 +68,6 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Edac</a>
     <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../../factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../schema/">Schema</a>
                 </li>
                 <li class="toctree-l3 current"><a class="reference internal current" href="#">Methods</a>
@@ -80,7 +78,11 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../parity/">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -88,8 +90,6 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../../noise/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../../noise/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
@@ -179,38 +179,38 @@
               
                 <h1 id="_1"></h1>
 <h2 id="hammingcode">HammingCode</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L4">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/hammingcode.py/#L6">source</a></p>
 <pre><code class="language-python">HammingCode(
-   debug: bool = False
+   block_size: int = 16, debug: Debug = Debug.DEPLOY
 )
 </code></pre>
 <hr />
 <p>EDAC System to deal with data that needs hamming code </p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>debug</strong> (bool, optional) : Debug level. Defaults to False.</li>
+<li><strong>debug</strong> (Debug, optional) : Debug level. Defaults to False.</li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="_create_table">._create_table</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L136">source</a></p>
-<pre><code class="language-python">._create_table(
+<h3 id="_encode">._encode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/hammingcode.py/#L18">source</a></p>
+<pre><code class="language-python">._encode(
    data: int
 )
 </code></pre>
 <hr />
-<p>Create the hamming table according to the given block size</p>
+<p>Encode the given data</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (int) : data</li>
+<li><strong>data</strong> (int) : the data in integer</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>list</strong>  : hamming table</li>
+<li><strong>int</strong>  : the encoded data in integer</li>
 </ul>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L53">source</a></p>
-<pre><code class="language-python">.decode(
-   data: int, check: int
+<h3 id="_decode">._decode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/hammingcode.py/#L47">source</a></p>
+<pre><code class="language-python">._decode(
+   data: int
 )
 </code></pre>
 <hr />
@@ -224,21 +224,21 @@
 <ul>
 <li><strong>tuple</strong>  : the results of the decode <a href="../../schema#decode">see more</a></li>
 </ul>
-<h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/methods/hammingcode.py/#L19">source</a></p>
-<pre><code class="language-python">.encode(
+<h3 id="_create_table">._create_table</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/hammingcode.py/#L108">source</a></p>
+<pre><code class="language-python">._create_table(
    data: int
 )
 </code></pre>
 <hr />
-<p>Encode the given data</p>
+<p>Create the hamming table according to the given block size</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (int) : the data in integer</li>
+<li><strong>data</strong> (int) : data</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>int</strong>  : the encoded data in integer</li>
+<li><strong>list</strong>  : hamming table</li>
 </ul>
               
             </div>

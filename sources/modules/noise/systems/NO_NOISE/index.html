@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">A Test and Validation Platform for EDAC</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Sources</span></p>
@@ -68,8 +68,6 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="#">Edac</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../../edac/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../../edac/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
@@ -80,7 +78,11 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../../../edac/methods/parity/">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../edac/schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -88,8 +90,6 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Noise</a>
     <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../../factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../schema/">Schema</a>
                 </li>
                 <li class="toctree-l3 current"><a class="reference internal current" href="#">Systems</a>
@@ -179,9 +179,9 @@
               
                 <h1 id="_1"></h1>
 <h2 id="nonoise">NoNoise</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/none.py/#L3">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/nonoise.py/#L4">source</a></p>
 <pre><code class="language-python">NoNoise(
-   debug: bool
+   debug: Debug = Debug.DEPLOY
 )
 </code></pre>
 <hr />
@@ -192,9 +192,9 @@
 </ul>
 <p><strong>Methods:</strong></p>
 <h3 id="add_noise">.add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/methods/none.py/#L13">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/nonoise.py/#L14">source</a></p>
 <pre><code class="language-python">.add_noise(
-   data: bytes
+   data: int
 )
 </code></pre>
 <hr />

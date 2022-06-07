@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../..">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">A Test and Validation Platform for EDAC</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Sources</span></p>
@@ -68,8 +68,6 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Edac</a>
     <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../factory/">Factory</a>
-                </li>
                 <li class="toctree-l3 current"><a class="reference internal current" href="./">Schema</a>
     <ul class="current">
     <li class="toctree-l4"><a class="reference internal" href="#edactype">EDACType</a>
@@ -86,7 +84,11 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../methods/parity/">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -94,8 +96,6 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../noise/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../noise/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
@@ -181,16 +181,16 @@
               
                 <h1 id="_1"></h1>
 <h2 id="edactype">EDACType</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L4">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L5">source</a></p>
 <pre><code class="language-python">EDACType()
 </code></pre>
 <hr />
 <p>Enumerate of the EDAC Type system</p>
 <hr />
 <h2 id="edacmethod">EDACMethod</h2>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L14">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L15">source</a></p>
 <pre><code class="language-python">EDACMethod(
-   edac_type: EDACType = EDACType.NO_EDAC, debug: bool = False
+   edac_type: EDACType = EDACType.NO_EDAC, debug: Debug = Debug.DEPLOY
 )
 </code></pre>
 <hr />
@@ -203,18 +203,8 @@ it contains and will only be call the method it contains</p>
 <li><strong>DEBUG</strong> (bool) : Debug flag</li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="get_parity_size">.get_parity_size</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L50">source</a></p>
-<pre><code class="language-python">.get_parity_size()
-</code></pre>
-<hr />
-<p>Generate the parity size of the EDAC system</p>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : parity size of the EDAC system</li>
-</ul>
 <h3 id="get_default_block">.get_default_block</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L35">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L49">source</a></p>
 <pre><code class="language-python">.get_default_block()
 </code></pre>
 <hr />
@@ -223,29 +213,8 @@ it contains and will only be call the method it contains</p>
 <ul>
 <li><strong>int</strong>  : default block of the EDAC system</li>
 </ul>
-<h3 id="decode">.decode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L80">source</a></p>
-<pre><code class="language-python">.decode(
-   data: int, check: int
-)
-</code></pre>
-<hr />
-<p>The method that the EDAC system need to decode for checking
-the correctness</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : The data to be checked</li>
-<li><strong>check</strong> (int) : Parity Code to check</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>tuple</strong>  : format should be <code>(error, data, error bits)</code></li>
-<li><strong>error</strong> (bool) : Is the data corrupted</li>
-<li><strong>data</strong> (bytes) : The fixed data (return <code>0x00</code> if can't be fixed)</li>
-<li><strong>bits</strong> (list) : The index of errorbits</li>
-</ul>
 <h3 id="encode">.encode</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L65">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L79">source</a></p>
 <pre><code class="language-python">.encode(
    data: int
 )
@@ -255,11 +224,72 @@ the correctness</p>
 EDAC usage</p>
 <p><strong>Args</strong></p>
 <ul>
-<li><strong>data</strong> (int) : the data to be encoded</li>
+<li><strong>data</strong> (bytes) : The data to be encoded</li>
+<li><strong>n</strong> (int) : The block size given (<code>None</code> as default)</li>
 </ul>
 <p><strong>Returns</strong></p>
 <ul>
-<li><strong>int</strong>  : the data encoded</li>
+<li><strong>bytes</strong>  : The data encoded</li>
+</ul>
+<h3 id="_create_block">._create_block</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L162">source</a></p>
+<pre><code class="language-python">._create_block(
+   data: int, n: int
+)
+</code></pre>
+<hr />
+<p>Parse data into blocks so that
+every block have n bits of data</p>
+<p><strong>Raises</strong></p>
+<ul>
+<li><strong>ValueError</strong>  : If the data's type isn't <code>bytes</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>list</strong>  : the list of blocks needed</li>
+</ul>
+<h3 id="decode">.decode</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L117">source</a></p>
+<pre><code class="language-python">.decode(
+   data: int
+)
+</code></pre>
+<hr />
+<p>The method that the EDAC system need to decode for checking
+the correctness</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (bytes) : The data to be decode</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tuple</strong> (bool, bytes, list) : should be formated <code>(error, original data, error bits)</code></li>
+</ul>
+<h3 id="_parse_parity">._parse_parity</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L202">source</a></p>
+<pre><code class="language-python">._parse_parity(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Parse the parity and original data from the message</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : encoded data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tuple</strong> (int, int) : the data and the parity</li>
+</ul>
+<h3 id="get_parity_size">.get_parity_size</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L64">source</a></p>
+<pre><code class="language-python">.get_parity_size()
+</code></pre>
+<hr />
+<p>Generate the parity size of the EDAC system</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : parity size of the EDAC system</li>
 </ul>
               
             </div>
@@ -271,7 +301,7 @@ EDAC usage</p>
         <a href="../methods/crc/" class="btn btn-neutral float-right" title="Crc">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../factory/" class="btn btn-neutral" title="Factory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../" class="btn btn-neutral" title="EDAC"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -297,7 +327,7 @@ EDAC usage</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../factory/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../methods/crc/" style="color: #fcfcfc">Next &raquo;</a></span>

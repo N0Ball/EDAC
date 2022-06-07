@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../..">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">A Test and Validation Platform for EDAC</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Sources</span></p>
@@ -68,8 +68,6 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="#">Edac</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../edac/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../edac/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
@@ -80,7 +78,11 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../../edac/methods/parity/">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../edac/schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -88,8 +90,6 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Noise</a>
     <ul class="current">
-                <li class="toctree-l3"><a class="reference internal" href="../factory/">Factory</a>
-                </li>
                 <li class="toctree-l3 current"><a class="reference internal current" href="./">Schema</a>
     <ul class="current">
     <li class="toctree-l4"><a class="reference internal" href="#noisetype">NoiseType</a>
@@ -195,7 +195,7 @@
 <h2 id="noisemethod">NoiseMethod</h2>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L16">source</a></p>
 <pre><code class="language-python">NoiseMethod(
-   noise_type: NoiseType = NoiseType.NO_NOISE, debug: bool = False
+   noise_type: NoiseType = NoiseType.NO_NOISE, debug: Debug = Debug.DEPLOY
 )
 </code></pre>
 <hr />
@@ -209,9 +209,9 @@
 <p>This is the abstract base class, <code>add_noise</code> method should <strong>never be called</strong></p>
 <p><strong>Methods:</strong></p>
 <h3 id="add_noise">.add_noise</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L33">source</a></p>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/noise/schema.py/#L32">source</a></p>
 <pre><code class="language-python">.add_noise(
-   data: bytes
+   data: int
 )
 </code></pre>
 <hr />
@@ -234,7 +234,7 @@
         <a href="../systems/BIT_FLIP/" class="btn btn-neutral float-right" title="BIT FLIP">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../factory/" class="btn btn-neutral" title="Factory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../edac/schemas/crc/" class="btn btn-neutral" title="Crc"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -260,7 +260,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../factory/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../edac/schemas/crc/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../systems/BIT_FLIP/" style="color: #fcfcfc">Next &raquo;</a></span>

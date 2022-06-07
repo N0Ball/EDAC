@@ -57,7 +57,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../..">EDAC Testing and Education Platform</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">A Test and Validation Platform for EDAC</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Sources</span></p>
@@ -68,8 +68,6 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="#">Edac</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/edac/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/edac/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Methods</a>
@@ -80,7 +78,11 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/edac/methods/parity/">Parity</a>
                 </li>
-                <li class="toctree-l4"><a class="reference internal" href="#">Crc methods</a>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Schemas</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../sources/modules/edac/schemas/crc/">Crc</a>
                 </li>
     </ul>
                 </li>
@@ -88,8 +90,6 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Noise</a>
     <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/noise/factory/">Factory</a>
-                </li>
                 <li class="toctree-l3"><a class="reference internal" href="../../../sources/modules/noise/schema/">Schema</a>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="#">Systems</a>
@@ -124,6 +124,10 @@
     <li class="toctree-l3"><a class="reference internal" href="#intro">Intro</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#edac">EDAC</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#describe">Describe</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#syndrome">Syndrome</a>
     </li>
@@ -200,6 +204,16 @@ Correction</p>
 which often append bits (which are called parity bits) to the end of the message.
 We called these bits <a href="#syndrome">syndrome</a>. By examing syndromes, 
 it is able to either <strong>detect</strong> or <strong>correct</strong> errors arised during the transmission of the message.</p>
+<h3 id="describe">Describe</h3>
+<p>A EDAC schema is often discripted as <code>(k, n)</code> 
+where <code>k</code> is the total size of the encoded data,
+<code>n</code> is the total size of the origin data.
+That is we can calculate the syndrome size of this EAAC schema, that is <script type="math/tex">k - n</script>.</p>
+<p>Take a (9, 8) <a href="../../ErrorDetection/parity/">Parity Code</a> as an example,
+<code>N0</code>, which <code>N</code> is <code>0b01001110</code> and <code>0</code> is <code>0b00110000</code>,
+We know that every code block takes 8 bits, parity takes <script type="math/tex">9 - 8 = 1</script> bit.
+Therefore the data will be seperated into <code>0b01001110</code> and <code>0b00110000</code>,
+after appending the parity, the block will become <code>0b010011100</code> and <code>0b001100000</code>.</p>
 <h2 id="syndrome">Syndrome</h2>
 <hr />
 <p>A syndrome is the a group of parity bits.
@@ -212,7 +226,7 @@ That is, if the syndrome is <code>0b1011</code> -&gt; it is equivalent to <code>
 <hr />
 <p>Single Error Correction Double Error Detection (SEC-DED)</p>
 <h3 id="description">Description</h3>
-<p>EDAC schemes that are capable of detecting up to 
+<p>EDAC schemas that are capable of detecting up to 
 two simultaneous bit errors and correcting single-bit errors.</p>
 <h3 id="examples">Examples</h3>
 <p><a href="../ErrorDetection/hammingCode">Hamming Code</a> <br>
