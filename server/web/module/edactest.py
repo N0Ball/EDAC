@@ -20,9 +20,9 @@ class EDACTest:
         decode_msg = long_to_bytes(decode_msg)
 
         return {
-            'original': str(self.MSG)[2:-1],
-            'encode': str(encode_msg)[2:-1],
-            'noise': str(noise_msg)[2:-1],
+            'original': str(long_to_bytes(self.MSG))[2:-1],
+            'encode': encode_msg,
+            'noise': noise_msg,
             'result': {
                 'pass': pass_check,
                 'decode': str(decode_msg)[2:-1],

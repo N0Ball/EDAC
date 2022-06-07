@@ -7,8 +7,8 @@ from modules.noise.schema import NoiseMethod
 
 class BaseView:
 
-    def __init__(self) -> None:
-        self.ROUTE = Blueprint('noise', __name__)
+    def __init__(self, type, name) -> None:
+        self.ROUTE = Blueprint(type, name)
         self.EDAC_METHOD = None
 
     def get_route(self):
