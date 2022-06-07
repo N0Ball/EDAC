@@ -203,6 +203,22 @@ it contains and will only be call the method it contains</p>
 <li><strong>DEBUG</strong> (bool) : Debug flag</li>
 </ul>
 <p><strong>Methods:</strong></p>
+<h3 id="_parse_parity">._parse_parity</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L202">source</a></p>
+<pre><code class="language-python">._parse_parity(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Parse the parity and original data from the message</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : encoded data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>tuple</strong> (int, int) : the data and the parity</li>
+</ul>
 <h3 id="_create_block">._create_block</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L162">source</a></p>
 <pre><code class="language-python">._create_block(
@@ -220,42 +236,6 @@ every block have n bits of data</p>
 <ul>
 <li><strong>list</strong>  : the list of blocks needed</li>
 </ul>
-<h3 id="get_parity_size">.get_parity_size</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L64">source</a></p>
-<pre><code class="language-python">.get_parity_size()
-</code></pre>
-<hr />
-<p>Generate the parity size of the EDAC system</p>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : parity size of the EDAC system</li>
-</ul>
-<h3 id="get_default_block">.get_default_block</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L49">source</a></p>
-<pre><code class="language-python">.get_default_block()
-</code></pre>
-<hr />
-<p>Generate default block of the EDAC system</p>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : default block of the EDAC system</li>
-</ul>
-<h3 id="_parse_parity">._parse_parity</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L202">source</a></p>
-<pre><code class="language-python">._parse_parity(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Parse the parity and original data from the message</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : encoded data</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>tuple</strong> (int, int) : the data and the parity</li>
-</ul>
 <h3 id="decode">.decode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L117">source</a></p>
 <pre><code class="language-python">.decode(
@@ -272,6 +252,26 @@ the correctness</p>
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>tuple</strong> (bool, bytes, list) : should be formated <code>(error, original data, error bits)</code></li>
+</ul>
+<h3 id="get_default_block">.get_default_block</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L49">source</a></p>
+<pre><code class="language-python">.get_default_block()
+</code></pre>
+<hr />
+<p>Generate default block of the EDAC system</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : default block of the EDAC system</li>
+</ul>
+<h3 id="get_parity_size">.get_parity_size</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L64">source</a></p>
+<pre><code class="language-python">.get_parity_size()
+</code></pre>
+<hr />
+<p>Generate the parity size of the EDAC system</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : parity size of the EDAC system</li>
 </ul>
 <h3 id="encode">.encode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/schema.py/#L79">source</a></p>

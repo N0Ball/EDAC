@@ -193,22 +193,6 @@
 <li><strong>schema</strong> (<a href="../crc_methods/schema#SCHEMA">SCHEMA</a>) : The schema of            CRC you chose to use, defaults to <code>CRC_8_ATM</code></li>
 </ul>
 <p><strong>Methods:</strong></p>
-<h3 id="_devide">._devide</h3>
-<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/crc.py/#L102">source</a></p>
-<pre><code class="language-python">._devide(
-   data: int
-)
-</code></pre>
-<hr />
-<p>Devide in GF(<script type="math/tex">2^n</script>) of given generator</p>
-<p><strong>Args</strong></p>
-<ul>
-<li><strong>data</strong> (int) : the given data</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><strong>int</strong>  : the result</li>
-</ul>
 <h3 id="_encode">._encode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/crc.py/#L64">source</a></p>
 <pre><code class="language-python">._encode(
@@ -224,6 +208,22 @@
 <p><strong>Returns</strong></p>
 <ul>
 <li><strong>int</strong>  : the syndrome in interger</li>
+</ul>
+<h3 id="_devide">._devide</h3>
+<p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/crc.py/#L102">source</a></p>
+<pre><code class="language-python">._devide(
+   data: int
+)
+</code></pre>
+<hr />
+<p>Devide in GF(<script type="math/tex">2^n</script>) of given generator</p>
+<p><strong>Args</strong></p>
+<ul>
+<li><strong>data</strong> (int) : the given data</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>int</strong>  : the result</li>
 </ul>
 <h3 id="_decode">._decode</h3>
 <p><a href="https://github.com/N0Ball/EDAC/blob/main/modules/edac/crc.py/#L82">source</a></p>
