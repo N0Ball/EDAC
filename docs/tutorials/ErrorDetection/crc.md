@@ -17,7 +17,7 @@ since different data have **less posibility** of having the **same remainer**, t
 we can **kind of** know if the data is changed or not.
 
 **NOTE:** The biggest charactoristic of this method is, a little change of the polynomial will cause a large difference of the remainer, 
-therefore, if we know that he [hamming distance](../definitions/math#hamming-distance) are feasibly small, 
+therefore, if we know that he [hamming distance](../../definitions/math#hamming-distance) are feasibly small, 
 we can say that we can detect if an error occurs.
 
 ### Example
